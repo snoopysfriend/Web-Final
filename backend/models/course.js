@@ -9,42 +9,51 @@ const CourseSchema = new Schema({
 		required: [true, 'CourseId field is required.']
 	},
 	DptCode: {
-		type: String,
+		type: String
 	},
 	DptName: {
-		type: String,
+		type: String
 	},
 	CouCode: {
-		type: String,
+		type: String
+	},
+	Class: {
+		type: String
 	},
 	Cred: {
-		type: Number,
+		type: Number
 	},
 	ForH: {
-		type: Number,
+		type: String
 	},
 	SelCode: {
-		type: Number,
+		type: String
 	},
 	CouCname: {
-		type: String,
+		type: String
+	},
+	CouEname: {
+		type: String
 	},
 	TeaCname: {
-		type: String,
+		type: String
 	},
 	ClsRom: {
-		type: String,
+		type: String
+	},
+	DayTime: {
+		type: String
 	},
 	MaxCap: {
-		type: String,
+		type: String
 	},
 	Mark: {
-		type: String,
+		type: String
 	},
 	CoSelect: {
-		type: Number,
+		type: Number
 	},
-	CourseInfo: courseinfo.CourseInfo
+	// CourseInfo: [courseinfo.CourseInfo]
 },
     {
         versionKey: false

@@ -5,24 +5,31 @@ const Schema = mongoose.Schema
 const CourseInfo = new Schema({
 	CouCont: {
 		type: String,
+		default:''
 	},
 	CouGoal: {
 		type: String,
+		default:''
 	},
 	CouReq: {
 		type: String,
+		default:''
 	},
 	OfficeHour: {
-		type: Number,
+		type: String,
+		default:''
 	},
 	RefBook: {
-		type: Number,
+		type: String,
+		default:''
 	},
 	CouEval: {
-		type: Number,
+		type: String,
+		default:''
 	},
 	CouProg: {
 		type: String,
+		default:''
 	}
 },
     {
