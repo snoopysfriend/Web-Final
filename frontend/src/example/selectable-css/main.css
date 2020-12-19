@@ -1,0 +1,120 @@
+.selectable-main {
+  padding: 0 10px;
+  border: 1px dotted #969896;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  height: 50vh;
+  width: 60%;
+  overflow: scroll;
+  position: relative;
+}
+
+.selectable-selectbox {
+  z-index: 9000;
+  position: absolute;
+  cursor: default;
+  background: none;
+  border: 1px dashed grey;
+}
+
+.selectable-albums {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* extra items per row to test horizontal scroll handler */
+  width: calc(45px * 10);
+}
+
+.selectable-card-label {
+  display: block;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.card-label > span {
+  font-weight: 600;
+}
+
+.selectable-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 50px;
+  min-height: 50px;
+  margin: 2px;
+  float: left;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 0.3rem;
+}
+
+.selectable-item.not-selectable {
+  background: #819198;
+  color: white;
+}
+
+.selectable-item .selectable-tick {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 10px;
+  color: #5f6c70;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 6px;
+  line-height: 7px;
+}
+
+.selectable-item h2 {
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: inherit;
+  font-weight: 600;
+}
+
+.selectable-item.selected {
+  background: #177779;
+  color: white;
+  border-color: #206748;
+}
+
+.selectable-item.not-selectable .selectable-tick,
+.selectable-item.selected .selectable-tick {
+  color: white;
+}
+
+.selectable-item.selecting {
+  border: 1px solid #177779;
+}
+
+.main p.not-selectable {
+  margin: 10px 0 10px 2px;
+}
+
+.selectable-counter {
+  color: #009688;
+}
+
+.selectable-button {
+  display: inline-block;
+  margin: 0 3px 10px 3px;
+}
+
+.in-selection-mode .selectable-item {
+  cursor: pointer;
+}
+
+button.selectable-btn {
+  outline: none;
+  border-color: #169956;
+  color: #169956;
+  padding: 5px 10px;
+}
+
+button.selectable-btn:hover {
+  color: #177779;
+  border-color: #177779;
+}
