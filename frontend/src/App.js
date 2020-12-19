@@ -1,24 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './containers/Header'
+import TempApp from './example/TempApp'
+import { items } from './example/sample-data'
+import Filters from './containers/Filters'
+import 'semantic-ui-css/semantic.min.css'
+import { Grid, Segment } from 'semantic-ui-react'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Grid columns='equal' >
+      <Grid.Row >
+        <Grid.Column>
+          <Filters />
+        </Grid.Column>
+        <Grid.Column>
+          <TempApp items={items}/> 
+        </Grid.Column>
+      </Grid.Row>
+      </Grid> 
+      <div className="searchReslut">
+          12345
+      </div>
+      
+      
+    </>
   );
 }
 

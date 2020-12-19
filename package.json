@@ -17,11 +17,13 @@
     "websocket": "^1.0.32"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cd frontend && yarn start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon"
+    "server": "nodemon",
+    "watch:example": "webpack-dev-server --config ./frontend/example/webpack.config.example.js --content-base website",
+    "build:example": "webpack --config ./frontend/example/webpack.config.example.js --mode production"
   },
   "eslintConfig": {
     "extends": [
