@@ -1,7 +1,0 @@
-const label=["0","1","2","3","4","5","6","7","8","9","10","A","B","C","D"];
-const days = ["一", "二","三","四","五","六"];
-const timeItems = Array.from({ length: 84}).map((_, index) => (
-    {
-        "time-id":`${days[index/15]}-${lavel[index%15]}`
-    }
-))

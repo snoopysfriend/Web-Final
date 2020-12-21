@@ -1,6 +1,7 @@
 .content {
-    width: 60%;
-    margin: 0 auto;
+    /* width: 60%; */
+    margin-left: 30px;
+    margin-right: 30px;
 }
 .filter {
     display: flex;

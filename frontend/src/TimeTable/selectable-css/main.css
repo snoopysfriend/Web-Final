@@ -1,11 +1,14 @@
+:root {
+  --boxSize: 30px;
+  --contentWidth: 40px;
+}
+
 .selectable-main {
   padding: 0 10px;
-  border: 1px dotted #969896;
+  /* border: 1px dotted #969896; */
   border-radius: 0.6rem;
   overflow: hidden;
-  height: 50vh;
-  width: 60%;
-  overflow: scroll;
+  
   position: relative;
 }
 
@@ -14,15 +17,19 @@
   position: absolute;
   cursor: default;
   background: none;
+  /* overflow: scroll; */
+  
   border: 1px dashed grey;
 }
 
-.selectable-albums {
+.selectable-table {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  height: 300px;
+  overflow: scroll;
   /* extra items per row to test horizontal scroll handler */
-  width: calc(45px * 10);
+  width: calc(var(--contentWidth) * 7);
 }
 
 .selectable-card-label {
@@ -38,15 +45,15 @@
 .selectable-item {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
-  width: 50px;
-  min-height: 50px;
+  width: var(--boxSize);
+  min-height: var(--boxSize);
   margin: 2px;
   float: left;
   text-align: center;
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 3px;
   border-radius: 0.3rem;
 }
 
@@ -69,8 +76,7 @@
 
 .selectable-item h2 {
   font-size: 14px;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0 auto;
   color: inherit;
   font-weight: 600;
 }

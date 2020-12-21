@@ -60,7 +60,7 @@ function Filters() {
                     <StyledSegment> <Checkbox label='學程' /> </StyledSegment> */}
                 {/* </Segment.Group> */}
                 <div className="filter_container">
-                    <List divided horizontal relaxed="very" >
+                    <List celled horizontal  >
                         <List.Item>
                             <Checkbox label='學程' />
                         </List.Item>
@@ -69,6 +69,9 @@ function Filters() {
                         </List.Item>
                         <List.Item>
                             <Checkbox label='臺大系統校際課程' />
+                        </List.Item>
+                        <List.Item>
+                            <Checkbox label='英語授課' />
                         </List.Item>
                     </List>
                 </div>

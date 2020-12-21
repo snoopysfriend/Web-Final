@@ -1,20 +1,27 @@
 import React, { createRef, Component } from 'react'
 import './selectable-css/main.css'
 import { TAlbumItem } from './sample-data'
-import { SelectableGroup } from 'react-selectable-fast'
+import { SelectableGroup, SelectAll, DeselectAll } from 'react-selectable-fast'
 import { Counters } from './Counters'
 import { List } from './List'
+import { Grid, Segment } from 'semantic-ui-react'
+
+
+type TTimeItem = {
+  day: string,
+  section: string
+}
 
 type TAppProps = {
-  items: TAlbumItem[]
+  items: TTimeItem[]
 }
 
 type TAppState = {
   disableFirstRow: boolean
   reversed: boolean
   showSelectableGroup: boolean
-  selectedItems: TAlbumItem[],
-  selectingItems: TAlbumItem[]
+  selectedItems: TTimeItem[],
+  selectingItems: TTimeItem[]
 }
 
 class App extends Component<TAppProps, TAppState> {
@@ -36,12 +43,12 @@ class App extends Component<TAppProps, TAppState> {
     }))
   }
 
-  handleSelecting = (selectingItems: TAlbumItem[]) => {
+  handleSelecting = (selectingItems: TTimeItem[]) => {
     if (selectingItems.length !== this.state.selectingItems.length) {
       this.setState({ selectingItems: selectingItems })
     }
   }
-  handleSelectionFinish = (selectedItems: TAlbumItem[]) => {
+  handleSelectionFinish = (selectedItems: TTimeItem[]) => {
     this.setState({ selectedItems: selectedItems, selectingItems: [] })
     console.log(`Finished selection ${selectedItems.length}`)
   }
@@ -57,25 +64,36 @@ class App extends Component<TAppProps, TAppState> {
     return (
       <div>
         {/* <Counters selectedItems={selectedItems} selectingItems={selectingItems} /> */}
-        <button className="selectable-btn" type="button" onClick={this.toggleSelectableGroup}>
-          Toggle group
-        </button>
-        {showSelectableGroup && (
-          <SelectableGroup
-            ref={this.getSelectableGroupRef}
-            className="selectable-main"
-            clickClassName="selectable-tick"
-            enableDeselect={true}
-            tolerance={0}
-            deselectOnEsc={true}
-            allowClickWithoutSelected={false}
-            duringSelection={this.handleSelecting}
-            onSelectionFinish={this.handleSelectionFinish}
-            ignoreList={['.not-selectable']}
-          >
-            <List items={orderedItems} />
-          </SelectableGroup>
-        )}
+        <Grid columns='2' >
+        <Grid.Row >
+          <Grid.Column width={3}>
+            <button className="selectable-btn" type="button" onClick={this.toggleSelectableGroup}>
+              Toggle group
+            </button>
+            <p className="not-selectable">Press ESC to clear selection</p>
+          </Grid.Column>
+          <Grid.Column stretched>
+            <SelectableGroup
+              ref={this.getSelectableGroupRef}
+              className="selectable-main"
+              clickClassName="selectable-tick"
+              enableDeselect={true}
+              tolerance={0}
+              deselectOnEsc={true}
+              allowClickWithoutSelected={false}
+              
+              duringSelection={this.handleSelecting}
+              onSelectionFinish={this.handleSelectionFinish}
+              ignoreList={['.not-selectable']}
+            >
+              <List items={orderedItems} showSelectableGroup={showSelectableGroup} toggleSelectableGroup={this.toggleSelectableGroup}/>
+            </SelectableGroup>
+          </Grid.Column>
+        </Grid.Row>
+        </Grid>
+        
+          
+        
       </div>
     )
   }

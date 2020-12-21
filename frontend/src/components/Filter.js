@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../containers/Filters.css';
-// import Tags from './Tags';
-import Options from './Options';
 
 import { Dropdown } from 'semantic-ui-react'
 
