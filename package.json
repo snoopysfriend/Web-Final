@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.8.4",
+    "csvtojson": "^2.0.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
@@ -22,6 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodemon",
+    "testdb": "babel-node backend/initdb.js",
     "watch:example": "webpack-dev-server --config ./frontend/example/webpack.config.example.js --content-base website",
     "build:example": "webpack --config ./frontend/example/webpack.config.example.js --mode production"
   },
