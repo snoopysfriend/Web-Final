@@ -52,6 +52,7 @@
     "@babel/preset-env": "^7.12.1",
     "dotenv-defaults": "^2.0.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "mongodb": "^3.6.3",
     "mongoose": "^5.10.15",
     "nodemon": "^2.0.6",
