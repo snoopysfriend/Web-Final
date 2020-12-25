@@ -6,5 +6,5 @@
   "ignore": [
     "server/**/*.spec.js"
   ],
-  "exec": "babel-node backend/index.js"
+  "exec": "babel-node backend/server.js"
 }
