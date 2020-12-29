@@ -41,9 +41,20 @@ const CourseSchema = new Schema({
 	ClsRom: {
 		type: String
 	},
+	//ref:https://stackoverflow.com/questions/56909350/how-can-i-structure-the-opening-hours-of-some-place-in-mongoose
 	DayTime: {
 		type: String
 	},
+	/*
+	classTime: [{
+				day: {type: Date}, //mon - sun
+				periods: [{
+					start: {type: String},
+					end: {type: String}
+				}]
+				
+	}]
+	*/
 	MaxCap: {
 		type: String
 	},
@@ -53,7 +64,13 @@ const CourseSchema = new Schema({
 	CoSelect: {
 		type: Number
 	},
-	// CourseInfo: [courseinfo.CourseInfo]
+	Tag: {
+		type: Array,
+		default:[]
+	},
+	Year: {
+		type: String
+	}
 },
     {
         versionKey: false
