@@ -1,0 +1,25 @@
+.header {
+    width: 100%;
+    height: 70px;
+    
+    background-color: #DCD0B3;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-right: 15px;
+
+}
+.header-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.header-left .header-label {
+    line-height: 70px;
+    font-size: 45px;
+    padding-left: 15px;
+
+}

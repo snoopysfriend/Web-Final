@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.8.4",
     "csvtojson": "^2.0.10",
+    "express": "^4.17.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
@@ -22,10 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon",
-    "testdb": "babel-node backend/initdb.js",
-    "watch:example": "webpack-dev-server --config ./frontend/example/webpack.config.example.js --content-base website",
-    "build:example": "webpack --config ./frontend/example/webpack.config.example.js --mode production"
+    "server": "nodemon --exec babel-node backend/server.js",
+    "testdb": "babel-node backend/initdb.js"
   },
   "eslintConfig": {
     "extends": [
@@ -51,7 +50,6 @@
     "@babel/node": "^7.12.6",
     "@babel/preset-env": "^7.12.1",
     "dotenv-defaults": "^2.0.1",
-    "express": "^4.17.1",
     "express-session": "^1.17.1",
     "mongodb": "^3.6.3",
     "mongoose": "^5.10.15",

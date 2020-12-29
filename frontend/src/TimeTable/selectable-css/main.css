@@ -1,15 +1,23 @@
 :root {
   --boxSize: 30px;
-  --contentWidth: 40px;
+  --contentWidth: 45px;
 }
+.timeTable {
+  position: relative;
+  line-height: '40px';
+  vertical-align: 'center';
 
+}
 .selectable-main {
   padding: 0 10px;
+  right: 0px;
+  z-index: 10;
+  background-color: #f0f0f0;
   /* border: 1px dotted #969896; */
   border-radius: 0.6rem;
   overflow: hidden;
   
-  position: relative;
+  position: absolute !important; 
 }
 
 .selectable-selectbox {
@@ -117,7 +125,8 @@ button.selectable-btn {
   outline: none;
   border-color: #169956;
   color: #169956;
-  padding: 5px 10px;
+  /* padding: 5px 10px; */
+  margin: 3px 10px;
 }
 
 button.selectable-btn:hover {

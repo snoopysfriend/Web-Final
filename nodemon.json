@@ -1,6 +1,6 @@
 {
   "watch": [
-    "server"
+    "backend/server"
   ],
   "ext": "js,json",
   "ignore": [
