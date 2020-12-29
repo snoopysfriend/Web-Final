@@ -18,7 +18,10 @@ const QuestionSchema = new Schema({
         type: Date,
         default: Date.now,
 	},
-	Answer: [answer]
+	Answer: {
+		type: [answer],
+		default: []
+	}
 },
     {
         versionKey: false
