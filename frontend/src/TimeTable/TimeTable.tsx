@@ -1,11 +1,9 @@
 import React, { createRef, Component } from 'react'
 import './selectable-css/main.css'
-import { TAlbumItem } from './sample-data'
 import { SelectableGroup, SelectAll, DeselectAll } from 'react-selectable-fast'
-import { Counters } from './Counters'
 import { List } from './List'
-import { Grid, Segment } from 'semantic-ui-react'
 
+import { Grid, Button } from '@material-ui/core';
 
 type TTimeItem = {
   day: string,
@@ -28,7 +26,7 @@ class App extends Component<TAppProps, TAppState> {
   state = {
     disableFirstRow: false,
     reversed: false,
-    showSelectableGroup: true,
+    showSelectableGroup: false,
     selectedItems: [],
     selectingItems: [],
   }
@@ -64,16 +62,9 @@ class App extends Component<TAppProps, TAppState> {
     return (
       <div>
         {/* <Counters selectedItems={selectedItems} selectingItems={selectingItems} /> */}
-        <Grid columns='2' >
-        <Grid.Row >
-          <Grid.Column width={3}>
-            <button className="selectable-btn" type="button" onClick={this.toggleSelectableGroup}>
-              Toggle group
-            </button>
-            <p className="not-selectable">Press ESC to clear selection</p>
-          </Grid.Column>
-          <Grid.Column stretched>
-            <SelectableGroup
+        <div className="timeTable">
+          <Button variant="outlined" className="selectable-btn" onClick={this.toggleSelectableGroup}>課堂時段</Button>
+          <SelectableGroup
               ref={this.getSelectableGroupRef}
               className="selectable-main"
               clickClassName="selectable-tick"
@@ -87,13 +78,9 @@ class App extends Component<TAppProps, TAppState> {
               ignoreList={['.not-selectable']}
             >
               <List items={orderedItems} showSelectableGroup={showSelectableGroup} toggleSelectableGroup={this.toggleSelectableGroup}/>
-            </SelectableGroup>
-          </Grid.Column>
-        </Grid.Row>
-        </Grid>
-        
-          
-        
+          </SelectableGroup> 
+        </div>
+        {/* <p className="not-selectable">Press ESC to clear selection</p> */}
       </div>
     )
   }

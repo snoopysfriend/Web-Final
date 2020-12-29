@@ -37,6 +37,21 @@
   }
 }
 
+html, body {
+  background-color: #efefef;
+  height: 100vh;
+  
+}
+
+.container {
+  max-width: 1250px;
+  min-width: 1000px;
+  margin: auto;
+  background-color: #FFF;
+  height: 100%;
+
+}
+
 .Filters-content {
   width: 80%;
   margin: auto;

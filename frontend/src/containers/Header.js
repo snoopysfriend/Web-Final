@@ -1,34 +1,21 @@
 import React, {useState} from 'react'
-import { Menu } from 'semantic-ui-react'
-
+import '../containers/Header.css';
 
 function Header() {
-    const [activeItem, setActiveItem] = useState({});
-
-    const handleItemClick = (e, { name }) => setActiveItem(name)
-    return (
-        <>
-        <Menu>
-            <Menu.Item>
-            <img src='/logo.png' />
-            </Menu.Item>
-            <Menu.Item
-            name='aboutUs'
-            active={activeItem === 'aboutUs'}
-            onClick={handleItemClick}
-            />
-            <Menu.Item
-            name='jobs'
-            active={activeItem === 'jobs'}
-            onClick={handleItemClick}
-            />
-            <Menu.Item
-            name='locations'
-            active={activeItem === 'locations'}
-            onClick={handleItemClick}
-            />
-        </Menu>
-        </>
+  return (
+    <nav className="header">
+      <div className="header-left">
+        <img className="header-logo" 
+            src="https://www.ntu.edu.tw/images/logo.png" 
+            style={{height: 70+'px'}}/>
+        <label className="header-label" >
+            課程查詢系統
+        </label>
+      </div>
+      
+      <button>登入</button>
+    </nav>
+  
     )
     
 }

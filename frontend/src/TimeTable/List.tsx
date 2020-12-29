@@ -18,21 +18,23 @@ export const List = memo((props: TListProps) => {
 
   return (
     <>
-      
       <div className="selectable-button-container">
-      <SelectAll component="button" type="button" className="selectable-btn">
-          Select all
-        </SelectAll>
-        <DeselectAll component="button" type="button" className="selectable-btn">
-          Clear selection
-        </DeselectAll>
+        {showSelectableGroup && (
+          <>
+          <SelectAll component="button" type="button" className="selectable-btn">
+              Select all
+          </SelectAll>
+          <DeselectAll component="button" type="button" className="selectable-btn">
+              Clear selection
+          </DeselectAll>
+        
+          <div className="selectable-table">
+            {items.map(item => (
+              <Card key={`${item.day}-${item.section}`} day={item.day} section={item.section}/>
+            ))}
+          </div>
+        </>)}
       </div>
-      {showSelectableGroup && <div className="selectable-table">
-        {items.map(item => (
-          <Card key={`${item.day}-${item.section}`} day={item.day} section={item.section}/>
-        ))}
-      </div>}
-      
     </>
   )
 })
