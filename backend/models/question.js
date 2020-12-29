@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-
+const answer = require('./obj_field/answer')
 // Creating a schema, sort of like working with an ORM
 const QuestionSchema = new Schema({
 	QuCont: {
@@ -17,7 +17,8 @@ const QuestionSchema = new Schema({
 	TimStp: {
         type: Date,
         default: Date.now,
-    }
+	},
+	Answer: [answer]
 },
     {
         versionKey: false
