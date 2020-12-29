@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const courseinfo = require('./obj_field/course_info')
 const Schema = mongoose.Schema
 
 // Creating a schema, sort of like working with an ORM
@@ -69,7 +68,8 @@ const CourseSchema = new Schema({
 		default:[]
 	},
 	Year: {
-		type: String
+		type: String,
+		default:''
 	}
 },
     {

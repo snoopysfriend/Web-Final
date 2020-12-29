@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 // Creating a schema, sort of like working with an ORM
-const CourseInfo = new Schema({
+const CourseInfoSchema = new Schema({
 	CouCont: {
 		type: String,
 		default:''
@@ -37,5 +37,6 @@ const CourseInfo = new Schema({
 	}
 )
 
+const CourseInfo = mongoose.model('courseinfo', CourseInfoSchema)
 // Exporting table for querying and mutating
 module.exports = CourseInfo
