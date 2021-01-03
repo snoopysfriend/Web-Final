@@ -4,12 +4,13 @@ import { makeStyles } from '@material-ui/styles';
 import { TStyle } from '../styles/styles'
 import Temp from '../containers/Temp'
 import { Typography, Divider, Breadcrumbs, Link } from '@material-ui/core';
-import Grid from '../components/grid/grid'
-import GridItem from '../components/grid/gridItem'
+import { Grid, GridItem } from '../components/grid/grid'
+import background from "../resources/background.jpg";
+import logo from "../resources/logo.jpg";
 
 const useHomeStyles = makeStyles((theme) => ({
   root: {
-    backgroundImage: 'url(https://i.imgur.com/kiiB86O.jpg)',
+    backgroundImage: `url(${background})`,
     backgroundAttachment: 'fixed',
     width: '100%',
     minHeight: '100vh',
@@ -71,10 +72,10 @@ function Home() {
   const classes = useHomeStyles();
   return (
     <>
-      <div className={classes.root}>
+      <div className={classes.root} >
         <div className={classes.containerLeft}>
           <div className={classes.ntu}>
-              <img src="https://i.imgur.com/6ha7kI8.png" className={classes.ntuLogo}/>
+              <img src={logo} className={classes.ntuLogo}/>
               <div className={classes.ntuCName}>
                 <Typography variant="h4">國立台灣大學</Typography>
               </div>

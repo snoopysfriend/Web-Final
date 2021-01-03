@@ -34,7 +34,7 @@ function Search(props) {
       <Header />
       <div className='container'>
       <Breadcrumb />
-        <Query />
+        {/* <Query /> */}
         <Divider variant="middle" />
         <div className="searchReslut">
             <SearchResults data={originData}/>

@@ -3,10 +3,12 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 // import { useSearchBarStyles } from '../styles/searchBarStyles'
 import { TStyle } from '../styles/styles'
-import { Button, Input, InputBase, FormControl, Select, InputLabel, MenuItem } from "@material-ui/core"
+import { Button, Input, InputBase, FormControl, Select, InputLabel, MenuItem, Typography } from "@material-ui/core"
 import TimeTable from './TimeTable/TimeTable'
 import  items  from './TimeTable/timeItems'
 import TextField from '../components/textfield/textfield'
+import { Grid, GridItem } from '../components/grid/grid'
+
 
 const BootstrapInput = withStyles((theme) => ({
   root: {
@@ -30,6 +32,7 @@ const BootstrapInput = withStyles((theme) => ({
     },
   },
 }))(InputBase);
+
 const useSearchBarStyles = makeStyles((theme) => ({
     root: {
       ...(TStyle._rowFlex),
@@ -71,27 +74,26 @@ export default function SearchAppBar(props) {
     setAge(event.target.value);
   };
   return (
-
-    <div className={classes.root}>
-      <label className={classes.name}>快速查詢</label>
-      <FormControl className={classes.searchType}>
-        <Select
-          labelId="demo-customized-select-label"
-          id="demo-customized-select"
-          // value={age}
-          onChange={handleChange}
-          input={<BootstrapInput />}
-        >
-          <MenuItem value="">
-            None
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-      
-      <div className={classes.searchTextField}>
+    <Grid rowFlex fullWidth>
+      <GridItem width='110px'>
+        <Typography variant='header'>快速查詢</Typography>
+      </GridItem>
+      <GridItem width='150px'>
+        <FormControl className={classes.searchType}>
+          <Select
+            // value={age}
+            onChange={handleChange}
+          >
+            <MenuItem value="">
+              None
+            </MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
+      </GridItem>
+      <GridItem width='300px'>
         <TextField
             placeholder="This is a place holder"
             // value={textFieldValue}
@@ -99,21 +101,13 @@ export default function SearchAppBar(props) {
             // onChange={e => handleTextFieldChange(e.target.value)}
             fullWidth
           />
-{/*         
-        <InputBase
-          placeholder="Search…"
-          classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput
-          }}
-        /> */}
-      </div>
-      <div className={classes.searchbutton}>
-        {/* <SearchIcon /> */}
-      <Button onClick={props.clickToSearch}>搜尋</Button>
-      </div>
-      <TimeTable items={items}/> 
-      {/* <div className={classes.space}></div> */}
-    </div>
+      </GridItem>
+      <GridItem >
+        <Button onClick={props.clickToSearch}>搜尋</Button>
+      </GridItem>
+      <GridItem >
+        <TimeTable items={items}/> 
+      </GridItem>
+    </Grid>
   );
 }

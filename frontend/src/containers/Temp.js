@@ -3,8 +3,7 @@ import { Typography } from '@material-ui/core';
 import { Tab, Tabs } from '@material-ui/core'
 import { ThemeProvider, StylesProvider } from "@material-ui/core/styles";
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Grid from '../components/grid/grid'
-import GridItem from '../components/grid/gridItem'
+import { Grid, GridItem } from '../components/grid/grid'
 import TextField from '../components/textfield/textfield'
 
 const useHomeStyles = makeStyles((theme) => ({
@@ -63,8 +62,8 @@ function TempApp() {
     setValue(newValue);
   };
   return (
-      <Grid className={classes.root} >
-        <GridItem fullWidth className={classes.tab} style={{textAlign: 'center'}}>
+      <Grid newClass={classes.root}>
+        <GridItem fullWidth  className={classes.tab} style={{textAlign: 'center'}}>
           <StyledTabs  value={value} onChange={handleChange} >
             <StyledTab label="登入" />
             <StyledTab label="註冊" />
@@ -89,8 +88,8 @@ function TempApp() {
             fullWidth
           />
         </GridItem>
-        <GridItem  alignRight>
-          <Typography variant="body">Forget password?</Typography>
+        <GridItem  alignRight border>
+          <Typography variant="caption">Forget password?</Typography>
         </GridItem>
         <GridItem fullWidth border className={classes.text}>
           Button

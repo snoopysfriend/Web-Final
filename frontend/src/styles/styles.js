@@ -1,4 +1,5 @@
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
+import { text } from 'express';
 
 export const TStyle = {
   _rowFlex: {
@@ -20,50 +21,97 @@ export const TStyle = {
     borderRadius: '5px',
   }
 }
-
-export const theme = createMuiTheme({
-  overrides: {
-    MuiButton: {
-      root: {
-        // borderRadius: 3,
-        // ...(TStyle._border),
-        // height: 48,
-        // padding: "0 30px",
-      }
+const colorTheme = {
+  ntuBlue: {
+    light: '#324486',
+    main: '#1D284E',
+  },
+  ntuRed: {
+    light: '#b72a38',
+    main: '#9c2330',
+    dark: '#741a23'
+  },
+  ntuBrown: {
+    light: '#dcd0b3',
+    main: '#a77f33',
+    dark: '#7d5f26'
+  },
+  grey: {
+    dark: "#485146",
+    standard: "#6e7370",
+    light: "#bbbbbb",
+    lightest: "#f7f7f7",
+    white: "#ffffff",
+  },
+}
+const textTheme = {
+  fontFamily: ['Taipei Sans TC Beta', 'Source Sans Pro', 'Montserrat'],
+    header: {
+      fontSize: '30px',
     },
-    MuiInput: {
-      root: {
-        padding: '6px 0 6px 10px',
-        width: '100%'
-       },
-       input: {
-        width: '100%',
-       }
+    label: {
+      fontSize: '28px',
     },
-    MuiInputBase: {
-      root: {
-        padding: '6px 0 6px 10px',
-        width: '100%'
-       },
-       input: {
-        width: '100%',
-       }
+    body: {
+      fontSize: '20px',
     },
-    MuiAutocomplete: {
-      root: {
-        ...(TStyle._border)
-      },
-      inputRoot: {
-        padding: '1px 6px',
-      }
-    },
-    MuiFormControl: {
-      root: {
-        justifyContent: 'center',
-      }
+    caption: {
+      fontSize: '16px',
+      color: colorTheme.grey.standard,
     }
+}
+const theme = createMuiTheme({
+  palette: {
+    ...colorTheme,
+  },
+  typography: {
+    ...textTheme,
   }
+// overrides: {
+//   MuiButton: {
+//     root: {
+//       // borderRadius: 3,
+//       // ...(TStyle._border),
+//       // height: 48,
+//       // padding: "0 30px",
+//     }
+//   },
+//   MuiInput: {
+//     root: {
+//       padding: '6px 0 6px 10px',
+//       width: '100%'
+//      },
+//      input: {
+//       width: '100%',
+//      }
+//   },
+//   MuiInputBase: {
+//     root: {
+//       padding: '6px 0 6px 10px',
+//       width: '100%'
+//      },
+//      input: {
+//       width: '100%',
+//      }
+//   },
+//   MuiAutocomplete: {
+//     root: {
+//       ...(TStyle._border)
+//     },
+//     inputRoot: {
+//       padding: '1px 6px',
+//     }
+//   },
+//   MuiFormControl: {
+//     root: {
+//       justifyContent: 'center',
+//     }
+//   }
+// }
 });
+
+console.log("theme", theme)
+export default theme;
 
 
 export const useQueryStyles = makeStyles((theme) => ({
