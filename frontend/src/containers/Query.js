@@ -3,7 +3,7 @@ import  { deptMj, libEd, acaProg, phyMil, genCour } from '../resources/index'
 import { useQueryStyles } from '../styles/styles'
 
 import Multiselect from '../components/filter-multiselect';
-import Checkboxes from '../components/checkboxes';
+import Checkboxes from '../components/filter-checkboxes';
 import SearchBar from '../components/searchbar'
 
 
@@ -43,13 +43,12 @@ function Filters() {
         <div className={classes.mainFiltersRight}>
             <Multiselect name="體育/軍訓" optionList={phyMil}/>
             <Multiselect name="語文/基本能力" optionList={genCour}/>
+            <Multiselect name="學程" optionList={acaProg}/>
         </div>
         
       </div>
-      <div className={classes.otherFilters}>
-
-        <label className="filter-name ">其他</label>
-        {/* <Checkboxes /> */}
+      <div className={classes.mainFilters}>
+        <Checkboxes name="其他"/>
       </div>
     </div>
   )

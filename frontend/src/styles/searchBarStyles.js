@@ -12,15 +12,22 @@ export const useSearchBarStyles = makeStyles((theme) => ({
       minWidth: '110px',
       ...(TStyle._filterHeight)
     },
+    searchType: {
+      minWidth: '110px',
+    },
     searchTextField: {
-      flexGrow: 2,
+      flexGrow: 1,
+      // width: '80%',
       border: '1px solid #efefef',
       borderRadius: '5px',
       ...(TStyle._filterHeight),
+      ...(TStyle._containerPaddingLR),
+      ...(TStyle._containerMarginLR),
     },
     searchbutton: {
       // flexGrow: 1,
-      ...(TStyle._filterHeight)
+      ...(TStyle._filterHeight),
+      ...(TStyle._containerPaddingLR),
     },
     space: {
       flexGrow: 1,

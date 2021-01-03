@@ -23,17 +23,12 @@ export const TStyle = {
 
 export const theme = createMuiTheme({
   overrides: {
-    // Style sheet name ⚛️
     MuiButton: {
-      // Name of the rule
       root: {
-        // background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-        borderRadius: 3,
-        ...(TStyle._border),
-        // color: "white",
+        // borderRadius: 3,
+        // ...(TStyle._border),
         // height: 48,
         // padding: "0 30px",
-        // boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)"
       }
     },
     MuiInput: {
@@ -53,15 +48,23 @@ export const theme = createMuiTheme({
        input: {
         width: '100%',
        }
+    },
+    MuiAutocomplete: {
+      root: {
+        ...(TStyle._border)
+      },
+      inputRoot: {
+        padding: '1px 6px',
+      }
+    },
+    MuiFormControl: {
+      root: {
+        justifyContent: 'center',
+      }
     }
   }
 });
 
-export const useAutocompleteStyles = makeStyles({
-  root: {
-    ...(TStyle._border)
-  },
-},{ name: 'MuiAutocomplete'});
 
 export const useQueryStyles = makeStyles((theme) => ({
   root: {
@@ -70,16 +73,15 @@ export const useQueryStyles = makeStyles((theme) => ({
   mainFilters: {
     ...(TStyle._rowFlex),
     ...(TStyle._containerMarginLR),
-    alignContent: 'stretch',
-    
+    ...(TStyle._containerPaddingLR),
   },
   mainFiltersLeft: {
-    width: "100%",
-    ...(TStyle._containerPaddingLR),
+    width: '100%',
+    paddingRight: '10px',
   },
   mainFiltersRight: {
-    width: "100%",
-    ...(TStyle._containerPaddingLR),
+    width: '100%',
+    paddingLeft: '10px',
   },
   filterRoot: {
     ...(TStyle._rowFlex),
@@ -96,3 +98,15 @@ export const useQueryStyles = makeStyles((theme) => ({
     flexGrow: 1,    
   }
 }), { name: 'Query' });
+
+export const useHomeStyles = makeStyles((theme) => ({
+  root: {
+    ...(TStyle._rowFlex),
+  },
+  left: {
+    
+  },
+  right: {
+
+  },
+}), { name: 'rowFlex' })
