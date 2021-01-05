@@ -11,11 +11,23 @@ import coursInformRoutes from './routes/courseInform'
 
 require('dotenv').config()
 const app = express()
-
+const identityKey = 'skey';
+//var FileStore = require('session-file-store')(session)
 // init middleware
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(session({
+    name: identityKey,
+    secret: '123',
+    //store: new FileStore(),
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 1000
+    }
+}))
 //app.use(express.json())
 /*
 app.use(function(req, res, next) {
@@ -49,7 +61,7 @@ db.on('error', (error) => {
 db.once('open', () => {
     console.log('DB connected!')
     //routes(app)
-    //app.use('/api/users', loginRoutes)
+    app.use('/api/users', loginRoutes)
     app.use('/api/syllabus', syllabusRoutes)
     app.use('/api/courseInform', coursInformRoutes)
     //app.use('/session', )
