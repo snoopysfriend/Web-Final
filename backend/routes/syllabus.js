@@ -15,10 +15,10 @@ router.get('/', function(req, res, next){
             .exec((err, ress) => {
                 if (err) {
                     console.log(`Syllabus year ${year} type ${type} not found`)
-                    res.status(403).send({})
+                    res.status(403).send({message: "error", content: null})
                 } else {
                     console.log(ress)
-                    res.status(200).send({message: ress})
+                    res.status(200).send({message: "success", content: ress})
                 }
             }) 
 })

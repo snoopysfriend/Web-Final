@@ -28,6 +28,7 @@ router.post('/login', async (req, res) => {
                         const compare = await bcrypt.compare(req.body.password, ress[0].StudPwd)
                         if (compare === true) {
                             req.session.loginUser = true
+                            req.session.loginUserId = req.body.studentId 
                             res.status(200).send({message: "success"})
                         } else {
                             res.status(400).send({error: "username or password error"})

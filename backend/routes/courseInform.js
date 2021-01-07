@@ -1,5 +1,5 @@
 import express from 'express'
-import CourseInform from '../models/course'
+import CourseInform from '../models/obj_field/course_info'
 
 const router = express.Router()
 
