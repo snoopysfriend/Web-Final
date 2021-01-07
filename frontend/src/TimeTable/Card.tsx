@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { createSelectable, TSelectableItemProps } from 'react-selectable-fast'
-import { Label } from './Label'
 
 type TAlbumProps = {
   player: string
@@ -29,11 +27,9 @@ export const Card = createSelectable<TItemsProps>((props: TSelectableItemProps &
 
   return (
     <div ref={selectableRef} className={classNames}>
-      {/* <div className="selectable-tick">+</div> */}
       {
         classNames.includes('not-selectable') && <h2>{day!=X && day}{section!=X && section}</h2>
       }
-      {/* <Label isSelected={isSelected} isSelecting={isSelecting} /> */}
     </div>
   )
 })
