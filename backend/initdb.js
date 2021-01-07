@@ -5,6 +5,9 @@ const mongoose = require('mongoose')
 var fs = require('fs')
 var path = require('path')
 const Course = require('./models/course')
+const CourseInfo = require('./models/course_info')
+const { exit } = require('process')
+
 
 
 if (!process.env.MONGO_URL) {
@@ -26,10 +29,38 @@ db.on('error', (error) => {
 
 db.once('open', () => {
   console.log('MongoDB connected!');
+  // INSERT COURSE
+  // console.log('delete all data!')
+  // Course.deleteMany({}, () => { })
+  // // Loop through all the files in the temp directory
+  // let dir = __dirname + "/models/test_data/course";
+  // fs.readdir(dir, function (err, files) {
+  //   if (err) {
+  //     console.error("Could not list the directory.", err);
+  //     process.exit(1);
+  //   }
+  //   files.forEach(function (file, index) {
+  //     // Make one pass and make the file complete
+  //     var Path = path.join(dir, file);
+  //     if (file.includes(".csv")){
+  //       console.log(`insert ${file}...`)
+  //       csvtojson()
+  //       .fromFile(Path)
+  //       .then(csvData => {        
+  //         Course.insertMany(csvData, (err, res) => {
+  //           if (err) throw err;
+  //           console.log(`Inserted: ${res.length} rows`);
+  //         });
+  //       });
+  //     }
+  //   });
+  // });
+
+  //max on opened files: https://github.com/meteor/meteor/issues/8057
+  //INSERT COURSE INFO
   console.log('delete all data!')
-  Course.deleteMany({}, () => { })
-  // Loop through all the files in the temp directory
-  const dir = __dirname + "/models/test_data/";
+  CourseInfo.deleteMany({}, () => { })
+  let dir = __dirname + "/models/test_data/course_info";
   fs.readdir(dir, function (err, files) {
     if (err) {
       console.error("Could not list the directory.", err);
@@ -39,13 +70,17 @@ db.once('open', () => {
       // Make one pass and make the file complete
       var Path = path.join(dir, file);
       if (file.includes(".csv")){
-        console.log(`insert ${file}...`)
+        // console.log(`insert ${file}...`)
         csvtojson()
         .fromFile(Path)
         .then(csvData => {        
-          Course.insertMany(csvData, (err, res) => {
-            if (err) throw err;
-            console.log(`Inserted: ${res.length} rows`);
+          CourseInfo.insertMany(csvData, (err, res) => {
+            try{
+              if (err) throw err;
+              // console.log(`Inserted: ${res.length} rows`);
+            }catch(err){
+              console.log(`${file} has error`)
+            }
           });
         });
       }

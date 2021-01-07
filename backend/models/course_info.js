@@ -3,6 +3,61 @@ const Schema = mongoose.Schema
 
 // Creating a schema, sort of like working with an ORM
 const CourseInfoSchema = new Schema({
+	CourseId:{
+		type: String,
+		default:''
+	},
+	CouName:{
+		type: String,
+		default:''
+	},
+	Year:{
+		type: String,
+		default:''
+	},
+	DeptName:{
+		type: String,
+		default:''
+	},
+	TeaCname:{
+		type: String,
+		default:''
+	},
+	CouCode:{
+		type: String,
+		default:''
+	},
+	Class: {
+		type: String,
+		default:''
+	},
+	Cred: {
+		type: Number
+	},
+	ForH: {
+		type: String,
+		default:''
+	},
+	SorM: {
+		type: String,
+		default:''
+	},
+	DayTime: {
+		type: String,
+		default:''
+	},
+	ClsRom: {
+		type: String,
+		default:''
+	},
+	Mark: {
+		type: String,
+		default:''
+	},
+	Skills: {
+		type: String,
+		default:''
+	},
 	CouCont: {
 		type: String,
 		default:''
@@ -20,6 +75,10 @@ const CourseInfoSchema = new Schema({
 		default:''
 	},
 	RefBook: {
+		type: String,
+		default:''
+	},
+	MustBook: {
 		type: String,
 		default:''
 	},
