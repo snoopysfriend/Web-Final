@@ -1,7 +1,9 @@
 import requests
-
+import random
+import string
 url = "http://127.0.0.1:4000/api/users/register"
 
+userid = ''.join(random.choices(string.ascii_uppercase + string.digits, k=5))
 postdata = {
     "username": "hello",
     "studentCname": "string",
@@ -9,7 +11,7 @@ postdata = {
     "password": "123",
     "email": "b05902045@ntu.edu.tw",
     "studentDepartment": "string",
-    "studentId": "newstring13",
+    "studentId": userid,
     "studentMaj": "string",
     "studentGrad": "2",
     "studentGender": "1"

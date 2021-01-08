@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const SelCourse = require('./obj_field/selcourse')
+//const SelCourse = require('./obj_field/selcourse')
+//import SelCourse from './obj_field/selcourse'
 
 // Creating a schema, sort of like working with an ORM
 const StudentSchema = new Schema({
@@ -37,9 +38,9 @@ const StudentSchema = new Schema({
         type: Date,
         default: Date.now,
     },
-    SelCourses: {
-      type:[SelCourse],
-      default: []
+    SelCourse: {
+      type: mongoose.Schema.Types.ObjectId, ref: 'SelCourse',
+      required: [true, 'SelCourse field is required.']
     }
 },
     {

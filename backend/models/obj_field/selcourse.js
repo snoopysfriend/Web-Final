@@ -2,11 +2,14 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 // Creating a schema, sort of like working with an ORM
-const SelCourse = new Schema({
-	CourseId: {
-		type: String,
-		required: [true, 'CourseId field is required.']
-	},
+const SelCourseSchema = new Schema({
+	CourseId: [{
+        type: String,
+        required: [true, 'StudId field is required.']
+    }],
+    daytime: [{
+       type: Array,
+    }],
 	StudId: {
         type: String,
         required: [true, 'StudId field is required.']
@@ -21,5 +24,6 @@ const SelCourse = new Schema({
     }
 )
 
+const SelCourse = mongoose.model('selCourse', SelCourseSchema)
 // Exporting table for querying and mutating
 module.exports = SelCourse

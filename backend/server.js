@@ -5,9 +5,10 @@ import session from 'express-session'
 import mongoose from 'mongoose'
 var bodyParser = require('body-parser')
 //import routes from './routes'
-import loginRoutes from './routes/login'
+import userRoutes from './routes/user'
 import syllabusRoutes from './routes/syllabus'
 import coursInformRoutes from './routes/courseInform'
+import scheduleRoutes from './routes/schedule'
 
 require('dotenv').config()
 const app = express()
@@ -61,7 +62,8 @@ db.on('error', (error) => {
 db.once('open', () => {
     console.log('DB connected!')
     //routes(app)
-    app.use('/api/users', loginRoutes)
+    app.use('/api/users', userRoutes)
+    app.use('/api/schedule', scheduleRoutes)
     app.use('/api/syllabus', syllabusRoutes)
     app.use('/api/courseInform', coursInformRoutes)
     //app.use('/session', )

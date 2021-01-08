@@ -1,5 +1,6 @@
 import express from 'express'
 import Account from '../models/account'
+import SelCourse from '../models/obj_field/selcourse'
 const Student =  require('../models/student')
 const router = express.Router()
 const bcrypt = require('bcrypt')
@@ -22,20 +23,20 @@ router.post('/login', async (req, res) => {
            .exec(async (err, ress) => {
                 if (err) {
                     res.status(400).send({error: "username or password error"})
-                } else {
+                    return 
+                } 
                     //console.log('login user',ress)
-                    if (ress.length > 0) {
-                        const compare = await bcrypt.compare(req.body.password, ress[0].StudPwd)
-                        if (compare === true) {
-                            req.session.loginUser = true
-                            req.session.loginUserId = req.body.studentId 
-                            res.status(200).send({message: "success"})
-                        } else {
-                            res.status(400).send({error: "username or password error"})
-                        }
+                if (ress.length > 0) {
+                    const compare = await bcrypt.compare(req.body.password, ress[0].StudPwd)
+                    if (compare === true) {
+                        req.session.loginUser = true
+                        req.session.loginUserId = req.body.studentId 
+                        res.status(200).send({message: "success"})
                     } else {
                         res.status(400).send({error: "username or password error"})
                     }
+                } else {
+                    res.status(400).send({error: "username or password error"})
                 }
            })
 }) 
@@ -47,7 +48,6 @@ router.post('/register', (req, res) => {
         if (err) {
             console.log(err)
         } else {
-            console.log("result ", doc)
             if(doc === false) {
                 const user = new Account ({
                     StudId: req.body.studentId,
@@ -55,6 +55,12 @@ router.post('/register', (req, res) => {
                     UserNam: req.body.username,
                     StudPwd: bcrypt.hashSync(req.body.password, hash_time)
                 } )
+                const selCourse = new SelCourse({
+                    StudId: req.body.studentId,
+                    daytime: new Array(14 * 6).fill([]), 
+                    CourseId: [],
+                })
+                //console.log(selCourse)
                 const student = new Student ({
                     StudId: req.body.studentId,
                     StudMaj : req.body.studentMaj,
@@ -62,18 +68,31 @@ router.post('/register', (req, res) => {
                     StudGend: req.body.studentGender,
                     StudDept: req.body.studentDepartment,
                     StudCname: req.body.studentCname,
-                    StudEname: req.body.studentEname
+                    StudEname: req.body.studentEname,
+                    SelCourse: selCourse._id,
                 })
-                user.save((err, res) => {
-                    if (err) throw err
-                    console.log('save user')
+                //console.log(student)
+                user.save((err, result) => {
+                    console.log('saved user')
+                    if (err) {
+                        res.status(400).send({message: "username exists"}) 
+                        return ;
+                    }
                 })
-                student.save((err, res) => {
-                    if (err) throw err
-                    console.log('save student')
+                student.save((err, result) => {
+                    if (err) {
+                        res.status(400).send({message: "username exists"})
+                        return 
+                    } else {
+                        res.status(200).send({message: "Success"})
+                    }
                 })
-                res.status(200).send({message: "Success"})
-
+                selCourse.save((err, result) => {
+                    if (err) {
+                        res.status(400).send({message: "username exists"})
+                        return 
+                    }
+                })
             } else {
                 res.status(400).send({message: "username exists"})
             }
