@@ -20,7 +20,7 @@ const CourseSchema = new Schema({
 		type: String
 	},
 	Cred: {
-		type: Number
+		type: String
 	},
 	ForH: {
 		type: String
@@ -42,6 +42,9 @@ const CourseSchema = new Schema({
 	},
 	//ref:https://stackoverflow.com/questions/56909350/how-can-i-structure-the-opening-hours-of-some-place-in-mongoose
 	DayTime: {
+		type: String
+	},
+	newDayTime:{
 		type: String
 	},
 	/*
