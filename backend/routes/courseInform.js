@@ -1,15 +1,14 @@
 import express from 'express'
-import CourseInform from '../models/obj_field/course_info'
+import CourseInform from '../models/course_info'
 
 const router = express.Router()
 
 router.get('/', function(req, res, next){
-    let year = req.query.year
-    let courseId = req.query.courseId
+    const year = req.query.year
+    const courseId = req.query.courseId
     console.log(`course infrom courseId ${courseId}`)
     if (year && courseId) {
         CourseInform.find()
-                    //.where('year').equals(year)
                     .where('CourseId').equals(courseId)
                     .limit(5) 
                     .exec((err, ress) => {
