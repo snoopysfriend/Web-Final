@@ -1,25 +1,18 @@
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import { text } from 'express';
 
+const originTheme = createMuiTheme();
 export const TStyle = {
   _rowFlex: {
     display: "flex",
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  _containerMarginLR: {
-    margin: "0 60px",
-  },
-  _containerPaddingLR: {
-    padding: "0 10px",
-  },
-  _filterHeight: {
-    lineHeight: '40px',
-  },
-  _border: {
-    border: '1px solid #B0BEC5',
-    borderRadius: '5px',
-  }
+  // _containerMarginLR: {
+  //   margin: "0 60px",
+  // },
+  // _containerPaddingLR: {
+  //   padding: "0 10px",
+  // },
 }
 const colorTheme = {
   ntuBlue: {
@@ -45,116 +38,104 @@ const colorTheme = {
   },
 }
 const textTheme = {
-  fontFamily: ['Taipei Sans TC Beta', 'Source Sans Pro', 'Montserrat'],
-    header: {
-      fontSize: '30px',
-    },
-    label: {
-      fontSize: '28px',
-    },
-    body: {
-      fontSize: '20px',
-    },
-    caption: {
-      fontSize: '16px',
-      color: colorTheme.grey.standard,
-    }
+  fontFamily: ['Taipei Sans TC Beta', 'sans-serif', 'Source Sans Pro', 'Montserrat'],
+  h4: {
+    fontSize: '30px',
+  },
+  h5: {
+
+  },
+  h6: {
+    fontSize: '20px',
+  },
+  subtitle1: {
+    fontSize: '16px',
+  },
+  subtitle2: {
+
+  },
+  body1: {
+
+  },
+  body2: {
+
+  },
+  button: {
+
+  },
+  caption: {
+    fontSize: '18px',
+    color: colorTheme.grey.standard,
+  }
 }
+const shapeTheme = {
+  borderRadius: '5px',
+  borderRadius_type: {
+    large: '15px',
+    standard: '10px',
+    small: '5px',
+  },
+  border_button: {
+    border: `1px solid ${colorTheme.grey.standard}`,
+    borderRadius: '5px',
+  },
+  border_textField: {
+    border:  `1px solid ${colorTheme.grey.standard}`,
+    borderRadius: '5px',
+  }
+}
+const overridesTheme = {
+  // MuiButton: {
+    // root: {
+      // borderRadius: 3,
+      // ...(TStyle._border),
+      // height: 48,
+      // padding: "0 30px",
+    // }
+  // },
+  // MuiInput: {
+    // root: {
+    //   padding: '6px 0 6px 10px',
+    //   width: '100%'
+    //  },
+    //  input: {
+    //   width: '100%',
+    //  }
+  // },
+  // MuiInputBase: {
+    // root: {
+    //   padding: '6px 0 6px 10px',
+    //   width: '100%'
+    //  },
+    //  input: {
+    //   width: '100%',
+    //  }
+  // },
+  MuiAutocomplete: {
+    root: {
+      ...(shapeTheme.border_textField),
+    },
+    inputRoot: {
+      padding: `1px ${originTheme.spacing(1)}px`,
+    }
+  },
+}
+
+
 const theme = createMuiTheme({
   palette: {
     ...colorTheme,
   },
   typography: {
     ...textTheme,
+  },
+  shape: {
+    ...shapeTheme,
+  },
+  overrides: {
+    ...overridesTheme,
   }
-// overrides: {
-//   MuiButton: {
-//     root: {
-//       // borderRadius: 3,
-//       // ...(TStyle._border),
-//       // height: 48,
-//       // padding: "0 30px",
-//     }
-//   },
-//   MuiInput: {
-//     root: {
-//       padding: '6px 0 6px 10px',
-//       width: '100%'
-//      },
-//      input: {
-//       width: '100%',
-//      }
-//   },
-//   MuiInputBase: {
-//     root: {
-//       padding: '6px 0 6px 10px',
-//       width: '100%'
-//      },
-//      input: {
-//       width: '100%',
-//      }
-//   },
-//   MuiAutocomplete: {
-//     root: {
-//       ...(TStyle._border)
-//     },
-//     inputRoot: {
-//       padding: '1px 6px',
-//     }
-//   },
-//   MuiFormControl: {
-//     root: {
-//       justifyContent: 'center',
-//     }
-//   }
-// }
 });
 
 console.log("theme", theme)
 export default theme;
-
-
-export const useQueryStyles = makeStyles((theme) => ({
-  root: {
-   
-  },
-  mainFilters: {
-    ...(TStyle._rowFlex),
-    ...(TStyle._containerMarginLR),
-    ...(TStyle._containerPaddingLR),
-  },
-  mainFiltersLeft: {
-    width: '100%',
-    paddingRight: '10px',
-  },
-  mainFiltersRight: {
-    width: '100%',
-    paddingLeft: '10px',
-  },
-  filterRoot: {
-    ...(TStyle._rowFlex),
-    alignItems: 'center',
-    marginBottom: "10px"
-  },
-  filterName: {
-    // maxWidth: '110px',
-    minWidth: '110px',
-    ...(TStyle._filterHeight),
-
-  },
-  filterTextField: {
-    flexGrow: 1,    
-  }
-}), { name: 'Query' });
-
-export const useHomeStyles = makeStyles((theme) => ({
-  root: {
-    ...(TStyle._rowFlex),
-  },
-  left: {
-    
-  },
-  right: {
-
-  },
-}), { name: 'rowFlex' })

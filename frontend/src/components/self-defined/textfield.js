@@ -1,16 +1,11 @@
 import React from 'react';
 import { TextField, FormControl, Typography, InputBase, InputAdornment } from '@material-ui/core';
 import { ThemeProvider, StylesProvider, makeStyles } from "@material-ui/core/styles";
-import PropTypes from 'prop-types';
-import styles from './textfield.module.scss';
-import theme from '../../styles/styles'
+import theme from '../../styles/styles';
 
-console.log(theme)
 const useStyles = makeStyles((theme) => ({
   root: {
     ...(theme.typography.body),
-    // fontWeight: '600',
-    // fontSize: '16.5px',
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: (props) => props.rowFlex? 'row': 'column',
@@ -22,8 +17,11 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     width: (props) => {return (props.fullWidth && '100%')},
-    border: (props) => (props.border? props.border: `1px solid ${theme.palette.grey[800]}`),
-    borderRadius: '15px',
+    border: (props) => {
+      if (props.noBorder) return 'none';
+      else return (props.border? props.border: `1px solid ${theme.palette.grey.standard}`);
+    },
+    borderRadius: theme.shape.borderRadius,
     boxSizing: 'border-box',
     textAlign: (props) => {return (props.alignRight && 'right')},
     font: (props) => {
@@ -32,24 +30,15 @@ const useStyles = makeStyles((theme) => ({
         default: return theme.typography.body
       }
     },
+    paddingLeft: theme.spacing(1),
   },
 }), { name: 'TextField' });
 
-export const Grid = (props) => {
-  const { children, size, variant, noBackground, container, rowFlex, fullWidth, newClass, ...other } = props;
-  const classes = useStyles(props);
-  return (
-    <div fullWidth={fullWidth}
-        className={classes.root + ' ' + newClass} {...props}>
-      {children}
-    </div>
-  );
-};
 const StyledTextField = ({ className, label, password, ...props }) => {
   const { fullWidth, newClass, ...other } = props;
   const classes = useStyles(props);
   return (
-    <FormControl className={classes.root + ' ' + newClass} {...props}>
+    <FormControl className={classes.root + ' ' + (newClass? newClass: ' ')} {...props}>
         <Typography variant="label" >{label}</Typography>
         <InputBase
           type={password? 'password':'text'}
@@ -57,7 +46,6 @@ const StyledTextField = ({ className, label, password, ...props }) => {
         />
     </FormControl>
 )};
-
 
 
 export default StyledTextField;

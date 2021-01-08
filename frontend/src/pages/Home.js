@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import '../styles/normalize.css'
 import { makeStyles } from '@material-ui/styles';
 import { TStyle } from '../styles/styles'
-import Temp from '../containers/Temp'
+import Login from '../containers/Login'
 import { Typography, Divider, Breadcrumbs, Link } from '@material-ui/core';
-import { Grid, GridItem } from '../components/grid/grid'
+import { Grid } from '../components/self-defined/grid'
 import background from "../resources/background.jpg";
 import logo from "../resources/logo.jpg";
 
@@ -21,9 +21,6 @@ const useHomeStyles = makeStyles((theme) => ({
     position: 'relative',
     width: '100%',
     background: 'rgba(24, 38, 94, 0.6)'
-  },
-  containerRight: {
-    width: '100%'
   },
   slash: {
     position:'absolute',
@@ -72,27 +69,20 @@ function Home() {
   const classes = useHomeStyles();
   return (
     <>
-      <div className={classes.root} >
-        <div className={classes.containerLeft}>
+      <Grid newClass={classes.root} >
+        <Grid fullWidth color='rgba(24, 38, 94, 0.6)'>
           <div className={classes.ntu}>
               <img src={logo} className={classes.ntuLogo}/>
-              <div className={classes.ntuCName}>
-                <Typography variant="h4">國立台灣大學</Typography>
-              </div>
-              <div className={classes.ntuEName}>
-                <Typography variant="h6">National Taiwan University</Typography>
-              </div>
+              <Typography variant="h4" noWrap className={classes.ntuCName}>國立台灣大學</Typography>
+              <Typography variant="h6" noWrap className={classes.ntuEName}>National Taiwan University</Typography>
           </div>
-          <div className={classes.title}>
-            <Typography variant="h4">課程查詢系統</Typography>
-          </div>
+          <Typography variant="h4" className={classes.title}>課程查詢系統</Typography>
           <div className={classes.slash}></div>
-
-        </div>
-        <div className={classes.containerRight}>
-          <Temp />
-        </div>
-      </div>
+        </Grid>
+        <Grid fullWidth noBackground>
+          <Login />
+        </Grid>
+      </Grid>
     </>
   )
     

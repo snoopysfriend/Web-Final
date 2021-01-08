@@ -28,13 +28,13 @@ function Search(props) {
     fetchResource();
   }, [])
   
-  // console.log('originData ', originData)
+  console.log('originData ', originData)
   return (
     <>
       <Header />
       <div className='container'>
       <Breadcrumb />
-        {/* <Query /> */}
+        <Query />
         <Divider variant="middle" />
         <div className="searchReslut">
             <SearchResults data={originData}/>

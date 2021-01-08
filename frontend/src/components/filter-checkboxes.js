@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { useQueryStyles } from '../styles/styles'
+import theme, { TStyle } from '../styles/styles'
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 
-import { withStyles } from '@material-ui/core/styles';
 import { FormGroup, FormControlLabel, Checkbox, Button } from '@material-ui/core';
 
+const useFilterStyles = makeStyles((theme) => ({
+  root: {
+    ...(TStyle._rowFlex),
+    alignItems: 'center',
+    marginBottom: theme.spacing(2),
+  },
+  name: {
+    minWidth: '110px',
+  },
+  textField: {
+    flexGrow: 1,   
+  }
+}), { name: 'filter' });
 
 function Filter(props) {
-  const classes = useQueryStyles();
+  const classes = useFilterStyles();
   const [state, setState] = React.useState({
     engilshCour: false,
     ntuSys: false,
@@ -23,9 +36,9 @@ function Filter(props) {
   console.log('state: ', state)
   return (
     
-    <div className={classes.filterRoot}>
-      <label className={classes.filterName}>{props.name}</label>
-      <div className={classes.filterTextField}>
+    <div className={classes.root}>
+      <label className={classes.name}>{props.name}</label>
+      <div className={classes.textField}>
         <FormGroup row>
           {options.map((item, index) => {
             return <FormControlLabel 

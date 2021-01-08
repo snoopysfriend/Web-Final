@@ -1,9 +1,10 @@
 import * as React from 'react';
 //Components
 import { DataGrid } from '@material-ui/data-grid';
-import { Button, FormGroup, FormControlLabel, Checkbox }from '@material-ui/core'
+import { Button, FormGroup, FormControlLabel, Checkbox, Link }from '@material-ui/core'
 
 //Styles
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { useMuiDataGridStyles } from '../styles/dataGridStyles'
 const columnsStyle = {
   headerAlign: 'center',
@@ -15,13 +16,28 @@ const tableHeaders = ["CourseId", "DptName", "CouCname", "Cred", "TeaCname","day
 const tableHeadersCN = ["流水號", "授課對象","課程名稱", "學分", "授課教師", "時間", "教室", "課程識別碼", "班次",  "全/半年", "必/選修", "加選方式","選課限制條件",  "總人數"];
 
 function createColumns(field, headerName, width, hide, renderCell) {
-  return renderCell? { field, headerName, width, hide, renderCell } : { field, headerName, width, hide };
+  // return renderCell? { field, headerName, width, hide, renderCell } : { field, headerName, width, hide };
+  return { field, headerName, width, hide, renderCell };
+}
+
+const getCourseInform = () => {
+  console.log('getCourseInform')
 }
 const columns = [
   createColumns('id', 'ID', 30, false),
   createColumns('CourseId',  '流水號', 60, false),
   createColumns('DptName',  '授課對象', 75, false),
-  createColumns('CouCname',  '課程名稱', 130, false),
+  createColumns('CouCname',  '課程名稱', 130, false, (params) => {
+    console.log(params)
+    return (
+    <Link
+      style={{ margin: '0 auto' }}
+      href={`http://127.0.0.1:3000/course/${params.row.CourseId}`}
+      onClick={ getCourseInform }
+    >
+      {params.row.CouCname}
+    </Link>
+  )}),
   createColumns("Cred",  "學分", 50, false),
   createColumns("TeaCname",  "授課教師", 130, false),
   createColumns("daytime",  "時間", 130, false),
@@ -34,7 +50,6 @@ const columns = [
   createColumns("Mark",  "選課限制條件", 130, false),
   createColumns("MaxCap",  "總人數", 130, false),
   createColumns("AddtoList",  "我的課表", 130, false, (params) => (
-    // <strong>
       <Button
         variant="contained"
         color="primary"
@@ -43,7 +58,6 @@ const columns = [
       >
         加入
       </Button>
-    // </strong>
   )),
 ].map(item => ({...item, ...columnsStyle}));
 
@@ -102,12 +116,9 @@ export default function SearchResults(props) {
   const clickToShowCheckboxes = () => {
     setShowCheckboxes(!showCheckboxes);
   }
-  console.log('Data: ', props.data)
   const rows = props.data.map((d, index) => {
     return createRows(index, d)
   });
-  console.log('Rows: ',rows)
-
   return (
     <div style={{ height: 400, width: '100%' }}>
       <Button onClick={clickToShowCheckboxes}>Show</Button>
