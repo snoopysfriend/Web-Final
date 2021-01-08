@@ -1,5 +1,5 @@
 import React, { createRef, Component } from 'react'
-import './selectable-css/main.css'
+import './selectable-css/timeTableStyles.css'
 import { SelectableGroup, SelectAll, DeselectAll } from 'react-selectable-fast'
 import { List } from './List'
 

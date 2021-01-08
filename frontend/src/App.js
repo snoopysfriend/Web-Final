@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import { HomePage, SearchPage } from './pages';
-import { ThemeProvider } from "@material-ui/core/styles";
-import { theme } from './styles/styles'
+import { HomePage, SearchPage, UserPage, CourseInformPage } from './pages';
+import { ThemeProvider, StylesProvider } from "@material-ui/core/styles";
+import theme from './styles/styles'
 import Header from './containers/Header'
 import Breadcrumb from './components/breadcrumbs'
 import { Route } from 'react-router-dom';
@@ -20,12 +20,13 @@ function App() {
   return (
     <>
     <ThemeProvider theme={theme}>
-      <Header />
-      <div className='container'>
-      <Breadcrumb />
       <Route path="/" exact component={HomePage} />
       <Route path="/search" component={SearchPage} />
-      </div>
+      <Route path="/user" component={UserPage} />
+      <Route path="/course/:courseId?" component={CourseInformPage} />
+      {/* <Route path="*">
+        <h1>404</h1>
+      </Route> */}
     </ThemeProvider>
 
     </>

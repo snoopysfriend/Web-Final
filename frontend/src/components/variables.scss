@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap');
+$desktopNavHeight: 64px;
+$mobileNavHeight: 48px;
+$dashboardNavigationHeight: 44px;
+$combinedAuthenticatedNavHeight: 108px;
+$footerHeight: 250px;
+
+$maxPageWidth: 1060px;
+
+$font__bodyRegular: 400 16px 'Source Sans Pro';
+$font__bodyBold: 700 16px 'Source Sans Pro';
+$font__headingLight: 300 12px 'Montserrat';
+$font__headingRegular: 400 12px 'Montserrat';
+$font__headingMedium: 500 12px 'Montserrat';
+$font__headingSemiBold: 600 12px 'Montserrat';
+$font__headingBold: 700 12px 'Montserrat';
+
+// ------ Transition Times ------
+$navigationTransitionTime: 200ms;
+
+// ------ Borders ------
+$borderRadius__button: 4px;
+$borderRadius__modal: 8px;
+
+// ------ Breakpoints ------
+$xs: 320px;
+$sm: 480px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+// ------ New Palette ------
+//background
+$bg_brgiht: #fff;
+$bg_dark: #000;
+
+
+// Greys
+$Grey__dark: #485146;
+$Grey__standard: #6e7370;
+$Grey__light: #bbbbbb;
+$Grey__lightest: #f7f7f7;
+$Grey__white: #ffffff;
+
+// Oranges
+$Orange__dark: #965100;
+$Orange__standard: #ff8a00;
+$Orange__light: #fbba06;
+$Orange__lightest: #fff4ec;
+
+// Greens
+$Green__dark: #006b33;
+$Green__standard: #009447;
+$Green__light: #00c65f;
+$Green__lightest: #edfff6;
+$Green__transparent: rgba(0, 149, 100, 0.08);
+
+// Reds
+$Red__dark: #8b0000;
+$Red__standard: #d32f2f;
+$Red__light: #ff6261;
+$Red__lightest: #fff4f4;
+
+// Yellow
+$Yellow__dark: #775f00;
+$Yellow__standard: #bf9900;
+$Yellow__light: #ffcc00;
+$Yellow__lightest: #fff9e2;
+
+// Blues
+$Blue__standard: #0077aa;
+$Blue__dark: #004a6a;
+$Tiel__standard: #14ab9a;
+
+// ------ Shadows ------
+$lightBoxShadow: 0px 0px 8px $Grey__lightest;
+$darkBoxShadow: 0px 2px 8px $Grey__standard;

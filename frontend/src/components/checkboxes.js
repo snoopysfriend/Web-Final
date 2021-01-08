@@ -1,7 +1,5 @@
 import React from 'react';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Checkbox, Button } from '@material-ui/core';
+import { FormGroup, FormControlLabel, Checkbox, Button } from '@material-ui/core';
 
 
 //"CouEname" "課程名稱（EN）" "DptCode" "學院代號"

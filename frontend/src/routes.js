@@ -1,4 +1,4 @@
-import { HomePage, SearchPage } from './pages';
+import { HomePage, SearchPage, UserPage, CourseInformPage } from './pages/index';
 
 const routes = [
   {
@@ -11,6 +11,16 @@ const routes = [
     path: '/search',
     component: SearchPage,
     breadcrumbName: 'search'
+  },
+  {
+    path: '/user',
+    component: UserPage,
+    breadcrumbName: 'usercourses'
+  },
+  {
+    path: '/course',
+    component: CourseInformPage,
+    breadcrumbName: 'courseInform'
   },
 //   {
 //     path: '/electronics',
