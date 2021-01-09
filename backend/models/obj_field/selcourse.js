@@ -8,7 +8,7 @@ const SelCourseSchema = new Schema({
         required: [true, 'StudId field is required.']
     }],
     daytime: [{
-       type: Array,
+       type: Object,
     }],
 	StudId: {
         type: String,

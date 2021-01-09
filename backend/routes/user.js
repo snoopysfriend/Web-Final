@@ -57,7 +57,7 @@ router.post('/register', (req, res) => {
                 } )
                 const selCourse = new SelCourse({
                     StudId: req.body.studentId,
-                    daytime: new Array(14 * 6).fill([]), 
+                    daytime: [], 
                     CourseId: [],
                 })
                 //console.log(selCourse)
