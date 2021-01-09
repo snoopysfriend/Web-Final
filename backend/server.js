@@ -44,14 +44,13 @@ app.use(function(req, res, next) {
 
 const port = process.env.PORT || 4000
 
-// TODO connect the DB
 //
 mongoose.connect(process.env.MONGO_URL,
 {
     useNewUrlParser: true,
     useUnifiedTopology: true
-    //TODO the options
 })
+mongoose.set('useCreateIndex', true)
 
 const db = mongoose.connection
 
