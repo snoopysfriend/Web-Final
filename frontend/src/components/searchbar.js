@@ -11,19 +11,19 @@ import { Grid } from './self-defined/grid'
 
 
 
-export default function SearchAppBar(props) {
+export default function SearchBar(props) {
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
     setAge(event.target.value);
   };
   return (
-    <Grid rowFlex fullWidth>
-      <Grid width='110px'>
+    <Grid rowFlex >
+      <Grid wh={['110px', 'inherit']}>
         <Typography variant='subtitle1'>快速查詢</Typography>
       </Grid>
-      <Grid width='150px'>
-        <FormControl fullWidth>
+      <Grid wh={['135px', 'inherit']}>
+        <FormControl>
           <Select
             // value={age}
             onChange={handleChange}
@@ -38,19 +38,19 @@ export default function SearchAppBar(props) {
           </Select>
         </FormControl>
       </Grid>
-      <Grid width='300px'>
+      <Grid wh={['300px', 'inherit']}>
         <TextField
-            placeholder="This is a place holder"
+            placeholder = "This is a place holder"
             // value={textFieldValue}
             // label="帳號"
             // onChange={e => handleTextFieldChange(e.target.value)}
             fullWidth
           />
       </Grid>
-      <Grid>
+      <Grid wh={['150px', 'inherit']}>
         <Button onClick={props.clickToSearch}>搜尋</Button>
       </Grid>
-      <Grid>
+      <Grid wh={['150px', 'inherit']}>
         <TimeTable items={items}/> 
       </Grid>
     </Grid>

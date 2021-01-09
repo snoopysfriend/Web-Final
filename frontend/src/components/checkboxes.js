@@ -27,7 +27,6 @@ export default function CheckboxLabels() {
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
-  console.log(state)
   const clickToShowCheckboxes = () => {
     setShowCheckboxes(!showCheckboxes);
   }

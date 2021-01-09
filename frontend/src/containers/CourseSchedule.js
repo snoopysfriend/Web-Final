@@ -40,7 +40,7 @@ const SECTIONS = [
 ]
 const DAYS = ["X","一","二","三","四","五","六"];
 
-export default function CourseTable() {
+export default function CourseSchedule() {
   const classes = useStyles();
 
   return (

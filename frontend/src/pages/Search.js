@@ -21,14 +21,13 @@ function Search(props) {
 
   const fetchResource = async () => {
     const res = await instance.get('/api/syllabus'); 
-    setOriginData(res.data.message);
+    setOriginData(res.data.content);
   }
   useEffect(() => { 
     
     fetchResource();
   }, [])
   
-  console.log('originData ', originData)
   return (
     <>
       <Header />

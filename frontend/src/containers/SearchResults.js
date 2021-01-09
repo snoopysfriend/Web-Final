@@ -28,7 +28,6 @@ const columns = [
   createColumns('CourseId',  '流水號', 60, false),
   createColumns('DptName',  '授課對象', 75, false),
   createColumns('CouCname',  '課程名稱', 130, false, (params) => {
-    console.log(params)
     return (
     <Link
       style={{ margin: '0 auto' }}

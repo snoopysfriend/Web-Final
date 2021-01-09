@@ -33,7 +33,6 @@ function Filter(props) {
     console.log("check box!")
     setState({ ...state, [event.target.name]: event.target.checked });
   };
-  console.log('state: ', state)
   return (
     
     <div className={classes.root}>

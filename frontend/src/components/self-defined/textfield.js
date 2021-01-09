@@ -41,6 +41,7 @@ const StyledTextField = ({ className, label, password, ...props }) => {
     <FormControl className={classes.root + ' ' + (newClass? newClass: ' ')} {...props}>
         <Typography variant="label" >{label}</Typography>
         <InputBase
+          placeholder={props.placeholder}
           type={password? 'password':'text'}
           className={classes.input}
         />

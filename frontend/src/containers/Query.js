@@ -28,14 +28,14 @@ function Query() {
   }
 
   return (
-    <Grid fullWidth padding='large' margin="auto">
+    <Grid  padding='large' margin="auto">
       <SearchBar
         onChange={() => console.log('onChange')}
         onRequestSearch={() => console.log('onRequestSearch')}
         cancelOnEscape
         clickToSearch = {clickToSearch}
       />
-      <Grid rowFlex fullWidth>
+      <Grid rowFlex >
         <Grid flexGrow="1">
             <Multiselect name="學院" handleUpate={handleDepUpate} optionList={depList}/>
             <Multiselect name="系所" optionList={majorList}/>
@@ -48,7 +48,7 @@ function Query() {
         </Grid>
         
       </Grid>
-      <Grid flexGrow="1" noPadding>
+      <Grid noPadding>
         <Checkboxes name="其他"/>
       </Grid>
     </Grid>

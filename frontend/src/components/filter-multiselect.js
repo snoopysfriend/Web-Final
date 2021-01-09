@@ -11,8 +11,8 @@ function Filter(props) {
   const handleUpate = props.handleUpate? props.handleUpate:null;
 
   return (
-    <Grid rowFlex fullWidth margin="small">
-      <Grid width='110px' margin="auto">
+    <Grid rowFlex  margin="small">
+      <Grid wh={['110px', 'inherit']} margin="auto">
         <Typography variant='subtitle1'>{props.name}</Typography>
       </Grid>
       <Grid flexGrow="1"  padding='standard'>
@@ -20,11 +20,9 @@ function Filter(props) {
             multiple
             size='small'
             options={props.optionList}
-            // getOptionLabel={(option) => option}
             renderInput={(params) => (
               <TextField
                   {...params}
-                  // variant="standard"
                   //label="Multiple values"
                   InputProps={{...params.InputProps, disableUnderline: true}}
                   placeholder={props.name}
