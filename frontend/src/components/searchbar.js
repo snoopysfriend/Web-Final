@@ -2,12 +2,12 @@ import React from "react";
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 // import { useSearchBarStyles } from '../styles/searchBarStyles'
-import { TStyle } from '../styles/styles'
+import { TStyle } from '../styles/myMuiStyles'
 import { Button, Input, InputBase, FormControl, Select, InputLabel, MenuItem, Typography } from "@material-ui/core"
 import TimeTable from './TimeTable/TimeTable'
 import  items  from './TimeTable/timeItems'
-import TextField from './self-defined/textfield'
-import { Grid } from './self-defined/grid'
+// import TextField from './self-defined/Textfield'
+import { Grid, TextField } from './self-defined/index'
 
 
 

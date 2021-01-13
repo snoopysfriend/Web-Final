@@ -1,21 +1,19 @@
 import React, {useState} from 'react'
-import '../containers/Header.css';
+//
+// material-ui Library
+import { makeStyles } from '@material-ui/styles';
+//
+// Self-Defined
+import { Grid, Typography, TextField } from '../components/self-defined/index'
+import NtuLogo from '../components/ntuLogo'
+import theme from '../styles/myMuiStyles';
 
 function Header() {
   return (
-    <nav className="header">
-      <div className="header-left">
-        <img className="header-logo" 
-            src="https://www.ntu.edu.tw/images/logo.png" 
-            style={{height: 70+'px'}}/>
-        <label className="header-label" >
-            課程查詢系統
-        </label>
-      </div>
-      
-      <button>登入</button>
-    </nav>
-  
+    <Grid wh={['100%', '70px']} rowFlex bgColor={theme.palette.ntuBlue.light} color='white'>
+      <NtuLogo noFullWidth size='70px'/>
+      <Typography variant='h4'>課程查詢系統</Typography>
+    </Grid>
     )
     
 }

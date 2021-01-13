@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../styles/normalize.css'
 import { makeStyles } from '@material-ui/styles';
-import { Typography, Divider, Breadcrumbs, Link, Tab, Tabs } from '@material-ui/core';
+import { Divider, Breadcrumbs, Link, Tab, Tabs } from '@material-ui/core';
 
 //
 //containers
@@ -13,10 +13,11 @@ import CourseInform_Basic from '../components/courseInform_Basic'
 import CourseInform_Syllabus from '../components/courseInform_Syllabus'
 //
 //self-defined
-import { Grid } from '../components/self-defined/grid'
+import { Grid, Typography, Textfield } from '../components/self-defined/index'
+
 
 import axios from 'axios' 
-const instance = axios.create({ baseURL: 'http://localhost:4000' });
+const instance = axios.create({ baseURL: 'http://localhost:4000/api/' });
 
 const useCourseInformStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +52,7 @@ function TabPanel(props) {
 
 function CourseInform(props) {
   const [originData, setOriginData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [value, setValue] = React.useState(0);
   
 
@@ -58,26 +60,24 @@ function CourseInform(props) {
     console.log('handleClick')
   }
 
-  const fetchResource = async () => {
-    const res = await instance.get(`/api/courseInform?year=109&courseId=${props.match.params.courseId}`);
-    return res.data.content[0];
-  }
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  const fetchResource = async () => {
+    const res = await instance.get(`year=109&courseId=${props.match.params.courseId}`);
+    return res.data.content[0];
+  }
+
   useEffect(() => { 
     const fetchData = async () => {
-      // STEP 2：使用 Promise.all 搭配 await 等待兩個 API 都取得回應後才繼續
-      const data = await fetchResource();
-      // console.log('data', data);
-      return data;
-    };
-
-    // fetchData();
-    fetchData().then(setOriginData);
+      await instance.get(`courseInform?year=109&courseId=${props.match.params.courseId}`)
+        .then(result => setOriginData(result.data.content[0]));
+      setIsLoading(false);
+    }
+    fetchData();
   }, [])
-  console.log("CourseInform", props.match.params.courseId)
+  console.log("CourseInform", props.match.params.courseId, isLoading)
   return (
     <>
       <Header />
@@ -86,7 +86,11 @@ function CourseInform(props) {
         <Grid>
           <Typography variant="h4">課程名稱：{originData['CouName']}</Typography>
           <Grid rowFlex >
-            <CourseInform_Basic data={originData} wh={['300px', 'auto']}/>
+            {isLoading ? (
+                  <Grid wh={["250px", "auto"]}></Grid>
+                ) : (
+              <CourseInform_Basic data={originData} wh={['300px', 'auto']}/>
+            )}
             <Grid>
               <Tabs value={value} onChange={handleChange}>
                 <Tab label="課程大綱" />
@@ -95,7 +99,11 @@ function CourseInform(props) {
                 <Tab label="相似課程" />
               </Tabs>
               <TabPanel value={value} index={0}>
+              {isLoading ? (
+                  <Grid>Loading ...</Grid>
+                ) : (
                 <CourseInform_Syllabus data={originData} padding={[10,30,10,30]} />
+              )}
               </TabPanel>
               <TabPanel value={value} index={1}>
                 Item Two

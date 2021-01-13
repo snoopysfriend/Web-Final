@@ -3,23 +3,23 @@ import React, { useState } from 'react';
 // material-ui Library
 import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Avatar } from '@material-ui/core/';
-import { IconButton, Checkbox, Typography, Tab, Tabs } from '@material-ui/core/';
+import { IconButton, Checkbox, Tab, Tabs } from '@material-ui/core/';
 // import Grid from '@material-ui/core/Grid';
 
 //
 //Self-Defined
-import { Grid } from './self-defined/grid'
+import { Grid, Typography, Textfield } from '../components/self-defined/index'
 import Icon from '../styles/icons';
-import theme from '../styles/styles'
+import theme from '../styles/myMuiStyles'
 
 
 export default function CourseInform_Syllabus(props) {
   const TITLE = ["課程概述", "課程目標", "課程要求", "Office Hours", "參考書目",  "指定閱讀",  "評量方式(僅供參考)"];
   const CONTENT = ["CouCont", "CouGoal", "CouReq", "OfficeHour", "RefBook", "MustBook", "CouEval", ];
   const rules = /[a-z]/;
+  const fristEnChar = rules.exec(props.data.CouName).index;
   // console.log(rules.exec(props.data.CouName).index);
-  // console.log(props.data.CouName.slice(12,props.data.CouName.length));
-  console.log(Object.keys(props.data).length)
+  console.log(props.data.CouName.slice(fristEnChar-1,props.data.CouName.length));
   const { CouCont } = props.data; 
   
   return (
@@ -31,17 +31,13 @@ export default function CourseInform_Syllabus(props) {
               {TITLE[index]}
             </Typography>
               <Typography variant="body1" >
-
-                {(Object.keys(props.data).length) && 
-                  props.data[item].split("\n").map(item => {
-                    console.log("#")
+                {props.data[item].split("\n").map(item => {
                   return (
                    <> {item}
                    <br></br>
                    </>
                   )}
                 )}
-                
               </Typography>            
           </Grid>
       )})}

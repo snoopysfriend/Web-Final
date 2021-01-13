@@ -33,9 +33,10 @@ const useStyles = makeStyles((theme) => {
     flexDirection: (props) => props.rowFlex? 'row': 'column',
     background: (props) => {
       if (props.noBackground) return 'none';
-      else if (props.color) return props.color;
+      else if (props.bgColor) return props.bgColor;
       else return 'white';
     },
+    color: (props) => props.color,
     padding: (props) => {
       return (props.padding && mapPadding(props.padding))
     },
@@ -58,7 +59,7 @@ const useStyles = makeStyles((theme) => {
   }
 })}, { name: 'Grid' });
 
-export const Grid = (props) => {
+export default function MyGrid(props) {
   const { children, size, variant, noBackground, padding, rowFlex, fullWidth, newClass, ...other } = props;
   // console.log('Grid', props);
 

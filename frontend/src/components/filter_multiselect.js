@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import theme, { TStyle } from '../styles/styles'
+import theme, { TStyle } from '../styles/myMuiStyles'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 import  Autocomplete  from '@material-ui/lab/Autocomplete';
-import { Typography } from '@material-ui/core'
-import { Grid } from './self-defined/grid'
+// import { Typography } from '@material-ui/core'
+import { Grid, Typography, TextField } from '../components/self-defined/index'
 
 function Filter(props) {
   const handleUpate = props.handleUpate? props.handleUpate:null;

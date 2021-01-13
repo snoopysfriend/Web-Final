@@ -7,15 +7,15 @@ import CourseInform from './CourseInform';
 /**
  * These are root pages
  */
-const HomePage = () => {
-  return <Home />;
+const HomePage = (props) => {
+  return <Home {...props} />;
 };
 
-const SearchPage = () => {
-  return <Search />;
+const SearchPage = (props) => {
+  return <Search {...props} />;
 };
-const UserPage = () => {
-  return <UserCourses />;
+const UserPage = (props) => {
+  return <UserCourses {...props} />;
 };
 const CourseInformPage = (props) => {
   return <CourseInform {...props} />;

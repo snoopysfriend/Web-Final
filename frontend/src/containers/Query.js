@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import  { deptMj, libEd, acaProg, phyMil, genCour } from '../resources/index'
-import theme, { TStyle } from '../styles/styles'
+//
+// material-ui Library
+import theme, { TStyle } from '../styles/myMuiStyles'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Grid } from '../components/self-defined/grid'
-
-import Multiselect from '../components/filter-multiselect';
-import Checkboxes from '../components/filter-checkboxes';
-import SearchBar from '../components/searchbar'
+//
+// Self-Defined
+import { Grid, Typography, Textfield } from '../components/self-defined/index'
+import  { deptMj, libEd, acaProg, phyMil, genCour } from '../resources/index'
+import Multiselect from '../components/filter_multiselect';
+import Checkboxes from '../components/filter_checkboxes';
+// import SearchBar from '../components/searchbar'
 
 
 function Query() {
@@ -29,12 +32,12 @@ function Query() {
 
   return (
     <Grid  padding='large' margin="auto">
-      <SearchBar
+      {/* <SearchBar
         onChange={() => console.log('onChange')}
         onRequestSearch={() => console.log('onRequestSearch')}
         cancelOnEscape
         clickToSearch = {clickToSearch}
-      />
+      /> */}
       <Grid rowFlex >
         <Grid flexGrow="1">
             <Multiselect name="學院" handleUpate={handleDepUpate} optionList={depList}/>

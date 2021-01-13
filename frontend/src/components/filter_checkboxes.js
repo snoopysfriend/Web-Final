@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import theme, { TStyle } from '../styles/styles'
+import theme, { TStyle } from '../styles/myMuiStyles'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 import { FormGroup, FormControlLabel, Checkbox, Button } from '@material-ui/core';

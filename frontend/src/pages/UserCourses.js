@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import '../styles/normalize.css'
+//
+// material-ui Library
 import { makeStyles } from '@material-ui/styles';
-import { TStyle } from '../styles/styles'
-import Login from '../containers/Login'
-import { Typography, Divider, Breadcrumbs, Link } from '@material-ui/core';
-import { Grid } from '../components/self-defined/grid'
-import Query from '../containers/Query'
+import { Divider, Breadcrumbs, Link } from '@material-ui/core';
+
+//
+// Self-Defined
+import { Grid, Typography, TextField } from '../components/self-defined/index'
 import Header from '../containers/Header'
 import CourseSchedule from '../containers/CourseSchedule'
-import Breadcrumb from '../components/breadcrumbs'
-import SearchResults from '../containers/SearchResults'
 
 
 const useHomeStyles = makeStyles((theme) => ({

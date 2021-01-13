@@ -1,22 +1,11 @@
-import React, { Component } from 'react'
-import { Typography } from '@material-ui/core';
-import { Tab, Tabs } from '@material-ui/core'
-import { ThemeProvider, StylesProvider } from "@material-ui/core/styles";
+import React from 'react'
+//
+// material-ui Library
+import { Tab, Tabs } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Grid } from '../components/self-defined/grid'
-import TextField from '../components/self-defined/textfield'
-
-const useHomeStyles = makeStyles((theme) => ({
-  root: {
-    position: 'absolute',
-    width: 450,
-    height: 450,
-    borderRadius: 15,
-    padding: '60px 60px',
-    right: 'calc((25vw - 450px / 2))',
-    top: 'calc((50vh - 450px / 2))',
-  },
-}), { name: 'grid' })
+//
+// Self-Defined
+import { Grid, Typography, TextField }  from '../components/self-defined/index'
 
 const StyledTabs = withStyles({
   flexContainer: {
@@ -46,21 +35,20 @@ const StyledTab = withStyles((theme) => ({
   },
 }))((props) => <Tab disableRipple  {...props} />);
 
-function Login() {
-  const classes = useHomeStyles();
+function Login(props) {
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
-      <Grid newClass={classes.root} margin="auto">
-        <Grid fullWidth>
+      <Grid newClass={props.className}>
+        <Grid>
           <StyledTabs  value={value} onChange={handleChange} >
             <StyledTab label="登入" />
             <StyledTab label="註冊" />
           </StyledTabs>
         </Grid>
-        <Grid fullWidth>
+        <Grid>
           <TextField
             placeholder="This is a place holder"
             // value={textFieldValue}
@@ -68,7 +56,7 @@ function Login() {
             // onChange={e => handleTextFieldChange(e.target.value)}
           />
         </Grid>
-        <Grid fullWidth margin="none">
+        <Grid margin="none">
           <TextField
             placeholder="This is a place holder"
             // value={textFieldValue}
@@ -78,7 +66,7 @@ function Login() {
           />
           <Typography variant="caption" align='right'>Forget password?</Typography>
         </Grid>
-        <Grid fullWidth >
+        <Grid >
           Button
         </Grid>
         

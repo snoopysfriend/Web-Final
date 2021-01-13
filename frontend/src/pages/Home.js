@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import '../styles/normalize.css'
+//
+// material-ui Library
 import { makeStyles } from '@material-ui/styles';
-import { TStyle } from '../styles/styles'
+//
+// Self-Defined
+import { Grid, Typography, TextField } from '../components/self-defined/index'
+
+// import Typography from '../components/self-defined/Typography'
 import Login from '../containers/Login'
-import { Typography, Divider, Breadcrumbs, Link } from '@material-ui/core';
-import { Grid } from '../components/self-defined/grid'
-import background from "../resources/background.jpg";
-import logo from "../resources/logo.jpg";
+import NtuLogo from '../components/ntuLogo'
+import background from "../resources/img/background.jpg";
 
 const useHomeStyles = makeStyles((theme) => ({
   root: {
     backgroundImage: `url(${background})`,
     backgroundAttachment: 'fixed',
-    width: '100%',
     minHeight: '100vh',
     backgroundPosition: 'center',
-    ...(TStyle._rowFlex),
   },
   containerLeft: {
     position: 'relative',
@@ -32,55 +33,39 @@ const useHomeStyles = makeStyles((theme) => ({
     height: '160px',
     background: 'linear-gradient(-45deg, transparent 49.5%, white 49.5%, white 50.5%, transparent 50.5%)'
   },
-  ntu: {
+  ntuLogo: {
     position:'absolute',
     top: 'calc( 40vh )',
     left: 'calc( 2vw )',
-  },
-  ntuLogo: {
-    position: 'absolute',
-    width: '85px',
-    height: '85px',
-    left: '0px',
-    top: '0px',
-  },
-  ntuCName: {
-    position: 'absolute',
-    width: '270px',
-    height: '45px',
-    left: '90px',
-    top: '8px',
-  },
-  ntuEName: {
-    position: 'absolute',
-    width: '270px',
-    height: '45px',
-    left: '90px',
-    top: '46px',
   },
   title: {
     position:'absolute',
     top: 'calc( 50vh )',
     left: 'calc( 30vw )',
-  }
+  },
+  login: {
+    position: 'absolute',
+    width: 450,
+    height: 450,
+    borderRadius: 15,
+    padding: '60px 60px',
+    right: 'calc((25vw - 450px / 2))',
+    top: 'calc((50vh - 450px / 2))',
+  },
 }), { name: 'Home' })
 
 function Home() {
   const classes = useHomeStyles();
   return (
     <>
-      <Grid newClass={classes.root} >
-        <Grid fullWidth color='rgba(24, 38, 94, 0.6)'>
-          <div className={classes.ntu}>
-              <img src={logo} className={classes.ntuLogo}/>
-              <Typography variant="h4" noWrap className={classes.ntuCName}>國立台灣大學</Typography>
-              <Typography variant="h6" noWrap className={classes.ntuEName}>National Taiwan University</Typography>
-          </div>
-          <Typography variant="h4" className={classes.title}>課程查詢系統</Typography>
+      <Grid newClass={classes.root} rowFlex >
+        <Grid bgColor='rgba(24, 38, 94, 0.6)' color='white'>
+          <NtuLogo className={classes.ntuLogo} size='85px'/>
           <div className={classes.slash}></div>
+          <Typography variant="h4" className={classes.title} >課程查詢系統</Typography>
         </Grid>
-        <Grid fullWidth noBackground>
-          <Login />
+        <Grid noBackground >
+          <Login className={classes.login}/>
         </Grid>
       </Grid>
     </>
