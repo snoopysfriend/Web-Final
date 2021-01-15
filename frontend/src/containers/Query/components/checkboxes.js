@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import theme, { TStyle } from '../styles/myMuiStyles'
+import theme from '../../../styles/myMuiStyles'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 import { FormGroup, FormControlLabel, Checkbox, Button } from '@material-ui/core';
+import { Grid, Typography } from '../../../components/self-defined/index'
 
 const useFilterStyles = makeStyles((theme) => ({
   root: {
-    ...(TStyle._rowFlex),
     alignItems: 'center',
     marginBottom: theme.spacing(2),
   },
@@ -35,19 +35,19 @@ function Filter(props) {
   };
   return (
     
-    <div className={classes.root}>
-      <label className={classes.name}>{props.name}</label>
+    <Grid rowFlex>
+      <Typography className={classes.name}>{props.name}</Typography>
       <div className={classes.textField}>
         <FormGroup row>
           {options.map((item, index) => {
             return <FormControlLabel 
             control={<Checkbox onChange={handleChange} name={item} color="primary"/>}
-            label={optionsLabel[index]}
+            label={<Typography>{optionsLabel[index]}</Typography>}
           />
           })}
         </FormGroup>
       </div>
-    </div>
+    </Grid>
   )
 }
 export default Filter;

@@ -8,9 +8,9 @@ import { IconButton, Checkbox } from '@material-ui/core/';
 
 //
 // Self-Defined
-import { Grid, Typography, TextField } from '../components/self-defined/index'
-import Icon from '../styles/icons';
-import theme from '../styles/myMuiStyles'
+import { Grid, Typography, TextField } from '../../components/self-defined/index'
+import Icon from '../../styles/icons';
+import theme from '../../styles/myMuiStyles'
 
 
 
@@ -24,7 +24,7 @@ export default function CourseInform_Basic(props) {
   const ICONS = [<Icon.TodayOutlinedIcon />, <Icon.TodayOutlinedIcon />, <Icon.TodayOutlinedIcon />, <Icon.TodayOutlinedIcon />, <Icon.TodayOutlinedIcon />, <Icon.TodayOutlinedIcon />];
 
   return (
-    <Grid {...props} margin='none'>
+    <Grid {...props}>
       <List>
         {CONTENT.map((item, index) => {
           return (

@@ -10,6 +10,8 @@ export default function MyTypography(props) {
         root: {
           color: (props.color? props.color: 'inherit'),
           margin: 'auto 0',
+          textAlign: (props) => (props.center && 'center'),
+          ...props.sty, 
         },
       },
     }

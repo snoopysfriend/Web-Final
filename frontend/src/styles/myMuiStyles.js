@@ -1,19 +1,8 @@
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 
 const originTheme = createMuiTheme();
-export const TStyle = {
-  _rowFlex: {
-    display: "flex",
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  // _containerMarginLR: {
-  //   margin: "0 60px",
-  // },
-  // _containerPaddingLR: {
-  //   padding: "0 10px",
-  // },
-}
+
+
 const colorTheme = {
   ntuBlue: {
     light: '#324486',
@@ -71,54 +60,46 @@ const textTheme = {
 const shapeTheme = {
   borderRadius: '5px',
   borderRadius_type: {
-    large: '15px',
-    standard: '10px',
-    small: '5px',
+    large: '30px',
+    standard: '15px',
+    small: '10px',
   },
   border_button: {
     border: `1px solid ${colorTheme.grey.standard}`,
-    borderRadius: '5px',
+    color: colorTheme.grey.lightest,
+    backgroundColor: colorTheme.ntuRed.light,
+    borderRadius: '15px',
+    '&:hover' :{
+      backgroundColor: colorTheme.ntuRed.main,
+    }
   },
   border_textField: {
     border:  `1px solid ${colorTheme.grey.standard}`,
     borderRadius: '5px',
+  },
+  header_height: {
+    height: '70px',
   }
 }
 const overridesTheme = {
-  // MuiButton: {
-    // root: {
-      // borderRadius: 3,
-      // ...(TStyle._border),
-      // height: 48,
-      // padding: "0 30px",
-    // }
-  // },
-  // MuiInput: {
-    // root: {
-    //   padding: '6px 0 6px 10px',
-    //   width: '100%'
-    //  },
-    //  input: {
-    //   width: '100%',
-    //  }
-  // },
-  // MuiInputBase: {
-    // root: {
-    //   padding: '6px 0 6px 10px',
-    //   width: '100%'
-    //  },
-    //  input: {
-    //   width: '100%',
-    //  }
-  // },
   MuiAutocomplete: {
-    root: {
-      ...(shapeTheme.border_textField),
+    root:{
+      ...(shapeTheme.border_textField)
     },
     inputRoot: {
       padding: `1px ${originTheme.spacing(1)}px`,
+      overflow:'scroll',
+
     }
   },
+  MuiTableCell: {
+    root: {
+      padding: `20px`,
+    },
+    body: {
+      padding: `${originTheme.spacing(4)}`,
+    }
+  }
 }
 
 

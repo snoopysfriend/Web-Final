@@ -7,7 +7,7 @@ import { Divider, Breadcrumbs, Link } from '@material-ui/core';
 //
 // Self-Defined
 import { Grid, Typography, TextField } from '../components/self-defined/index'
-import Header from '../containers/Header'
+import Header from '../containers/Header/Header'
 import CourseSchedule from '../containers/CourseSchedule'
 
 

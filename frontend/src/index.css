@@ -12,27 +12,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-
-.container {
-  max-width: 1250px;
-  min-width: 1000px;
-  margin: auto;
-  background-color: #FFF;
-  height: 100%;
-  min-height: 100vh;
-
-}
-
-.Filters-content {
-  width: 80%;
-  
-  margin: auto;
-}
-
-.searchReslut {
-  width: 90%;
-  margin: auto;
-
-  height: 700px;
-}

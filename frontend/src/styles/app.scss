@@ -1,0 +1,31 @@
+
+.rowFlex {
+  display: flex;
+  flex-direction: row;
+}
+
+.CouInform {
+  .title {
+    height: 90px;
+    box-sizing: border-box;
+    padding: 10px 10px;
+  }
+}
+// tabs: {
+//   position: 'absolute',
+//   right: 0,
+//   top: '42px'
+// },
+// basic: {
+//   width: '450px'
+// },
+// syllabus: {
+//   paddingLeft: myMuiTheme.spacing(2)
+// },
+// schedule: {
+//   overflow: 'scroll',
+//   height: `calc(100vh - ${_header.height} - 110px)`,
+//   tablecell: {
+//     width: '300px'
+//   }
+// }

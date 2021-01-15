@@ -2,10 +2,16 @@ import React from 'react'
 //
 // material-ui Library
 import { Tab, Tabs } from '@material-ui/core';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 //
 // Self-Defined
-import { Grid, Typography, TextField }  from '../components/self-defined/index'
+import { Grid, Typography, TextField, Button }  from '../components/self-defined/index'
+import { _login } from '../styles/styledVariables'
+//
+//axios
+import axios from 'axios' 
+const instance = axios.create({ baseURL: 'http://localhost:4000' });
+
 
 const StyledTabs = withStyles({
   flexContainer: {
@@ -28,51 +34,70 @@ const StyledTab = withStyles((theme) => ({
     textTransform: 'none',
     color: '#000',
     fontWeight: theme.typography.fontWeightRegular,
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(25),
     '&:focus': {
       opacity: 1,
     },
   },
 }))((props) => <Tab disableRipple  {...props} />);
 
-function Login(props) {
-  const [value, setValue] = React.useState(0);
+
+
+export default function Login(props) {
+  const [module, setModule] = React.useState('login');
+  const [account, setAccount] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    // console.log('tabs value', newValue)
+    setModule(newValue);
   };
+
+  const loginAuthorize = async (data) => {
+    const res = await instance.post('/api/users/login', data, {'Content-Type': 'application/json'}); 
+    console.log(res.data.message) //success
+  }
+
+  const handleClick = async (event) => {
+    // console.log('Account', account, 'Password', password);
+    const data = {
+      studentId: account,
+      password: password,
+    }
+    await loginAuthorize(data);
+  };
+
   return (
-      <Grid newClass={props.className}>
-        <Grid>
-          <StyledTabs  value={value} onChange={handleChange} >
-            <StyledTab label="登入" />
-            <StyledTab label="註冊" />
+      <Grid id='login' sty={props.sty}>
+        <Grid id='login-tags' sty={_login.tabs}>
+          <StyledTabs  value={module} onChange={handleChange} >
+            <StyledTab label="登入" value='login'/>
+            <StyledTab label="註冊" value='registeration' />
           </StyledTabs>
         </Grid>
-        <Grid>
+        <Grid id='login-account' sty={_login.input}>
           <TextField
-            placeholder="This is a place holder"
-            // value={textFieldValue}
+            placeholder="輸入帳號"
             label="帳號"
-            // onChange={e => handleTextFieldChange(e.target.value)}
+            onChange={e => setAccount(e.target.value)}
           />
         </Grid>
-        <Grid margin="none">
+        <Grid id='login-password' sty={_login.input}>
           <TextField
-            placeholder="This is a place holder"
-            // value={textFieldValue}
-            label="密碼"
             password
-            // onChange={e => handleTextFieldChange(e.target.value)}
+            placeholder="輸入密碼"
+            label="密碼"
+            onChange={e => setPassword(e.target.value)}
           />
-          <Typography variant="caption" align='right'>Forget password?</Typography>
+        <Typography variant="caption" align='right'>Forget password?</Typography>
         </Grid>
-        <Grid >
-          Button
+        <Grid>
+          <Button onClick={handleClick} sty={_login.button}>
+            {module=='login'? "登入":"註冊"}
+          </Button> 
         </Grid>
         
       </Grid>
   )
 
 }
-
-export default Login;

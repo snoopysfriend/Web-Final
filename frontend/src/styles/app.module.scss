@@ -1,0 +1,8 @@
+@import './variables.scss';
+// import STYLE from '../styles/app.module.scss';
+// const flexStyles = [STYLE.rowFlex].join(' ');
+
+.rowFlex {
+  display: flex;
+  flex-direction: row;
+}
