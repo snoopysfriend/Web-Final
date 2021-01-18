@@ -9,6 +9,7 @@ import userRoutes from './routes/user'
 import syllabusRoutes from './routes/syllabus'
 import coursInformRoutes from './routes/courseInform'
 import scheduleRoutes from './routes/schedule'
+import questionRoutes from './routes/question'
 
 require('dotenv').config()
 const app = express()
@@ -65,7 +66,7 @@ db.once('open', () => {
     app.use('/api/schedule', scheduleRoutes)
     app.use('/api/syllabus', syllabusRoutes)
     app.use('/api/courseInform', coursInformRoutes)
-    //app.use('/session', )
+    app.use('/api/questions', questionRoutes)
     // start listening
     app.listen(port, () => {
         console.log(`Server is up on port ${port}.`)

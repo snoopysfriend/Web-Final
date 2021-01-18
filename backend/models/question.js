@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const answer = require('./obj_field/answer')
+
 // Creating a schema, sort of like working with an ORM
 const QuestionSchema = new Schema({
 	QuCont: {
@@ -18,10 +18,13 @@ const QuestionSchema = new Schema({
         type: Date,
         default: Date.now,
 	},
-	Answer: {
-		type: [answer],
-		default: []
-	}
+    Answer: [{ 
+        answer: String,
+        rates: [{
+            studentId: String,
+            rate: Boolean
+        }]
+    }]
 },
     {
         versionKey: false

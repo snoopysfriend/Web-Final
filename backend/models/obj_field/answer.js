@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 // Creating a schema, sort of like working with an ORM
-const Answer = new Schema({
+const AnswerSchema = new Schema({
 	QuId: {
-		type: ObjectId,
+        type: mongoose.Schema.Types.Object, ref: "Question",
 		required: [true, 'QuId field is required.']
 	},
 	AnsCont: {
@@ -25,4 +25,6 @@ const Answer = new Schema({
 )
 
 // Exporting table for querying and mutating
+const Answer = mongoose.model('answer', AnswerSchema)
+
 module.exports = Answer
