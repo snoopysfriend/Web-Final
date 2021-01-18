@@ -14,7 +14,7 @@ const tableHeadersCN = ["流水號", "授課對象","課程名稱", "學分", "�
 
 export default function ColFilters(props) {
   return (
-    <Grid border scroll rowFlex padding='small'>
+    <div className='rowFlex scroll' >
       {tableHeaders.map((item, index) => {
         return (
           <FormControlLabel 
@@ -28,6 +28,6 @@ export default function ColFilters(props) {
           </FormControlLabel>
         )
       })}
-    </Grid>
+    </div>
   );
 }

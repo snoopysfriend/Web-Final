@@ -32,14 +32,14 @@ function Query(props) {
 
   const { _query } = styledVariables;
   return (
-    <Grid id='query' style={_query}  padding='large' margin="auto">
+    <div className='Query' >
       <SearchBar
         onChange={() => console.log('onChange')}
         onRequestSearch={() => console.log('onRequestSearch')}
         cancelOnEscape
         clickToSearch = {clickToSearch}
       />
-      <Grid rowFlex>
+      <div className='rowFlex'>
         <Grid  id='query-mainLeft'>
           <Multiselect name="學院" handleUpate={handleDepUpate} optionList={depList}/>
           <Multiselect name="系所" optionList={majorList}/>
@@ -50,17 +50,17 @@ function Query(props) {
           <Multiselect name="語文/基本能力" optionList={genCour}/>
           <Multiselect name="學程" optionList={acaProg}/>
         </Grid>
-      </Grid>
-      <Grid noPadding rowFlex id='query-other'>
+      </div>
+      <div className='rowFlex'>
         <Checkboxes name="其他"/>
-        <Grid rowFlex style={_query.checkBoxes} id='query-colFilters'>
+        <div className='rowFlex checkBoxes'>
           <Button onClick={props.clickToShow}>Show</Button>
           {props.showCheckboxes && 
               <ColFilters state={props.state} onChange={props.handleChange} showCheckboxes={props.showCheckboxes}/>
           }
-        </Grid>
-      </Grid>
-    </Grid>
+        </div>
+      </div>
+    </div>
   )
 }
 export default Query;

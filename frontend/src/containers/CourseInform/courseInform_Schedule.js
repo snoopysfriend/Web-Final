@@ -1,22 +1,9 @@
 import React, { useState } from 'react';
-//
-// material-ui Library
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import { Table, TableHead, TableBody, TableCell, TableRow } from '@material-ui/core/';
-import { IconButton, Checkbox, Tab, Tabs } from '@material-ui/core/';
-
-//
-//Self-Defined
-import { Grid, Typography, Textfield } from '../../components/self-defined/index'
-import Icon from '../../styles/icons';
-import theme from '../../styles/myMuiStyles'
-import { _courseInform } from '../../styles/styledVariables'
+import { Divider } from '@material-ui/core/';
+import { Typography } from '../../components/self-defined/index'
 
 
 export default function CourseInform_Schedule(props) {
-  const rules = /[a-z]/;
-  const fristEnChar = rules.exec(props.data.CouName).index;
-  // console.log(props.data.CouName.slice(fristEnChar-1,props.data.CouName.length));
   const CouProg = JSON.parse(props.data.CouProg);
   const WEEK = CouProg['週次'];
   const DATE = CouProg['日期'];
@@ -24,25 +11,24 @@ export default function CourseInform_Schedule(props) {
 
   console.log(WEEK[0]);
   return (
-    <Grid clear sty={_courseInform.schedule}>
-      <Table >
-        <TableHead>
-          <TableRow>
-            {Object.keys(CouProg).map(title => 
-              <TableCell>{title}</TableCell>   
-            )}    
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {Object.values(DATE).map((date, index) => (
-            <TableRow>
-              <TableCell >{WEEK[index]}</TableCell>
-              <TableCell>{date}</TableCell>
-              <TableCell>{CONTENT[index]}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Grid>
+    <div className='schedule'>
+      <div className='rowFlex grid'>
+        <Typography variant="subtitle1" center className='cell1'>週次</Typography>
+        <Typography variant="subtitle1" center className='cell2'>日期</Typography>
+        <Typography variant="subtitle1" className='cell3'>單元主題</Typography>
+      </div>
+      {Object.values(DATE).map((date, index) => (
+        <>
+          <div className='rowFlex grid'>
+            <Typography variant="subtitle1" center className='cell1'> {WEEK[index]} </Typography>
+            <Divider orientation="vertical" flexItem />
+            <Typography variant="body1" center className='cell2'> {date} </Typography>  
+            <Divider orientation="vertical" flexItem />
+            <Typography variant="body1" className='cell3'> {CONTENT[index]} </Typography>   
+          </div>
+          <Divider light variant="middle"/>
+        </>
+      ))}
+    </div>
   );
 }

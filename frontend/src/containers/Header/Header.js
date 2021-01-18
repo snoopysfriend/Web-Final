@@ -13,10 +13,10 @@ function Header() {
   const { _header } = styledVariables;
   console.log(_header);
   return (
-    <Grid id='header' wh={[_header.width, _header.height]} rowFlex bgColor={_header.backgroundColor} color='white'>
-      <NtuLogo id='header-logo' noFullWidth size='70px'/>
-      <Typography id='header-title' variant='h4'>課程查詢系統</Typography>
-    </Grid>
+    <div className='Header rowFlex' >
+      <NtuLogo size='70px'/>
+      <Typography variant='h4'>課程查詢系統</Typography>
+    </div>
     )
     
 }

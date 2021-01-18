@@ -1,14 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
 import { HomePage, SearchPage, UserPage, CourseInformPage } from './pages';
-import { ThemeProvider, StylesProvider } from "@material-ui/core/styles";
-import theme from './styles/myMuiStyles'
+import { ThemeProvider } from "@material-ui/core/styles";
+import myMuiTheme from './styles/myMuiStyles'
 import { Route } from 'react-router-dom';
 
 function App() {
   return (
     <>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={myMuiTheme}>
       <Route path="/" exact component={HomePage} />
       <Route path="/search" component={SearchPage} />
       <Route path="/user" component={UserPage} />

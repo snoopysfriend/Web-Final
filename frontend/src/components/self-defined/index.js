@@ -20,7 +20,3 @@ export const Button = (props) => {
 export const Select = (props) => {
   return <MySelect {...props} />;
 };
-// const CourseInformPage = (props) => {
-//   return <CourseInform {...props} />;
-// };
-// const components =  { Grid, Typography, Textfield };

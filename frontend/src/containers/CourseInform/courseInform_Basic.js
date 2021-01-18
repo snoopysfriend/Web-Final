@@ -4,14 +4,12 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Avatar } from '@material-ui/core/';
 import { IconButton, Checkbox } from '@material-ui/core/';
-// import Grid from '@material-ui/core/Grid';
 
 //
 // Self-Defined
 import { Grid, Typography, TextField } from '../../components/self-defined/index'
 import Icon from '../../styles/icons';
-import theme from '../../styles/myMuiStyles'
-
+import '../../styles/app.scss';
 
 
 
@@ -24,7 +22,7 @@ export default function CourseInform_Basic(props) {
   const ICONS = [<Icon.TodayOutlinedIcon />, <Icon.TodayOutlinedIcon />, <Icon.TodayOutlinedIcon />, <Icon.TodayOutlinedIcon />, <Icon.TodayOutlinedIcon />, <Icon.TodayOutlinedIcon />];
 
   return (
-    <Grid {...props}>
+    <div className='basic'>
       <List>
         {CONTENT.map((item, index) => {
           return (
@@ -46,6 +44,6 @@ export default function CourseInform_Basic(props) {
             </ListItem>
         )})}
       </List>
-    </Grid>
+    </div>
   );
 }
