@@ -15,6 +15,7 @@ router.post('/login', async (req, res) => {
     if (req.session.loginUser === true) {
         console.log('already login')
         res.status(200).send({message: "success"})
+        return ;
     }
 
     Account.find()
