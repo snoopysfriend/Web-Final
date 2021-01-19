@@ -1,4 +1,6 @@
 import React from 'react'
+import { AuthContext } from '../App'
+import { useHistory } from 'react-router-dom'
 //
 // material-ui Library
 import { Tab, Tabs } from '@material-ui/core';
@@ -49,26 +51,51 @@ export default function Login(props) {
   const [password, setPassword] = React.useState('');
 
   const handleChange = (event, newValue) => {
-    // console.log('tabs value', newValue)
     setModule(newValue);
   };
 
   const loginAuthorize = async (data) => {
-    const res = await instance.post('/api/users/login', data, {'Content-Type': 'application/json'}); 
-    console.log(res.data.message) //success
+    console.log("loginAuthorize")
+    return await instance.post('/api/users/login', data, {'Content-Type': 'application/json'})
+        .then((response) => {
+          console.log("loginAuthorize res")
+          dispatch({
+              type: "LOGIN",
+              payload: data
+          })
+          
+          // history.push("/search")
+        })
+        .catch((error) => false)
   }
 
   const handleClick = async (event) => {
-    // console.log('Account', account, 'Password', password);
     const data = {
       studentId: account,
       password: password,
     }
     await loginAuthorize(data);
   };
+  const loginAuthorize2 = async () => {
+    console.log("loginAuthorize")
+    return await instance.post('/api/users/login')
+        .then((response) => {
+          console.log("loginAuthorize2 res", response)
+          
+          // history.push("/search")
+        })
+        .catch((error) => false)
+  }
+  const handleClick2 = async (event) => {
+    await loginAuthorize();
+  };
 
+  const history = useHistory();
+  const {state, dispatch} = React.useContext(AuthContext);
+  console.log("Login", state, dispatch)
+  
   return (
-      <Grid id='login' sty={props.sty}>
+      <div className={props.className}>
         <Grid id='login-tags' sty={_login.tabs}>
           <StyledTabs  value={module} onChange={handleChange} >
             <StyledTab label="登入" value='login'/>
@@ -96,8 +123,9 @@ export default function Login(props) {
             {module=='login'? "登入":"註冊"}
           </Button> 
         </Grid>
+        <Button onClick={handleClick2}>test</Button>
         
-      </Grid>
+      </div>
   )
 
 }

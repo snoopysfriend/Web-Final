@@ -12,7 +12,9 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+// div {
+//   box-sizing: border-box;
+// }
 
 .rowFlex {
   display: flex;
@@ -21,6 +23,7 @@ html, body {
 .hidden { display: none; }
 .scroll { overflow: scroll; }
 .fit { width: fit-content; }
+
 
 .container {
   position: relative;
@@ -40,35 +43,46 @@ html, body {
     width: 100%;
     background: rgba(24, 38, 94, 0.6);
   }
+  .containerRight {
+    background: 'none';
+    width: 100%;
+  }
   .ntuLogo {
     position: absolute;
     top: calc( 40vh );
     left: calc( 2vw );
+    .title {
+      position: relative;
+      margin: auto;
+      top: 0;
+      left: 0;
+      color: white;
+    }
   }
-  // slash: {
-  //   position:'absolute',
-  //   top: 'calc( 40vh )',
-  //   left: 'calc( 22vw )',
-  //   boxSizing:'border-box',
-  //   lineHeight:'120px',
-  //   width: '160px',
-  //   height: '160px',
-  //   background: 'linear-gradient(-45deg, transparent 49.5%, white 49.5%, white 50.5%, transparent 50.5%)'
-  // },
-  // title: {
-  //   position:'absolute',
-  //   top: 'calc( 50vh )',
-  //   left: 'calc( 30vw )',
-  // },
-  // login: {
-  //   position: 'absolute',
-  //   width: 450,
-  //   height: 450,
-  //   borderRadius: 15,
-  //   padding: '60px 60px',
-  //   right: 'calc((25vw - 450px / 2))',
-  //   top: 'calc((50vh - 450px / 2))',
-  // },
+  .slash {
+    position: absolute;
+    top: calc( 40vh );
+    left: calc( 22vw );
+    box-sizing: border-box;
+    line-height:120px;
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(-45deg, transparent 49.5%, white 49.5%, white 50.5%, transparent 50.5%);
+  }
+  .title {
+    position: absolute;
+    top: calc( 50vh );
+    left: calc( 30vw );
+    color: white;
+  }
+  .login {
+    position: absolute;
+    border-radius: 15px;
+    padding: 60px 60px;
+    right: calc((25vw - 450px / 2));
+    top: calc((50vh - 450px / 2));
+    background-color: white;
+  }
 }
 
 .CouInform {
@@ -119,17 +133,16 @@ html, body {
     }
   }
 }
+
 .Header {
   height: 70px;
   width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
   background-color: $ntuBlue__standard;
   color: white;
-}
-.NtuLogo {
-  background: 'none';
-  .title {
-    margin: auto;
-  }
+  align-items: center;
+  justify-content: space-between;
 }
 
 .Query {
@@ -181,48 +194,6 @@ export const _breadcrumbs = {
   position: 'absolute',
   display: 'inline',
   right: '10px',
-}
-export const _home = {
-  root: {
-    // backgroundImage: "url(/static/media/background.32e8c79c.jpg)",
-    backgroundAttachment: 'fixed',
-    minHeight: '100vh',
-    backgroundPosition: 'center',
-  },
-  containerLeft: {
-    position: 'relative',
-    width: '100%',
-    background: 'rgba(24, 38, 94, 0.6)'
-  },
-  ntuLogo: {
-    position:'absolute',
-    top: 'calc( 40vh )',
-    left: 'calc( 2vw )',
-  },
-  slash: {
-    position:'absolute',
-    top: 'calc( 40vh )',
-    left: 'calc( 22vw )',
-    boxSizing:'border-box',
-    lineHeight:'120px',
-    width: '160px',
-    height: '160px',
-    background: 'linear-gradient(-45deg, transparent 49.5%, white 49.5%, white 50.5%, transparent 50.5%)'
-  },
-  title: {
-    position:'absolute',
-    top: 'calc( 50vh )',
-    left: 'calc( 30vw )',
-  },
-  login: {
-    position: 'absolute',
-    width: 450,
-    height: 450,
-    borderRadius: 15,
-    padding: '60px 60px',
-    right: 'calc((25vw - 450px / 2))',
-    top: 'calc((50vh - 450px / 2))',
-  },
 }
 export const _login = {
   input: {

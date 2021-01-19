@@ -61,7 +61,7 @@ db.on('error', (error) => {
 })
 
 db.once('open', () => {
-    console.log('DB connected!')
+    console.log('DB connected!!!')
     //routes(app)
     app.use('/api/users', userRoutes)
     app.use('/api/schedule', scheduleRoutes)

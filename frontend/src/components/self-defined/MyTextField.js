@@ -4,7 +4,6 @@ import myMuiTheme from '../../styles/myMuiStyles';
 import { ThemeProvider, createMuiTheme, makeStyles, styled } from "@material-ui/core/styles";
 
 export default function MyTextField(props) {
-  console.log(myMuiTheme)
   const theme = createMuiTheme({
     overrides: {
       MuiInputBase: {

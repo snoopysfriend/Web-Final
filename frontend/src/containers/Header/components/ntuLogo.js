@@ -6,12 +6,12 @@ import logo from "../../../resources/img/logo_noBackground.png";
 
 function NtuLogo(props) {
   return (
-    <div className='NtuLogo rowFlex fit'>
+    <div className='ntuLogo rowFlex fit'>
       <img src={logo} style={{maxHeight: props.size}}/>
-      <dic className='title'>
+      <div className='title'>
         <Typography variant="h4" noWrap >國立台灣大學</Typography>
         <Typography variant="h6" noWrap >National Taiwan University</Typography>
-      </dic>
+      </div>
     </div>
   )
     

@@ -56,7 +56,7 @@ function Query(props) {
         <div className='rowFlex checkBoxes'>
           <Button onClick={props.clickToShow}>Show</Button>
           {props.showCheckboxes && 
-              <ColFilters state={props.state} onChange={props.handleChange} showCheckboxes={props.showCheckboxes}/>
+              <ColFilters colState={props.colState} onChange={props.handleChange} showCheckboxes={props.showCheckboxes}/>
           }
         </div>
       </div>

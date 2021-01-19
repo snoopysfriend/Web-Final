@@ -19,7 +19,7 @@ export default function ColFilters(props) {
         return (
           <FormControlLabel 
             control={
-              <Checkbox checked={props.state[item]} 
+              <Checkbox checked={props.colState[item]} 
                 onChange={props.onChange} 
                 name={item} 
                 color="primary"/>

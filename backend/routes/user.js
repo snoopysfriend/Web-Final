@@ -9,7 +9,7 @@ const hash_time = 10
 
 
 router.post('/login', async (req, res) => {
-    console.log("login")
+    console.log("logining")
     console.log(req.body)
     let sess = req.session
     if (req.session.loginUser === true) {
@@ -26,12 +26,13 @@ router.post('/login', async (req, res) => {
                     res.status(400).send({error: "username or password error"})
                     return 
                 } 
-                    //console.log('login user',ress)
+                console.log('login user',ress)
                 if (ress.length > 0) {
                     const compare = await bcrypt.compare(req.body.password, ress[0].StudPwd)
                     if (compare === true) {
                         req.session.loginUser = true
                         req.session.loginUserId = req.body.studentId 
+                        console.log('success')
                         res.status(200).send({message: "success"})
                     } else {
                         res.status(400).send({error: "username or password error"})

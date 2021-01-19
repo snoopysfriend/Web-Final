@@ -4,7 +4,6 @@ import myMuiTheme from '../../styles/myMuiStyles';
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 export default function MySelect(props) {
-  console.log(myMuiTheme)
   const theme = createMuiTheme({
     overrides: {
       MuiSelect: {

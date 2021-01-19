@@ -27,7 +27,7 @@ export default function SearchResults(props) {
         classes={{ colCell: classes.colCell }}
         rows={rows}
         columns={columns.map(function(item){
-          item.hide = !props.state[item.field];
+          item.hide = !props.colState[item.field];
           return item;
         })} 
         pageSize={5} 

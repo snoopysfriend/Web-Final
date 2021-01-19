@@ -44,7 +44,7 @@ function CourseInform(props) {
       await instance.get(`courseInform?year=109&courseId=${props.match.params.courseId}`)
         .then(result => {
           setOriginData(result.data.content[0]);
-          const rules = /[a-z]/;
+          const rules = /[a-zA-Z]/;
           const { CouName } = result.data.content[0];
           const fristEnChar = rules.exec(CouName).index;
           setCourseName([CouName.slice(0,fristEnChar-1), CouName.slice(fristEnChar-1,CouName.length)]);
@@ -79,11 +79,14 @@ function CourseInform(props) {
                   <Tab label="相似課程" />
                 </Tabs>
               </div>
-              <TabPanel value={value} index={0}>
+              {value==0 && <CourseInform_Syllabus data={originData} />}
+              {value==1 && <CourseInform_Schedule data={originData} />}
+              
+              {/* <TabPanel value={value} index={0}>
                 <CourseInform_Syllabus data={originData} />
-              </TabPanel>
+              </TabPanel> */}
               </LoadingPanel>
-              <TabPanel value={value} index={1}>
+              {/* <TabPanel value={value} index={1}>
                 <CourseInform_Schedule data={originData} />
               </TabPanel>
               <TabPanel value={value} index={2}>
@@ -91,7 +94,7 @@ function CourseInform(props) {
               </TabPanel>
               <TabPanel value={value} index={3}>
                 Item Four
-              </TabPanel>
+              </TabPanel> */}
             </div>
           </div>
         </div>
