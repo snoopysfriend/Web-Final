@@ -44,7 +44,7 @@ router.post('/', function(req, res, next){
 
     Syllabus.findOne({'CourseId': courseId})
             .exec((err, syllabus) => {
-               //console.log(syllabus)
+               console.log(syllabus)
                const time = syllabus.newDayTime
                const coursename = syllabus.CouCname
                const classroom = syllabus.ClsRom
@@ -65,18 +65,18 @@ router.post('/', function(req, res, next){
                             place: classroom
                         }
                         var coursetime = []
-                        for(var i = 0; i < 6 * 14; i++) {
+                        for(var i = 83; i >= 0; i--) {
                             let start = -1
                             let len = 0
-                            while (i < (6 * 14) && time[i] === '1') {
+                            while (i >= 0 && time[i] === '1') {
                                 if (start === -1) {
                                     start = i
                                 }
                                 len++
-                                i++ 
+                                i--
                             }
                             if (start > 0) {
-                                coursetime.push([start, len])
+                                coursetime.push([83-start, len])
                             }
                         }
                         course.time = coursetime
