@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { TStyle } from './styles'
+import { TStyle } from './myMuiStyles'
 
 export const useMuiDataGridStyles = makeStyles({
     colCell: { 

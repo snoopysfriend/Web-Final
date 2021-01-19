@@ -1,39 +1,51 @@
 import React, { useEffect, useState } from 'react'
-import theme, { TStyle } from '../styles/styles'
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import TextField from '@material-ui/core/TextField';
 import  Autocomplete  from '@material-ui/lab/Autocomplete';
-import { Typography } from '@material-ui/core'
-import { Grid } from './self-defined/grid'
+import { Grid, Typography } from '../../../components/self-defined/index'
+import theme from '../../../styles/myMuiStyles'
 
-function Filter(props) {
+// const theme = createMuiTheme({
+//   overrides: {
+//     MuiAutocomplete: {
+//       root: {
+//         border: '1px solid red'
+//       },
+//       inputRoot: {
+//         padding: `1px 16px`,
+//       }
+//     },
+//   }
+// });
+
+function MultiSelect(props) {
   const handleUpate = props.handleUpate? props.handleUpate:null;
 
   return (
-    <Grid rowFlex fullWidth margin="small">
-      <Grid width='110px' margin="auto">
+    <Grid rowFlex  margin="small">
+      <Grid wh={['140px', 'inherit']} margin="auto">
         <Typography variant='subtitle1'>{props.name}</Typography>
       </Grid>
-      <Grid flexGrow="1"  padding='standard'>
+      <Grid padding='standard'>
+        <ThemeProvider theme={theme}>
         <Autocomplete
             multiple
             size='small'
             options={props.optionList}
-            // getOptionLabel={(option) => option}
             renderInput={(params) => (
               <TextField
                   {...params}
-                  // variant="standard"
-                  //label="Multiple values"
+                  noWrap
                   InputProps={{...params.InputProps, disableUnderline: true}}
                   placeholder={props.name}
               />
             )}
             onChange={handleUpate}
           />
+        </ThemeProvider>
       </Grid>
     </Grid>
   )
 }
-export default Filter;
+export default MultiSelect;

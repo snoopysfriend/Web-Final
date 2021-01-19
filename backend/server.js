@@ -12,6 +12,7 @@ import scheduleRoutes from './routes/schedule'
 import questionRoutes from './routes/question'
 
 require('dotenv').config()
+
 const app = express()
 const identityKey = 'skey';
 //var FileStore = require('session-file-store')(session)
@@ -45,7 +46,7 @@ app.use(function(req, res, next) {
 
 const port = process.env.PORT || 4000
 
-//
+process.env.MONGO_URL="mongodb+srv://nicksome:mongodb@cluster0.k9h1m.mongodb.net/2020webprog_ntucousel?retryWrites=true&w=majority"
 mongoose.connect(process.env.MONGO_URL,
 {
     useNewUrlParser: true,
@@ -60,7 +61,7 @@ db.on('error', (error) => {
 })
 
 db.once('open', () => {
-    console.log('DB connected!')
+    console.log('DB connected!!!')
     //routes(app)
     app.use('/api/users', userRoutes)
     app.use('/api/schedule', scheduleRoutes)

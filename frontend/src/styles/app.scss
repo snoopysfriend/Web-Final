@@ -1,0 +1,233 @@
+@import './variables.scss';
+// @import '../resources/img/background.jpg';
+
+$header_height: 70px;
+
+html, body {
+  background-color: #efefef;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+// div {
+//   box-sizing: border-box;
+// }
+
+.rowFlex {
+  display: flex;
+  flex-direction: row;
+}
+.hidden { display: none; }
+.scroll { overflow: scroll; }
+.fit { width: fit-content; }
+
+
+.container {
+  position: relative;
+  width: 90%;
+  height: calc(100vh - 70px);
+  background-color: #FFF;
+  margin: auto;
+}
+
+.Home {
+  background-image: url("../resources/img/background.jpg");
+  background-attachment: fixed;
+  min-height: 100vh;
+  background-position: center;
+  .containerLeft {
+    position: relative;
+    width: 100%;
+    background: rgba(24, 38, 94, 0.6);
+  }
+  .containerRight {
+    background: 'none';
+    width: 100%;
+  }
+  .ntuLogo {
+    position: absolute;
+    top: calc( 40vh );
+    left: calc( 2vw );
+    .title {
+      position: relative;
+      margin: auto;
+      top: 0;
+      left: 0;
+      color: white;
+    }
+  }
+  .slash {
+    position: absolute;
+    top: calc( 40vh );
+    left: calc( 22vw );
+    box-sizing: border-box;
+    line-height:120px;
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(-45deg, transparent 49.5%, white 49.5%, white 50.5%, transparent 50.5%);
+  }
+  .title {
+    position: absolute;
+    top: calc( 50vh );
+    left: calc( 30vw );
+    color: white;
+  }
+  .login {
+    position: absolute;
+    border-radius: 15px;
+    padding: 60px 60px;
+    right: calc((25vw - 450px / 2));
+    top: calc((50vh - 450px / 2));
+    background-color: white;
+  }
+}
+
+.CouInform {
+  .title {
+    height: 90px;
+    box-sizing: border-box;
+    padding: 10px 10px;
+  }
+  .tabs {
+    position: absolute;
+    right: 0px;
+    top: 42px;
+  }
+  .basic {
+    min-width: 300px;
+    border: $border_test;
+  }
+  .syllabus {
+    // padding-left: 16px;
+    border: $border_test;
+    .grid {
+      padding: 10px 0 10px 0;
+      .cell1 {
+        min-width: 200px
+      }
+      .cell2 {
+        padding-left: 16px;
+      }
+    }
+  }
+  .tablePanel{
+    flex-grow: 1;
+  }
+  .schedule {
+    overflow: scroll;
+    height: calc(100vh - ($header_height) - 110px);
+    .grid {
+      padding: 10px 0 10px 0;
+      .cell1 {
+        min-width: 150px;
+      }
+      .cell2 {
+        min-width: 150px;
+      }
+      .cell3 {
+        padding-left: 16px;
+      }
+    }
+  }
+}
+
+.Header {
+  height: 70px;
+  width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+  background-color: $ntuBlue__standard;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Query {
+  height: 300px;
+  box-sizing: border-box;
+  padding: 10px 60px;
+  // margin: auto;
+  .checkBoxes {
+    max-width: 50%;
+  }
+}
+
+/*
+
+export const _query = {
+  height: '220px',
+  _searchBar: {
+    title: {
+      width: '110px',
+      paddingRight: myMuiTheme.spacing(1)
+    },
+    options: {
+      width: '130px',
+      paddingRight: myMuiTheme.spacing(1)
+    },
+    input: {
+      margin: myMuiTheme.spacing(2,0),
+      width: '300px',
+      paddingRight: myMuiTheme.spacing(1)
+    },
+    button: {
+      width: '80px',
+      margin: 'auto',
+    },
+    timeTable: {
+      width: 'auto',
+      margin: 'auto 0',
+    },
+  },
+  checkBoxes : {
+    maxWidth: '50%',
+  }
+}
+export const _searchResult = {
+  height: `calc(100vh - ${_header.height} - ${_query.height} - 30px)`,
+
+}
+export const _breadcrumbs = {
+  position: 'absolute',
+  display: 'inline',
+  right: '10px',
+}
+export const _login = {
+  input: {
+    margin: myMuiTheme.spacing(2,0)
+  },
+  button: {
+    width: '80%',
+    margin: 'auto'
+  },
+
+}
+export const _courseInform = {
+  title: {
+    height: '90px',
+    boxSizing: 'border-box',
+    padding: '10px 10px'
+  },
+  tabs: {
+    position: 'absolute',
+    right: 0,
+    top: '42px'
+  },
+  basic: {
+    width: '450px'
+  },
+  syllabus: {
+    paddingLeft: myMuiTheme.spacing(2)
+  },
+  schedule: {
+    overflow: 'scroll',
+    height: `calc(100vh - ${_header.height} - 110px)`,
+    tablecell: {
+      width: '300px'
+    }
+  }
+}
+*/

@@ -1,8 +1,12 @@
 import React from 'react';
+//
+// material-ui Library
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core/';
 import { Paper, Typography } from '@material-ui/core/';
-import theme, { TStyle } from '../styles/styles'
+//
+// Self-Defined
+import theme, { TStyle } from '../styles/myMuiStyles'
 
 const useStyles = makeStyles({
   root: {
@@ -40,7 +44,7 @@ const SECTIONS = [
 ]
 const DAYS = ["X","一","二","三","四","五","六"];
 
-export default function CourseTable() {
+export default function CourseSchedule() {
   const classes = useStyles();
 
   return (

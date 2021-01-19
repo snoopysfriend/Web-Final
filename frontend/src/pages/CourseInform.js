@@ -1,50 +1,104 @@
 import React, { useState, useEffect } from 'react'
-import '../styles/normalize.css'
-import { makeStyles } from '@material-ui/styles';
-import { TStyle } from '../styles/styles'
-import Login from '../containers/Login'
-import { Typography, Divider, Breadcrumbs, Link } from '@material-ui/core';
-import { Grid } from '../components/self-defined/grid'
-import Query from '../containers/Query'
-import Header from '../containers/Header'
-import CourseTable from '../containers/CourseTable'
-import Breadcrumb from '../components/breadcrumbs'
-import SearchResults from '../containers/SearchResults'
-
-import CourseInformList from '../components/courseInfoList'
-
+//
+// Material-ui Library
+import { Tab, Tabs } from '@material-ui/core';
+//
+// Components
+import Header from '../containers/Header/Header'
+import Breadcrumb from '../containers/Header/components/breadcrumbs'
+import CourseInform_Basic from '../containers/CourseInform/courseInform_Basic'
+import CourseInform_Syllabus from '../containers/CourseInform/courseInform_Syllabus'
+import CourseInform_Schedule from '../containers/CourseInform/courseInform_Schedule'
+import { Typography } from '../components/self-defined/index'
+//
+// axios
 import axios from 'axios' 
-const instance = axios.create({ baseURL: 'http://localhost:4000' });
+const instance = axios.create({ baseURL: 'http://localhost:4000/api/' });
 
-const useCourseInformStyles = makeStyles((theme) => ({
-  root: {
-  
-  },
-}), { name: 'CourseInform' })
-//{"message":"success","content":[{"Tag":[],"_id":"5ff5eb52f701353e376e5ec9","CourseId":"82737","DptCode":"9010","DptName":"電機系","CouCode":"201 49810","Class":"01","Cred":2,"ForH":"半年年級","SelCode":"必修年級","CouCname":"微積分1498","CouEname":"CALCULUS (1)","TeaCname":"余正道CU","Mark":"密集課程。統一教學.一10為實習課.初選將直接帶入此班次的微積分2.加退選階段請自行加選微積分2.總人數限 90人限本系所學生(含輔系、雙修生)院.XLS","CoSelect":3,"ClsRom":"新302  新302  新302","MaxCap":"總人數限 90人"}]}
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+  return (
+    <div role="tabpanel" hidden={value !== index} {...other}>
+      {value === index && (<>{children}</>)}
+    </div>
+  );
+}
+function LoadingPanel(props) {
+  const { isLoading, children, index, ...other } = props;
+  return isLoading? <></>:<>{children}</>;
+}
+
 
 function CourseInform(props) {
   const [originData, setOriginData] = useState([]);
-  // console.log("CourseInform", props.match.params.courseId)
+  const [courseName, setCourseName] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [value, setValue] = React.useState(0);
 
-  const handleClick = () => {
-    console.log('handleClick')
-  }
-  const fetchResource = async () => {
-    const res = await instance.get(`/api/courseInform?year=109&courseId=${props.match.params.courseId}`); 
-    setOriginData(res.data.content[0]);
-  }
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   useEffect(() => { 
-    fetchResource();
+    const fetchData = async () => {
+      await instance.get(`courseInform?year=109&courseId=${props.match.params.courseId}`)
+        .then(result => {
+          setOriginData(result.data.content[0]);
+          const rules = /[a-zA-Z]/;
+          const { CouName } = result.data.content[0];
+          const fristEnChar = rules.exec(CouName).index;
+          setCourseName([CouName.slice(0,fristEnChar-1), CouName.slice(fristEnChar-1,CouName.length)]);
+        });
+      setIsLoading(false);
+    }
+    fetchData();
   }, [])
-  console.log(originData)
-
   return (
     <>
       <Header />
-      <Grid width="300px">
-        <CourseInformList data={originData}/>
-      </Grid>
+      <div className='container CouInform'>
+        <Breadcrumb />
+        <div>
+          <LoadingPanel isLoading={isLoading}>
+            <div className='title'>
+              <Typography variant="h4">{courseName[0]}</Typography>
+              <Typography variant="h5">{courseName[1]}</Typography>
+            </div>
+          </LoadingPanel>
+          <div className='rowFlex'>
+            <LoadingPanel isLoading={isLoading}>
+              <CourseInform_Basic data={originData} />
+            </LoadingPanel>
+          <div className='tablePanel'>
+            <LoadingPanel isLoading={isLoading}>
+              <div className='tabs'>
+                <Tabs value={value} onChange={handleChange}>
+                  <Tab label="課程大綱" />
+                  <Tab label="課程進度" />
+                  <Tab label="Ｑ＆Ａ" />
+                  <Tab label="相似課程" />
+                </Tabs>
+              </div>
+              {value==0 && <CourseInform_Syllabus data={originData} />}
+              {value==1 && <CourseInform_Schedule data={originData} />}
+              
+              {/* <TabPanel value={value} index={0}>
+                <CourseInform_Syllabus data={originData} />
+              </TabPanel> */}
+              </LoadingPanel>
+              {/* <TabPanel value={value} index={1}>
+                <CourseInform_Schedule data={originData} />
+              </TabPanel>
+              <TabPanel value={value} index={2}>
+                Item Three
+              </TabPanel>
+              <TabPanel value={value} index={3}>
+                Item Four
+              </TabPanel> */}
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
     

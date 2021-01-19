@@ -9,11 +9,19 @@ $maxPageWidth: 1060px;
 
 $font__bodyRegular: 400 16px 'Source Sans Pro';
 $font__bodyBold: 700 16px 'Source Sans Pro';
+
 $font__headingLight: 300 12px 'Montserrat';
 $font__headingRegular: 400 12px 'Montserrat';
 $font__headingMedium: 500 12px 'Montserrat';
 $font__headingSemiBold: 600 12px 'Montserrat';
 $font__headingBold: 700 12px 'Montserrat';
+
+$font__header: 700 30px 'Montserrat';
+$font__headerEN: 700 20px 'Montserrat';
+$font__title: 700 16px 'Montserrat';
+$font__subtitle: 700 14px 'Montserrat';
+$font__caption: 300 18px 'Montserrat';
+
 
 // ------ Transition Times ------
 $navigationTransitionTime: 200ms;
@@ -72,6 +80,28 @@ $Blue__standard: #0077aa;
 $Blue__dark: #004a6a;
 $Tiel__standard: #14ab9a;
 
+//ntuColor
+$ntuBlue__standard: #324486;
+$ntuBlue__dark: #1D284E;
+
+$ntuRed__light: #b72a38;
+$ntuRed__standard: #9c2330;
+$ntuRed__dark: #741a23;
+
+$ntuBrown__light: #dcd0b3;
+$ntuBrown__standard: #a77f33;
+$ntuBrown__dark: #7d5f26;
+
+
 // ------ Shadows ------
 $lightBoxShadow: 0px 0px 8px $Grey__lightest;
 $darkBoxShadow: 0px 2px 8px $Grey__standard;
+
+// ------ border -------
+$borderRadius__large: 30px;
+$borderRadius__median: 24px;
+$borderRadius__regular: 16px;
+$borderRadius__small: 5px;
+
+$border_button: 1px solid;
+$border_test: 1px solid red;

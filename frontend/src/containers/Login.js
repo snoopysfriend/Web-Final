@@ -1,22 +1,19 @@
-import React, { Component } from 'react'
-import { Typography } from '@material-ui/core';
-import { Tab, Tabs } from '@material-ui/core'
-import { ThemeProvider, StylesProvider } from "@material-ui/core/styles";
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Grid } from '../components/self-defined/grid'
-import TextField from '../components/self-defined/textfield'
+import React from 'react'
+import { AuthContext } from '../App'
+import { useHistory } from 'react-router-dom'
+//
+// material-ui Library
+import { Tab, Tabs } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+//
+// Self-Defined
+import { Grid, Typography, TextField, Button }  from '../components/self-defined/index'
+import { _login } from '../styles/styledVariables'
+//
+//axios
+import axios from 'axios' 
+const instance = axios.create({ baseURL: 'http://localhost:4000' });
 
-const useHomeStyles = makeStyles((theme) => ({
-  root: {
-    position: 'absolute',
-    width: 450,
-    height: 450,
-    borderRadius: 15,
-    padding: '60px 60px',
-    right: 'calc((25vw - 450px / 2))',
-    top: 'calc((50vh - 450px / 2))',
-  },
-}), { name: 'grid' })
 
 const StyledTabs = withStyles({
   flexContainer: {
@@ -39,52 +36,96 @@ const StyledTab = withStyles((theme) => ({
     textTransform: 'none',
     color: '#000',
     fontWeight: theme.typography.fontWeightRegular,
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(25),
     '&:focus': {
       opacity: 1,
     },
   },
 }))((props) => <Tab disableRipple  {...props} />);
 
-function Login() {
-  const classes = useHomeStyles();
-  const [value, setValue] = React.useState(0);
+
+
+export default function Login(props) {
+  const [module, setModule] = React.useState('login');
+  const [account, setAccount] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setModule(newValue);
   };
+
+  const loginAuthorize = async (data) => {
+    console.log("loginAuthorize")
+    return await instance.post('/api/users/login', data, {'Content-Type': 'application/json'})
+        .then((response) => {
+          console.log("loginAuthorize res")
+          dispatch({
+              type: "LOGIN",
+              payload: data
+          })
+          
+          // history.push("/search")
+        })
+        .catch((error) => false)
+  }
+
+  const handleClick = async (event) => {
+    const data = {
+      studentId: account,
+      password: password,
+    }
+    await loginAuthorize(data);
+  };
+  const loginAuthorize2 = async () => {
+    console.log("loginAuthorize")
+    return await instance.post('/api/users/login')
+        .then((response) => {
+          console.log("loginAuthorize2 res", response)
+          
+          // history.push("/search")
+        })
+        .catch((error) => false)
+  }
+  const handleClick2 = async (event) => {
+    await loginAuthorize();
+  };
+
+  const history = useHistory();
+  const {state, dispatch} = React.useContext(AuthContext);
+  console.log("Login", state, dispatch)
+  
   return (
-      <Grid newClass={classes.root} margin="auto">
-        <Grid fullWidth>
-          <StyledTabs  value={value} onChange={handleChange} >
-            <StyledTab label="登入" />
-            <StyledTab label="註冊" />
+      <div className={props.className}>
+        <Grid id='login-tags' sty={_login.tabs}>
+          <StyledTabs  value={module} onChange={handleChange} >
+            <StyledTab label="登入" value='login'/>
+            <StyledTab label="註冊" value='registeration' />
           </StyledTabs>
         </Grid>
-        <Grid fullWidth>
+        <Grid id='login-account' sty={_login.input}>
           <TextField
-            placeholder="This is a place holder"
-            // value={textFieldValue}
+            placeholder="輸入帳號"
             label="帳號"
-            // onChange={e => handleTextFieldChange(e.target.value)}
+            onChange={e => setAccount(e.target.value)}
           />
         </Grid>
-        <Grid fullWidth margin="none">
+        <Grid id='login-password' sty={_login.input}>
           <TextField
-            placeholder="This is a place holder"
-            // value={textFieldValue}
-            label="密碼"
             password
-            // onChange={e => handleTextFieldChange(e.target.value)}
+            placeholder="輸入密碼"
+            label="密碼"
+            onChange={e => setPassword(e.target.value)}
           />
-          <Typography variant="caption" align='right'>Forget password?</Typography>
+        <Typography variant="caption" align='right'>Forget password?</Typography>
         </Grid>
-        <Grid fullWidth >
-          Button
+        <Grid>
+          <Button onClick={handleClick} sty={_login.button}>
+            {module=='login'? "登入":"註冊"}
+          </Button> 
         </Grid>
+        <Button onClick={handleClick2}>test</Button>
         
-      </Grid>
+      </div>
   )
 
 }
-
-export default Login;
