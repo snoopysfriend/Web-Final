@@ -16,6 +16,6 @@ time.sleep(1)
 f2 = session.post(url, headers = header)
 print(f2.content.decode())
 time.sleep(1)
-f2 = session.post(url, headers = header)
-print(f2.content.decode())
+f3 = session.post(url, headers = header)
+print(f3.content.decode())
 

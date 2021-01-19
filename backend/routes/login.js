@@ -9,13 +9,14 @@ const hash_time = 10
 
 
 router.post('/login', async (req, res) => {
-    // console.log("login")
+    console.log("login")
     console.log(req.body)
     let sess = req.session
-    console.log(sess)
+    console.log("-------> ", req.session.loginUser)
     if (req.session.loginUser === true) {
-        console.log('already login')
+        console.log('--- already login!!')
         res.status(200).send({message: "success"})
+        return;
     }
 
     Account.find()

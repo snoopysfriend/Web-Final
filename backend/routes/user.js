@@ -12,8 +12,9 @@ router.post('/login', async (req, res) => {
     console.log("logining")
     console.log(req.body)
     let sess = req.session
+    console.log(sess)
     if (req.session.loginUser === true) {
-        console.log('already login')
+        console.log('already login!!!')
         res.status(200).send({message: "success"})
         return ;
     }
