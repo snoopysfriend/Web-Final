@@ -46,6 +46,7 @@ const StyledTab = withStyles((theme) => ({
 
 
 export default function Login(props) {
+  axios.defaults.withCredentials = true
   const [module, setModule] = React.useState('login');
   const [account, setAccount] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -56,9 +57,10 @@ export default function Login(props) {
 
   const loginAuthorize = async (data) => {
     console.log("loginAuthorize")
-    return await instance.post('/api/users/login', data, {'Content-Type': 'application/json'})
+    return await axios.post('http://localhost:4000/api/users/login', data, {'Content-Type': 'application/json'})
         .then((response) => {
           console.log("loginAuthorize res")
+         axios.post('http://localhost:4000/api/users/login', {'Content-Type': 'application/json'})
           dispatch({
               type: "LOGIN",
               payload: data
