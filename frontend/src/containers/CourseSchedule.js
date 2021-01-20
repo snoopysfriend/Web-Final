@@ -56,15 +56,11 @@ const SECTIONS = [
 ]
 const DAYS = ["X","一","二","三","四","五","六"];
 
-const response =  {"message":"success","content":[{"courseId":"14980","time":[[29,1],[58,2]],"place":"博理112總人  博理112總人"}]}
+const response = {"message":"success","content":{"CourseId":["82737"],"daytime":[{"courseId":"82737","time":[[21,2],[49,2]],"place":"新302  新302  新302"}],"_id":"6006f8d6724b5b15d8941913","StudId":"6LT9Y","TimStp":"2021-01-19T15:20:54.762Z"}}
 
+// {"message":"success","content":{"CourseId":["82737","93001"],"daytime":[{"courseId":"82737","time":[[21,2],[49,2]],"place":"新302  新302  新302"},{"courseId":"93001","time":[[49,2]],"place":"共201"}],"_id":"6006f8d6724b5b15d8941913","StudId":"6LT9Y","TimStp":"2021-01-19T15:20:54.762Z"}}
+// {"message":"success","content":[{"courseId":"82737","time":[[21,2],[49,2]],"place":"新302  新302  新302"},{"courseId":"93001","time":[[49,2]],"place":"共201"}]}
 
-// {"message":"success","content":{"CourseId":["14980"],"daytime":[{"courseId":"14980","time":[[29,1],[58,2]],"place":"博理112總人  博理112總人"}],"_id":"6008203aa7439c3b1bb86ebc","StudId":"XUXXU","TimStp":"2021-01-20T12:21:14.908Z"}}
-// {"message":"success","content":[{"courseId":"14980","time":[[29,1],[58,2]],"place":"博理112總人  博理112總人"}]}
-
-const GetComponents = () => {
-  
-}
 
 
 export default function CourseSchedule() {

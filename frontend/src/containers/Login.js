@@ -57,6 +57,7 @@ export default function Login(props) {
 
   const loginAuthorize = async (data) => {
     console.log("loginAuthorize")
+<<<<<<< HEAD
     return await axios.post('http://localhost:4000/api/users/login', data, {'Content-Type': 'application/json'})
         .then((response) => {
           console.log("loginAuthorize res")
@@ -66,10 +67,30 @@ export default function Login(props) {
               payload: data
           })
     })
+=======
+    // return await instance.post('/api/users/login', data, {'Content-Type': 'application/json'})
+    //     .then((response) => {
+    //       dispatch({
+    //           type: "LOGIN",
+    //           payload: data
+    //       })
+>>>>>>> 36852cf (save)
           
     //       // history.push("/search")
     //     })
     //     .catch((error) => false)
+<<<<<<< HEAD
+=======
+    await fetch('http://localhost:4000/api/users/login',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => console.log(data));
+>>>>>>> 36852cf (save)
   }
 
   const handleClick = async (event) => {
