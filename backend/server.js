@@ -10,14 +10,18 @@ import syllabusRoutes from './routes/syllabus'
 import coursInformRoutes from './routes/courseInform'
 import scheduleRoutes from './routes/schedule'
 import questionRoutes from './routes/question'
+//var RedisStore = require('connect-redis')(session);  
 
 require('dotenv').config()
-
 const app = express()
 const identityKey = 'skey';
 //var FileStore = require('session-file-store')(session)
 // init middleware
-app.use(cors())
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+}
+app.use(cors(corsOptions))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -26,7 +30,7 @@ app.use(session({
     secret: '123',
     //store: new FileStore(),
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         maxAge: 1000 * 1000
     }
@@ -73,4 +77,3 @@ db.once('open', () => {
         console.log(`Server is up on port ${port}.`)
     })
 })
-
