@@ -54,11 +54,10 @@ router.patch('/', function(req, res, next){
     const courseId = req.body.courseId;
     const questionId = req.body.questionId;
     const answer = req.body.answer;
-
     Question.findOne()
             .where("_id").equals(questionId)
             .exec((err, question) => {
-                if (question == undefined) {
+                if (question === undefined) {
                     res.status(400).send({message: "error question not found"})
                 } else {
                     console.log(question)
