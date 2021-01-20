@@ -12,6 +12,7 @@ import { _login } from '../styles/styledVariables'
 //
 //axios
 import axios from 'axios' 
+axios.defaults.withCredentials=true;
 const instance = axios.create({ baseURL: 'http://localhost:4000' });
 
 
@@ -63,7 +64,7 @@ export default function Login(props) {
               payload: data
           })
           
-          history.push("/search")
+          // history.push("/search")
         })
         .catch((error) => false)
   }
@@ -74,6 +75,13 @@ export default function Login(props) {
       password: password,
     }
     await loginAuthorize(data);
+  };
+  const test = async (event) => {
+    const data = {
+      studentId: account,
+      password: password,
+    }
+    await loginAuthorize();
   };
   
   const history = useHistory();
@@ -109,7 +117,9 @@ export default function Login(props) {
             {module=='login'? "登入":"註冊"}
           </Button> 
         </Grid>
-        
+        <Button onClick={test} sty={_login.button}>
+            test
+          </Button> 
       </div>
   )
 

@@ -1,32 +1,19 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 //
 // material-ui Library
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core/';
-import { Paper, Typography } from '@material-ui/core/';
-//
-// Self-Defined
-import theme, { TStyle } from '../styles/myMuiStyles'
-
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 1300,
-    margin: '24px auto',
-  },
-  cell: {
-    border: '1px solid #000',
-    padding: '5px',
-    width: '80px',
-    height: '60px',
-  }
-}, { name: 'Table' });
-
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { Table, TableBody, TableCell, TableContainer, Button, TableRow } from '@material-ui/core/';
+import { Typography } from '../components/self-defined/index';
+import { getUserCourse, patchUserCourse, postUserCourse, getCourseInform } from '../axios.js'
+import axios from 'axios' 
+axios.defaults.withCredentials=true;
 
 function createSection(name, clock) {
     return { name, clock };
 }
 const SECTIONS = [
-    createSection("0", "7:20~8:10"),
+    // createSection("0", "7:20~8:10"),
     createSection("1", "7:20~8:10"),
     createSection("2", "7:20~8:10"),
     createSection("3", "7:20~8:10"),
@@ -34,6 +21,7 @@ const SECTIONS = [
     createSection("5", "7:20~8:10"),
     createSection("6", "7:20~8:10"),
     createSection("7", "7:20~8:10"),
+    createSection("8", "7:20~8:10"),
     createSection("9", "7:20~8:10"),
     createSection("10", "7:20~8:10"),
     createSection("A", "7:20~8:10"),
@@ -44,23 +32,135 @@ const SECTIONS = [
 ]
 const DAYS = ["X","一","二","三","四","五","六"];
 
-export default function CourseSchedule() {
-  const classes = useStyles();
+const response =  {"message":"success","content":[{"courseId":"14980","time":[[29,1],[58,2]],"place":"博理112總人  博理112總人"}]}
+
+
+// {"message":"success","content":{"CourseId":["14980"],"daytime":[{"courseId":"14980","time":[[29,1],[58,2]],"place":"博理112總人  博理112總人"}],"_id":"6008203aa7439c3b1bb86ebc","StudId":"XUXXU","TimStp":"2021-01-20T12:21:14.908Z"}}
+// {"message":"success","content":[{"courseId":"14980","time":[[29,1],[58,2]],"place":"博理112總人  博理112總人"}]}
+
+const fetchCourseInform = async(props)=>{
+  return await axios.get(`http://127.0.0.1:4000/api/courseInform?year=109&courseId=${props.courseId}`)
+      .then((response) => {
+          console.log(response)
+          return response
+      })
+      .catch(err => {console.log(err)})
+  // return res;
+}
+
+const beutifyData = (place) => {
+  console.log(place, place.indexOf(' '), place.slice(0, place.indexOf(' ')))
+  return place.slice(0, place.indexOf(' '));
+}
+
+const CourseBar =  (props) => {
+  // const res = await fetchCourseInform(props.courseId)
+  // const courseInfo = getCourseInform(props.courseId).then(res=>{return res});
+  // console.log('bar', res)
+  console.log(props)
+  const { courseName, courseTech, childrenIndex, time, courseId, during } = props
+  const place = beutifyData(props.place);
 
   return (
-    <TableContainer component="div" className={classes.root}>
-      <Table className={classes.table}>
-        <TableBody>
-          {DAYS.map((row, index) => (
-            <TableRow key={row}>
-              <TableCell className={classes.cell} align="center">{row}</TableCell>
+    <>
+      <div className="courseBar " 
+        style={{'top': `${60 * childrenIndex}px`, width: `${84*during - 8}px `, minWidth: `${84 * during - 8}px `}}
+                {...props}>
+        <Typography variant='subtitle1' className="title-name" >{courseName}</Typography>
+        <div className="rowFlex subtitle">
+          <Typography variant='caption' className="title-tech" nowrap>{courseTech}</Typography>
+
+          <Button disabled className="button" >{place}</Button>
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default function CourseSchedule() {
+  const [userCourses, setUserCourses] = React.useState([]);
+  const [sectionState, setSectionState] = React.useState(Array.from({length: 84}, (v, i) => 0));
+  const [sectionChildren, setSectionChildren] = React.useState(Array.from({length: 84}, (v, i) => []));
+  const [rowHeight, setRowHeight] = React.useState(Array.from({length: 7}, (v, i) => 150));
+
+  const renderCourseBars = (data) => {
+    console.log(data)
+    const newState = sectionState;
+    const newChildren = sectionChildren;
+    const newRowHeight = rowHeight;
+    if (data) {
+      data.map((course, c_index) => {
+        const { courseId, time, place, courseName, courseTech } = course;
+        console.log(courseId, time, place)
+        if (time){
+          time.map ((item, t_index) => {
+            const day = item[0]/14+1;
+            const ele = (<CourseBar courseId={courseId} courseName={courseName}
+                courseTech={courseTech}
+                childrenIndex={newState[item[0]]} during={item[1]} 
+                place={place} />);
+            for(var i=0;i < item[1]; i++) {
+              newState[item[0]+i] += 1;
+              if (newState[item[0]+i]>=3) {
+                newRowHeight[day] += 50*(newState[item[0]+i]-2)
+              }
+            }
+            console.log(newState);
+            // newState[item[0]] += 1;
+            // if (newState[item[0]]>=3) {
+            //   newRowHeight[day] += 50*(newState[item[0]]-2)
+            // }
+            
+            newChildren[item[0]].push(ele);
+          })
+        }
+      })
+    }
+    
+    newChildren.map ((item, index) => {
+      if (item.length != 0) {
+        ReactDOM.render( item, document.getElementById(`section${index}`) );
+      }
+    })
+    setSectionState(newState);
+    setSectionChildren(newChildren);
+    setRowHeight(newRowHeight);
+
+  
+  }
+  
+  const getCourses = async () => {
+    const data = await getUserCourse()
+    await setUserCourses(data);
+    // courseBar(data)
+    await renderCourseBars(data)
+  }
+  React.useEffect(() => {
+    getCourses();
+    // postUserCourse('11647')
+    // postUserCourse('14980')
+    // postUserCourse('66263')
+    // patchUserCourse('82737')
+    // patchUserCourse('66263')
+  }, []);
+
+  return (
+
+    <TableContainer component="div" className="UserCourse-container">
+      <Table className='table-root'>
+        <TableBody className='table-body'>
+          {DAYS.map((row, dayIndex) => (
+            <TableRow key={row} className='table-row'>
+              <TableCell  align="center" className='section_DAYS' style={{height: `${rowHeight[dayIndex]}px`}}>{row}</TableCell>
               {
-                SECTIONS.map((section) => (
+                SECTIONS.map((section, sectionIndex) => (
                   <TableCell key={section.name} 
-                    className={classes.cell}
+                    className="section"
                     align="center"
+                    id={`section${(dayIndex-1)*13 + sectionIndex + 1}`}
+                    value={(dayIndex-1)*13 + sectionIndex + 1}
                   >
-                    {index==0 && 
+                    {dayIndex==0 && 
                       <>
                       <Typography variant="subtitle1">{section.name}</Typography>
                       <Typography variant="body1">{section.clock}</Typography>
@@ -73,6 +173,8 @@ export default function CourseSchedule() {
           ))}
         </TableBody>
       </Table>
+      
     </TableContainer>
-  );
+  )
 }
+

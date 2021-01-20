@@ -10,6 +10,7 @@ import CourseInform_Basic from '../containers/CourseInform/courseInform_Basic'
 import CourseInform_Syllabus from '../containers/CourseInform/courseInform_Syllabus'
 import CourseInform_Schedule from '../containers/CourseInform/courseInform_Schedule'
 import { Typography } from '../components/self-defined/index'
+
 //
 // axios
 import axios from 'axios' 

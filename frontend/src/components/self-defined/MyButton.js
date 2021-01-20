@@ -12,7 +12,6 @@ export default function MyButton(props) {
           margin: 'auto 0',
           ...myMuiTheme.shape.border_button,
           ...props.sty, 
-          
         },
       },
     }

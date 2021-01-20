@@ -16,10 +16,100 @@ html, body {
 .rowFlex {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 .hidden { display: none; }
 .scroll { overflow: scroll; }
 .fit { width: fit-content; }
+.fullWidth { width: 100%; }
+
+.UserCourse-container {
+  max-width: 1350px;
+  box-sizing: border-box;
+  margin: $sm auto;
+  // border-radius: 30px;
+  .table-root {
+    // border-top: 1px solid $Grey__dark;
+    border: none;
+    overflow: scroll;
+    
+  }
+  // .table-body {
+  //   // border-top: 1px solid $Grey__dark;
+  //   border: none;
+    
+  // }
+  
+  .table-row {
+    border-bottom: 1px solid $Grey__dark;
+    
+  }
+  
+  .section_DAYS {
+    position: relative;
+    padding: 0px;
+    box-sizing: border-box;
+    border: none;
+
+    border-right: 1px solid $Grey__dark;
+    width: 60px !important;
+    // height: 150px;
+  }
+  
+  .section {
+    position: relative;
+    padding: 0px;
+    box-sizing: border-box;
+    border: none;
+    border-right: 1px solid $Grey__lighter;
+    width: 100px !important;
+    // height: 100px;
+  }
+
+  .courseBar {
+    position: absolute;
+    border: $border_button;
+    box-sizing: border-box;
+    border-radius: $br_s;
+    height: 50px;
+    z-index: 100;
+    // overflow: hidden;
+    // overflow-x: scroll;
+    padding: 2px $xs;
+    margin: $xs $xs ;
+    .title-name {
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      font: $font__headingSemiBold;
+    }
+    .subtitle {
+      align-content: left;
+      overflow: hidden;
+      .title-tech {
+        white-space: nowrap;
+        // width: 100%;
+        font: $font__bodyBold;
+  
+      }
+      .button {
+        padding: 0px $xs;
+        height: fit-content;
+        color: white;
+        background-color: $ntuRed__light;
+        white-space: nowrap;
+        // width: 100%;
+        
+        font: $font__bodyRegular;
+        
+      }
+      
+    }
+    &:hover { width: fit-content !important; }
+  }
+
+
+}
 
 
 .container {
@@ -150,18 +240,20 @@ html, body {
   // margin: auto;
   .searchBar {
     margin: 0 auto;
+    width: fit-content;
     .title {
       width: 110px;
       padding-right: $xs;
     }
     .options {
       width: 130px;
-      padding-right: $xxs;
+      margin: auto auto;
+      padding-right: $xs;
     }
     .input {
       margin: $xs 0;
       width: 300px;
-      padding-right: $xxs
+      padding: $xs;
     }
     .button {
       width: 80px;
@@ -173,7 +265,7 @@ html, body {
     }
   }
   .multiSelect {
-    margin: $xxs 0;
+    margin: $xs 0;
     .title {
       width: 140px;
       margin: auto 0;
@@ -197,7 +289,9 @@ html, body {
 }
 
 .SearchResult {
-  height: calc(100vh - #{$header_height} - #{$query_height} - 30px),
+  height: calc(100vh - #{$header_height} - #{$query_height} - 30px);
+  box-sizing: border-box;
+  padding: 0 $ml;
   // padding="large"
 }
 
@@ -216,3 +310,6 @@ html, body {
   }
 
 }
+
+
+

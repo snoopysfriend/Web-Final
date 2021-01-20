@@ -1,8 +1,6 @@
 import myMuiTheme from './myMuiStyles'
 import { styled } from '@material-ui/core/styles';
 
-// console.log("myMuiTheme", myMuiTheme)
-
 export const _header = {
   height: "70px",
   width: "100%",
