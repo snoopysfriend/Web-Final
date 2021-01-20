@@ -11,7 +11,6 @@ import { columns, createRows } from './components/mapColsandRows'
 
 //Styles
 import { useMuiDataGridStyles } from '../../styles/dataGridStyles'
-import { _searchResult } from '../../styles/styledVariables'
 
 
 export default function SearchResults(props) {
@@ -22,7 +21,7 @@ export default function SearchResults(props) {
   });
 
   return (
-    <Grid id='searchResult' rowFlex style={_searchResult} padding="large">
+    <div className='SearchResult rowFlex'  >
       <DataGrid 
         classes={{ colCell: classes.colCell }}
         rows={rows}
@@ -32,6 +31,6 @@ export default function SearchResults(props) {
         })} 
         pageSize={5} 
       /> 
-    </Grid>
+    </div>
   );
 }

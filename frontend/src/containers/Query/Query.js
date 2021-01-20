@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 //
 // material-ui Library
 import { Typography, Divider } from '@material-ui/core';
 //
 // Self-Defined
-import { Grid, Button } from '../../components/self-defined/index'
+import { Button } from '../../components/self-defined/index'
 import  { deptMj, libEd, acaProg, phyMil, genCour } from '../../resources/index'
 import { Multiselect, Checkboxes, SearchBar } from './components/index';
-import styledVariables from '../../styles/styledVariables'
 import ColFilters from '../SearchResults/components/columnsFilter'
 
 
 function Query(props) {
-  const [majorList, setMajor] = useState([])
+  const [majorList, setMajor] = React.useState([])
   
   
   const depList = deptMj.department;
@@ -30,7 +29,6 @@ function Query(props) {
 
   }
 
-  const { _query } = styledVariables;
   return (
     <div className='Query' >
       <SearchBar
@@ -40,20 +38,20 @@ function Query(props) {
         clickToSearch = {clickToSearch}
       />
       <div className='rowFlex'>
-        <Grid  id='query-mainLeft'>
-          <Multiselect name="學院" handleUpate={handleDepUpate} optionList={depList}/>
+        <div >
+          <Multiselect name="學院" handleDepUpate={handleDepUpate} optionList={depList}/>
           <Multiselect name="系所" optionList={majorList}/>
           <Multiselect name="通識" optionList={libEd}/>
-        </Grid>
-        <Grid  id='query-mainRight'>
+        </div>
+        <div >
           <Multiselect name="體育/軍訓" optionList={phyMil}/>
           <Multiselect name="語文/基本能力" optionList={genCour}/>
           <Multiselect name="學程" optionList={acaProg}/>
-        </Grid>
+        </div>
       </div>
       <div className='rowFlex'>
         <Checkboxes name="其他"/>
-        <div className='rowFlex checkBoxes'>
+        <div className='rowFlex colFilter'>
           <Button onClick={props.clickToShow}>Show</Button>
           {props.showCheckboxes && 
               <ColFilters colState={props.colState} onChange={props.handleChange} showCheckboxes={props.showCheckboxes}/>

@@ -1,25 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import theme from '../../../styles/myMuiStyles'
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import React from 'react'
 
 import { FormGroup, FormControlLabel, Checkbox, Button } from '@material-ui/core';
-import { Grid, Typography } from '../../../components/self-defined/index'
+import {  Typography } from '../../../components/self-defined/index'
 
-const useFilterStyles = makeStyles((theme) => ({
-  root: {
-    alignItems: 'center',
-    marginBottom: theme.spacing(2),
-  },
-  name: {
-    minWidth: '110px',
-  },
-  textField: {
-    flexGrow: 1,   
-  }
-}), { name: 'filter' });
 
 function Filter(props) {
-  const classes = useFilterStyles();
   const [state, setState] = React.useState({
     engilshCour: false,
     ntuSys: false,
@@ -35,9 +20,9 @@ function Filter(props) {
   };
   return (
     
-    <Grid rowFlex>
-      <Typography className={classes.name}>{props.name}</Typography>
-      <div className={classes.textField}>
+    <div className='checkBosxes rowFlex' >
+      <Typography className='title'>{props.name}</Typography>
+      <div className='options'>
         <FormGroup row>
           {options.map((item, index) => {
             return <FormControlLabel 
@@ -47,7 +32,7 @@ function Filter(props) {
           })}
         </FormGroup>
       </div>
-    </Grid>
+    </div>
   )
 }
 export default Filter;

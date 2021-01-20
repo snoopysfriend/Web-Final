@@ -5,7 +5,6 @@ $dashboardNavigationHeight: 44px;
 $combinedAuthenticatedNavHeight: 108px;
 $footerHeight: 250px;
 
-$maxPageWidth: 1060px;
 
 $font__bodyRegular: 400 16px 'Source Sans Pro';
 $font__bodyBold: 700 16px 'Source Sans Pro';
@@ -31,11 +30,22 @@ $borderRadius__button: 4px;
 $borderRadius__modal: 8px;
 
 // ------ Breakpoints ------
-$xs: 320px;
-$sm: 480px;
-$md: 768px;
-$lg: 992px;
-$xl: 1200px;
+// $xs: 320px;
+// $sm: 480px;
+// $md: 768px;
+// $lg: 992px;
+// $xl: 1200px;
+
+// ------ Spacing ------
+$xxs: 4px;
+$xs: 8px;
+$sm: 16px;
+$s: 20px;
+$sm: 24px;
+$md: 32x;
+$ml: 48px;
+$lg: 60px;
+$xl: 120px;
 
 // ------ New Palette ------
 //background
@@ -98,10 +108,14 @@ $lightBoxShadow: 0px 0px 8px $Grey__lightest;
 $darkBoxShadow: 0px 2px 8px $Grey__standard;
 
 // ------ border -------
-$borderRadius__large: 30px;
-$borderRadius__median: 24px;
-$borderRadius__regular: 16px;
-$borderRadius__small: 5px;
+$br_xs: 3px;
+$br_s: 5px;
+$br_sm: 8px;
+$br_md: 12px;
+$br_ml: 16px;
+$br_lg: 24px;
+$br_xl: 32px;
+
 
 $border_button: 1px solid;
 $border_test: 1px solid red;

@@ -1,7 +1,7 @@
 @import './variables.scss';
-// @import '../resources/img/background.jpg';
 
 $header_height: 70px;
+$query_height: 300px;
 
 html, body {
   background-color: #efefef;
@@ -12,9 +12,6 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-// div {
-//   box-sizing: border-box;
-// }
 
 .rowFlex {
   display: flex;
@@ -28,7 +25,7 @@ html, body {
 .container {
   position: relative;
   width: 90%;
-  height: calc(100vh - 70px);
+  height: calc(100vh - #{$header_height});
   background-color: #FFF;
   margin: auto;
 }
@@ -77,8 +74,8 @@ html, body {
   }
   .login {
     position: absolute;
-    border-radius: 15px;
-    padding: 60px 60px;
+    border-radius: $br_ml;
+    padding: $lg $lg;
     right: calc((25vw - 450px / 2));
     top: calc((50vh - 450px / 2));
     background-color: white;
@@ -109,18 +106,19 @@ html, body {
         min-width: 200px
       }
       .cell2 {
-        padding-left: 16px;
+        padding-left: $sm;
       }
     }
   }
   .tablePanel{
     flex-grow: 1;
   }
+
   .schedule {
     overflow: scroll;
     height: calc(100vh - ($header_height) - 110px);
     .grid {
-      padding: 10px 0 10px 0;
+      padding: $xs 0 $xs 0;
       .cell1 {
         min-width: 150px;
       }
@@ -128,16 +126,16 @@ html, body {
         min-width: 150px;
       }
       .cell3 {
-        padding-left: 16px;
+        padding-left: $sm;
       }
     }
   }
 }
 
 .Header {
-  height: 70px;
+  height: $header_height;
   width: 100%;
-  padding: 0 16px;
+  padding: 0 $sm;
   box-sizing: border-box;
   background-color: $ntuBlue__standard;
   color: white;
@@ -146,88 +144,75 @@ html, body {
 }
 
 .Query {
-  height: 300px;
+  height: $query_height;
   box-sizing: border-box;
-  padding: 10px 60px;
+  padding: $xs $lg;
   // margin: auto;
-  .checkBoxes {
+  .searchBar {
+    margin: 0 auto;
+    .title {
+      width: 110px;
+      padding-right: $xs;
+    }
+    .options {
+      width: 130px;
+      padding-right: $xxs;
+    }
+    .input {
+      margin: $xs 0;
+      width: 300px;
+      padding-right: $xxs
+    }
+    .button {
+      width: 80px;
+      margin: auto;
+    }
+    .timeTable {
+      width: auto;
+      margin: auto 0;
+    }
+  }
+  .multiSelect {
+    margin: $xxs 0;
+    .title {
+      width: 140px;
+      margin: auto 0;
+    }
+
+  }
+  
+  .colFilter {
     max-width: 50%;
   }
-}
-
-/*
-
-export const _query = {
-  height: '220px',
-  _searchBar: {
-    title: {
-      width: '110px',
-      paddingRight: myMuiTheme.spacing(1)
-    },
-    options: {
-      width: '130px',
-      paddingRight: myMuiTheme.spacing(1)
-    },
-    input: {
-      margin: myMuiTheme.spacing(2,0),
-      width: '300px',
-      paddingRight: myMuiTheme.spacing(1)
-    },
-    button: {
-      width: '80px',
-      margin: 'auto',
-    },
-    timeTable: {
-      width: 'auto',
-      margin: 'auto 0',
-    },
-  },
-  checkBoxes : {
-    maxWidth: '50%',
-  }
-}
-export const _searchResult = {
-  height: `calc(100vh - ${_header.height} - ${_query.height} - 30px)`,
-
-}
-export const _breadcrumbs = {
-  position: 'absolute',
-  display: 'inline',
-  right: '10px',
-}
-export const _login = {
-  input: {
-    margin: myMuiTheme.spacing(2,0)
-  },
-  button: {
-    width: '80%',
-    margin: 'auto'
-  },
-
-}
-export const _courseInform = {
-  title: {
-    height: '90px',
-    boxSizing: 'border-box',
-    padding: '10px 10px'
-  },
-  tabs: {
-    position: 'absolute',
-    right: 0,
-    top: '42px'
-  },
-  basic: {
-    width: '450px'
-  },
-  syllabus: {
-    paddingLeft: myMuiTheme.spacing(2)
-  },
-  schedule: {
-    overflow: 'scroll',
-    height: `calc(100vh - ${_header.height} - 110px)`,
-    tablecell: {
-      width: '300px'
+  .checkBoxes {
+    align-items: center;
+    margin-bottom: $sm;
+    .title {
+      min-width: 110px;
+    }
+    .options {
+      flex-grow: 1;
     }
   }
 }
-*/
+
+.SearchResult {
+  height: calc(100vh - #{$header_height} - #{$query_height} - 30px),
+  // padding="large"
+}
+
+.breadcrumbs {
+  position: absolute;
+  display: inline;
+  right: 10px;
+}
+.login {
+  input {
+    margin: myMuiTheme.spacing(2,0)
+  }
+  button {
+    width: 80%;
+    margin: auto;
+  }
+
+}
