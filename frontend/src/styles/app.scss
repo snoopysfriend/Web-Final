@@ -16,11 +16,23 @@ html, body {
 .rowFlex {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 .hidden { display: none; }
 .scroll { overflow: scroll; }
 .fit { width: fit-content; }
+.fullWidth { width: 100%; }
 
+
+.courseBar {
+  position: absolute;
+  // height: 20px;
+  
+  
+  z-index: 100;
+  width: 200px;
+  background-color: red;
+}
 
 .container {
   position: relative;
@@ -150,18 +162,20 @@ html, body {
   // margin: auto;
   .searchBar {
     margin: 0 auto;
+    width: fit-content;
     .title {
       width: 110px;
       padding-right: $xs;
     }
     .options {
       width: 130px;
-      padding-right: $xxs;
+      margin: auto auto;
+      padding-right: $xs;
     }
     .input {
       margin: $xs 0;
       width: 300px;
-      padding-right: $xxs
+      padding: $xs;
     }
     .button {
       width: 80px;
@@ -173,7 +187,7 @@ html, body {
     }
   }
   .multiSelect {
-    margin: $xxs 0;
+    margin: $xs 0;
     .title {
       width: 140px;
       margin: auto 0;
@@ -197,7 +211,9 @@ html, body {
 }
 
 .SearchResult {
-  height: calc(100vh - #{$header_height} - #{$query_height} - 30px),
+  height: calc(100vh - #{$header_height} - #{$query_height} - 30px);
+  box-sizing: border-box;
+  padding: 0 $ml;
   // padding="large"
 }
 
@@ -208,7 +224,7 @@ html, body {
 }
 .login {
   input {
-    margin: myMuiTheme.spacing(2,0)
+    margin: $xs;
   }
   button {
     width: 80%;
