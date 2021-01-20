@@ -84,9 +84,9 @@ export default function Login(props) {
         .then((response) => {
           console.log("loginAuthorize2 res", response)
           
-          // history.push("/search")
+          history.push("/search")
         })
-        .catch((error) => false)
+        .catch((error) => console.log(error))
   }
   const handleClick2 = async (event) => {
     await loginAuthorize();

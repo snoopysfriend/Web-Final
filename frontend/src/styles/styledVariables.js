@@ -1,6 +1,5 @@
 import myMuiTheme from './myMuiStyles'
 import { styled } from '@material-ui/core/styles';
-import background from "/Users/tong/GitHub/web_programming/Final/Web-Final/frontend/src/resources/img/background.jpg";
 
 // console.log("myMuiTheme", myMuiTheme)
 

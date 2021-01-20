@@ -208,7 +208,7 @@ html, body {
 }
 .login {
   input {
-    margin: myMuiTheme.spacing(2,0)
+    margin: $xs;
   }
   button {
     width: 80%;
