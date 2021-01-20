@@ -3,7 +3,6 @@ import cors from 'cors'
 import path from 'path'
 import session from 'express-session'
 import mongoose from 'mongoose'
-var bodyParser = require('body-parser')
 //import routes from './routes'
 import userRoutes from './routes/user'
 import syllabusRoutes from './routes/syllabus'
@@ -11,6 +10,7 @@ import coursInformRoutes from './routes/courseInform'
 import scheduleRoutes from './routes/schedule'
 import questionRoutes from './routes/question'
 import fullsearchRouter from './routes/fullsearch'
+var bodyParser = require('body-parser')
 //var RedisStore = require('connect-redis')(session);  
 
 require('dotenv').config()
@@ -19,7 +19,7 @@ const identityKey = 'skey';
 //var FileStore = require('session-file-store')(session)
 // init middleware
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
     credentials: true,
 }
 app.use(cors(corsOptions))
