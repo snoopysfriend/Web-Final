@@ -5,10 +5,11 @@ import { AuthContext } from '../../App'
 import { makeStyles } from '@material-ui/styles';
 //
 // Self-Defined
-import { Button, Typography, TextField } from '../../components/self-defined/index'
-import NtuLogo from './components/ntuLogo'
+import { Button, Typography, TextField } from '../../components/self-defined/index';
+import NtuLogo from './components/ntuLogo';
 import theme from '../../styles/myMuiStyles';
-import styledVariables from '../../styles/styledVariables'
+import styledVariables from '../../styles/styledVariables';
+
 
 function Header() {
   const {state, dispatch} = React.useContext(AuthContext);

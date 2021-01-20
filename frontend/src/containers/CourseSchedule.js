@@ -34,6 +34,7 @@ const SECTIONS = [
     createSection("5", "7:20~8:10"),
     createSection("6", "7:20~8:10"),
     createSection("7", "7:20~8:10"),
+    createSection("8", "7:20~8:10"),
     createSection("9", "7:20~8:10"),
     createSection("10", "7:20~8:10"),
     createSection("A", "7:20~8:10"),
@@ -44,6 +45,13 @@ const SECTIONS = [
 ]
 const DAYS = ["X","一","二","三","四","五","六"];
 
+const response = {"message":"success","content":{"CourseId":["82737"],"daytime":[{"courseId":"82737","time":[[21,2],[49,2]],"place":"新302  新302  新302"}],"_id":"6006f8d6724b5b15d8941913","StudId":"6LT9Y","TimStp":"2021-01-19T15:20:54.762Z"}}
+
+// {"message":"success","content":{"CourseId":["82737","93001"],"daytime":[{"courseId":"82737","time":[[21,2],[49,2]],"place":"新302  新302  新302"},{"courseId":"93001","time":[[49,2]],"place":"共201"}],"_id":"6006f8d6724b5b15d8941913","StudId":"6LT9Y","TimStp":"2021-01-19T15:20:54.762Z"}}
+// {"message":"success","content":[{"courseId":"82737","time":[[21,2],[49,2]],"place":"新302  新302  新302"},{"courseId":"93001","time":[[49,2]],"place":"共201"}]}
+
+
+
 export default function CourseSchedule() {
   const classes = useStyles();
 
@@ -51,16 +59,17 @@ export default function CourseSchedule() {
     <TableContainer component="div" className={classes.root}>
       <Table className={classes.table}>
         <TableBody>
-          {DAYS.map((row, index) => (
+          {DAYS.map((row, dayIndex) => (
             <TableRow key={row}>
               <TableCell className={classes.cell} align="center">{row}</TableCell>
               {
-                SECTIONS.map((section) => (
+                SECTIONS.map((section, sectionIndex) => (
                   <TableCell key={section.name} 
                     className={classes.cell}
                     align="center"
+                    id={`section${(dayIndex-1)*13 + sectionIndex}`}
                   >
-                    {index==0 && 
+                    {dayIndex==0 && 
                       <>
                       <Typography variant="subtitle1">{section.name}</Typography>
                       <Typography variant="body1">{section.clock}</Typography>

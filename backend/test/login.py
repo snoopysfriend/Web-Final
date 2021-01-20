@@ -10,12 +10,12 @@ header = { "User-Agent" : UA,
 session = requests.Session()
 postdata = {'studentId': "string", "password": "123"}
 
-f = session.post(url, data = postdata, headers = header)
-print(f.content.decode())
-time.sleep(1)
+# f = session.post(url, data = postdata, headers = header)
+# print(f.content.decode())
+# time.sleep(1)
 f2 = session.post(url, headers = header)
 print(f2.content.decode())
-time.sleep(1)
-f3 = session.post(url, headers = header)
-print(f3.content.decode())
+# time.sleep(1)
+# f3 = session.post(url, headers = header)
+# print(f3.content.decode())
 

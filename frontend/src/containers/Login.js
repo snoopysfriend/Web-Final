@@ -65,10 +65,11 @@ export default function Login(props) {
               type: "LOGIN",
               payload: data
           })
+    })
           
-          // history.push("/search")
-        })
-        .catch((error) => false)
+    //       // history.push("/search")
+    //     })
+    //     .catch((error) => false)
   }
 
   const handleClick = async (event) => {
@@ -79,14 +80,22 @@ export default function Login(props) {
     await loginAuthorize(data);
   };
   const loginAuthorize2 = async () => {
-    console.log("loginAuthorize")
-    return await instance.post('/api/users/login')
-        .then((response) => {
-          console.log("loginAuthorize2 res", response)
+    // console.log("loginAuthorize")
+    // return await instance.post('/api/users/login')
+    //     .then((response) => {
+    //       console.log("loginAuthorize2 res", response)
           
-          // history.push("/search")
+    //       // history.push("/search")
+    //     })
+    //     .catch((error) => false)
+    await fetch('http://localhost:4000/api/users/login',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
         })
-        .catch((error) => false)
+        .then(response => response.json())
+        .then(data => console.log(data));
   }
   const handleClick2 = async (event) => {
     await loginAuthorize();

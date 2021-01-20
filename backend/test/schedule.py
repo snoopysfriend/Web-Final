@@ -42,7 +42,7 @@ def test_getSchedule():
 def test_postSchedule():
     session, userid = add_newUser()
     url= "http://127.0.0.1:4000/api/schedule"
-    postdata = { "courseId": "82737" }
+    postdata = { "courseId": "14980" }
     f = session.post(url, data = postdata) # get schedule
     print(f.content.decode()) 
     url= "http://127.0.0.1:4000/api/schedule"
@@ -50,18 +50,18 @@ def test_postSchedule():
     f = session.get(url) # get schedule
     print(f.content.decode()) 
 
-def test_patchSchedule():
-    session, userid = add_newUser()
-    url= "http://127.0.0.1:4000/api/schedule"
-    postdata = { "courseId": "82737" }
-    f = session.post(url, data = postdata) # get schedule
-    print(f.content.decode()) 
-    postdata = { "courseId": "93001" }
-    f = session.post(url, data = postdata) # get schedule
-    print(f.content.decode()) 
-    postdata = { "courseId": "82737" }
-    f = session.patch(url, data = postdata) # get schedule
-    f = session.get(url) # get schedule
-    print(f.content.decode()) 
+# def test_patchSchedule():
+#     session, userid = add_newUser()
+#     url= "http://127.0.0.1:4000/api/schedule"
+#     postdata = { "courseId": "62397" }
+#     f = session.post(url, data = postdata) # get schedule
+#     print(f.content.decode()) 
+#     postdata = { "courseId": "93001" }
+#     f = session.post(url, data = postdata) # get schedule
+#     print(f.content.decode()) 
+#     postdata = { "courseId": "62397" }
+#     f = session.patch(url, data = postdata) # get schedule
+#     f = session.get(url) # get schedule
+#     print(f.content.decode()) 
 
-test_patchSchedule()
+test_postSchedule()
