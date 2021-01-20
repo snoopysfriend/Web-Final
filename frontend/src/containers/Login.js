@@ -56,17 +56,14 @@ export default function Login(props) {
   };
 
   const loginAuthorize = async (data) => {
-    console.log("loginAuthorize")
     return await axios.post('http://localhost:4000/api/users/login', data, {'Content-Type': 'application/json'})
         .then((response) => {
-          console.log("loginAuthorize res")
-         axios.post('http://localhost:4000/api/users/login', {'Content-Type': 'application/json'})
           dispatch({
               type: "LOGIN",
               payload: data
           })
           
-          // history.push("/search")
+          history.push("/search")
         })
         .catch((error) => false)
   }
@@ -78,20 +75,7 @@ export default function Login(props) {
     }
     await loginAuthorize(data);
   };
-  const loginAuthorize2 = async () => {
-    console.log("loginAuthorize")
-    return await instance.post('/api/users/login')
-        .then((response) => {
-          console.log("loginAuthorize2 res", response)
-          
-          history.push("/search")
-        })
-        .catch((error) => console.log(error))
-  }
-  const handleClick2 = async (event) => {
-    await loginAuthorize();
-  };
-
+  
   const history = useHistory();
   const {state, dispatch} = React.useContext(AuthContext);
   console.log("Login", state, dispatch)
@@ -125,7 +109,6 @@ export default function Login(props) {
             {module=='login'? "登入":"註冊"}
           </Button> 
         </Grid>
-        <Button onClick={handleClick2}>test</Button>
         
       </div>
   )

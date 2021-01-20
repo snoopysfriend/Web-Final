@@ -9,6 +9,7 @@ import SearchResults from '../containers/SearchResults/SearchResults'
 //
 // axios
 import axios from 'axios' 
+
 const instance = axios.create({ baseURL: 'http://localhost:4000' });
 
 
@@ -42,7 +43,10 @@ function Search(props) {
   const clickToShow = () => setShowCheckboxes(!showCheckboxes);
 
   const fetchResource = async () => {
-    const res = await instance.get('/api/syllabus'); 
+    const res = await axios.get('http://localhost:4000/api/syllabus')
+    .then(res => {console.log(res)})
+    .catch(error => {console.log(error)}) 
+
     setOriginData(res.data.content);
   }
 
