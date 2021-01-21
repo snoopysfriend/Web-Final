@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Divider } from '@material-ui/core/';
 import { Typography } from '../../components/self-defined/index'
 
