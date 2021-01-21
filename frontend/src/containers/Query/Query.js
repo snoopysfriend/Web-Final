@@ -38,12 +38,12 @@ function Query(props) {
         clickToSearch = {clickToSearch}
       />
       <div className='rowFlex'>
-        <div >
+        <div className='fullWidth'>
           <Multiselect name="學院" handleDepUpate={handleDepUpate} optionList={depList}/>
           <Multiselect name="系所" optionList={majorList}/>
           <Multiselect name="通識" optionList={libEd}/>
         </div>
-        <div >
+        <div className='fullWidth'>
           <Multiselect name="體育/軍訓" optionList={phyMil}/>
           <Multiselect name="語文/基本能力" optionList={genCour}/>
           <Multiselect name="學程" optionList={acaProg}/>
@@ -52,7 +52,7 @@ function Query(props) {
       <div className='rowFlex'>
         <Checkboxes name="其他"/>
         <div className='rowFlex colFilter'>
-          <Button onClick={props.clickToShow}>Show</Button>
+          <Button onClick={props.clickToShow} className="button-show">Show</Button>
           {props.showCheckboxes && 
               <ColFilters colState={props.colState} onChange={props.handleChange} showCheckboxes={props.showCheckboxes}/>
           }

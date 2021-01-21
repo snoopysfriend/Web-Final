@@ -11,11 +11,11 @@ function MultiSelect(props) {
   const handleDepUpate = props.handleDepUpate? props.handleDepUpate:null;
 
   return (
-    <div className='multiSelect rowFlex' >
+    <div className='multiSelect rowFlex fullWidth' >
       <div className='title'>
         <Typography variant='subtitle1'>{props.name}</Typography>
       </div>
-      <div>
+      {/* <div> */}
         <ThemeProvider theme={theme}>
         <Autocomplete
             multiple
@@ -32,7 +32,7 @@ function MultiSelect(props) {
             onChange={handleDepUpate}
           />
         </ThemeProvider>
-      </div>
+      {/* </div> */}
     </div>
   )
 }

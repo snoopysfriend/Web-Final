@@ -20,7 +20,7 @@ function Filter(props) {
   };
   return (
     
-    <div className='checkBosxes rowFlex' >
+    <div className='checkBoxes rowFlex' >
       <Typography className='title'>{props.name}</Typography>
       <div className='options'>
         <FormGroup row>

@@ -20,6 +20,7 @@ export default function SearchBar(props) {
       <Typography variant='subtitle1' className='title'>快速查詢</Typography>
       <div className='options'>
             <Select
+            className="fullWidth"
               onChange={handleChange}
               input ={<InputBase />}
             >
@@ -31,6 +32,7 @@ export default function SearchBar(props) {
       <div className='input'>
         <TextField
             placeholder = "This is a place holder"
+            fullWidth
             // onChange={e => handleTextFieldChange(e.target.value)}
           />
       </div>

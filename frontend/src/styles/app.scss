@@ -273,19 +273,33 @@ html, body {
 
   }
   
-  .colFilter {
-    max-width: 50%;
-  }
+  
   .checkBoxes {
     align-items: center;
-    margin-bottom: $sm;
     .title {
       min-width: 110px;
     }
     .options {
       flex-grow: 1;
+      margin-left: $xs;
+
     }
   }
+
+  .colFilter {
+    max-width: 50%;
+    height: fit-content;
+    
+    .button-show {
+      // margin: 0px auto ;
+      height: fit-content;
+    }
+    .checkbox-options {
+      margin-left: $xs;
+    }
+  }
+  
+
 }
 
 .SearchResult {

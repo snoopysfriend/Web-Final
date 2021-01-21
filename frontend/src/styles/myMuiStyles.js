@@ -84,11 +84,15 @@ const shapeTheme = {
 const overridesTheme = {
   MuiAutocomplete: {
     root:{
-      ...(shapeTheme.border_textField)
+      ...(shapeTheme.border_textField),
+      width: '100%',
+      margin: '0 16px'
+
     },
     inputRoot: {
       padding: `1px ${originTheme.spacing(1)}px`,
       overflow:'scroll',
+      // width: '100%',
 
     }
   },
