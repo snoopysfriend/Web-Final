@@ -141,12 +141,16 @@ html, body {
     width: 100%;
     .login-root {
       height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       .login-container {
-        height: 300px;
+        min-height: 300px;
+        min-width: 300px;
         width: 300px;
+        margin: auto;
         border-radius: $br_ml;
         padding: $lg $lg;
-        margin: auto;
         background-color: white;
       }
 
@@ -341,19 +345,19 @@ $courInform_titleHeight: 90px;
   right: 10px;
 }
 
-.login {
-  .input {
-    margin: $xs;
-  }
-  .button {
-    width: 80%;
-    margin: auto;
-  }
-  .tags {
-    width: 100%;
-  }
+// .login {
+//   .input {
+//     margin: $xs;
+//   }
+//   .button {
+//     width: 80%;
+//     margin: auto;
+//   }
+//   .tags {
+//     width: 100%;
+//   }
 
-}
+// }
 
 
 

@@ -74,6 +74,10 @@ export default function Login(props) {
               type: "LOGIN",
               payload: data
           })
+<<<<<<< HEAD
+=======
+          
+>>>>>>> 94daa0f (save Read.me)
           history.push("/search")
         })
         .catch((error) => history.push('/'))
