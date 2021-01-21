@@ -68,13 +68,12 @@ export default function Login(props) {
 
   }
   const loginAuthorize = async (data) => {
-    return await axios.post('http://127.0.0.1:4000/api/users/login', data, {'Content-Type': 'application/json'})
+    return await axios.post('http://localhost:4000/api/users/login', data, {'Content-Type': 'application/json'})
         .then((response) => {
           dispatch({
               type: "LOGIN",
               payload: data
           })
-          
           history.push("/search")
         })
         .catch((error) => history.push('/'))
@@ -128,9 +127,6 @@ export default function Login(props) {
           />
         <Typography variant="caption" align='right'>Forget password?</Typography>
         </Grid>
-        <Grid>
-          <Button onClick={handleClick} sty={_login.button}>
-            {module==='login'? "登入":"註冊"}
         <div >
         {module=='login' &&
           <>
