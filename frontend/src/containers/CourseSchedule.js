@@ -54,22 +54,16 @@ const beutifyData = (place) => {
 }
 
 const CourseBar =  (props) => {
-  // const res = await fetchCourseInform(props.courseId)
-  // const courseInfo = getCourseInform(props.courseId).then(res=>{return res});
-  // console.log('bar', res)
-  console.log(props)
   const { courseName, courseTech, childrenIndex, time, courseId, during } = props
   const place = beutifyData(props.place);
-
   return (
     <>
       <div className="courseBar " 
-        style={{'top': `${60 * childrenIndex}px`, width: `${84*during - 8}px `, minWidth: `${84 * during - 8}px `}}
+        style={{'top': `${60 * childrenIndex}px`, width: `${100*during - 16}px `, minWidth: `${100 * during - 16}px `}}
                 {...props}>
         <Typography variant='subtitle1' className="title-name" >{courseName}</Typography>
         <div className="rowFlex subtitle">
           <Typography variant='caption' className="title-tech" nowrap>{courseTech}</Typography>
-
           <Button disabled className="button" >{place}</Button>
         </div>
       </div>
@@ -78,12 +72,11 @@ const CourseBar =  (props) => {
 }
 
 export default function CourseSchedule() {
-  const [userCourses, setUserCourses] = React.useState([]);
   const [sectionState, setSectionState] = React.useState(Array.from({length: 84}, (v, i) => 0));
   const [sectionChildren, setSectionChildren] = React.useState(Array.from({length: 84}, (v, i) => []));
-  const [rowHeight, setRowHeight] = React.useState(Array.from({length: 7}, (v, i) => 150));
+  const [rowHeight, setRowHeight] = React.useState(Array.from({length: 7}, (v, i) => i==0? 30: 120));
 
-  const renderCourseBars = (data) => {
+  const renderCourseBars = async (data) => {
     console.log(data)
     const newState = sectionState;
     const newChildren = sectionChildren;
@@ -94,7 +87,7 @@ export default function CourseSchedule() {
         console.log(courseId, time, place)
         if (time){
           time.map ((item, t_index) => {
-            const day = item[0]/14+1;
+            const day = parseInt(item[0]/14) +1;
             const ele = (<CourseBar courseId={courseId} courseName={courseName}
                 courseTech={courseTech}
                 childrenIndex={newState[item[0]]} during={item[1]} 
@@ -102,47 +95,43 @@ export default function CourseSchedule() {
             for(var i=0;i < item[1]; i++) {
               newState[item[0]+i] += 1;
               if (newState[item[0]+i]>=3) {
-                newRowHeight[day] += 50*(newState[item[0]+i]-2)
+                newRowHeight[day] = 50*(newState[item[0]+i])
+                console.log("days", document.getElementById(`section_DAYS${day}`))
+                document.getElementById(`section_DAYS${day}`).style.height=`${50*(newState[item[0]+i]+1)}px`
+
               }
             }
-            console.log(newState);
-            // newState[item[0]] += 1;
-            // if (newState[item[0]]>=3) {
-            //   newRowHeight[day] += 50*(newState[item[0]]-2)
-            // }
-            
+            // console.log(newState);
             newChildren[item[0]].push(ele);
           })
         }
       })
     }
-    
     newChildren.map ((item, index) => {
       if (item.length != 0) {
         ReactDOM.render( item, document.getElementById(`section${index}`) );
       }
     })
+
     setSectionState(newState);
     setSectionChildren(newChildren);
-    setRowHeight(newRowHeight);
-
-  
+    await setRowHeight(newRowHeight);
   }
   
   const getCourses = async () => {
     const data = await getUserCourse()
-    await setUserCourses(data);
     // courseBar(data)
     await renderCourseBars(data)
   }
   React.useEffect(() => {
     getCourses();
-    // postUserCourse('11647')
-    // postUserCourse('14980')
+    // postUserCourse('44345')
+    // postUserCourse('03035')
     // postUserCourse('66263')
     // patchUserCourse('82737')
     // patchUserCourse('66263')
   }, []);
+  console.log('rowHeight', rowHeight)
 
   return (
 
@@ -151,23 +140,27 @@ export default function CourseSchedule() {
         <TableBody className='table-body'>
           {DAYS.map((row, dayIndex) => (
             <TableRow key={row} className='table-row'>
-              <TableCell  align="center" className='section_DAYS' style={{height: `${rowHeight[dayIndex]}px`}}>{row}</TableCell>
-              {
-                SECTIONS.map((section, sectionIndex) => (
+              <TableCell  align="center" className='section_DAYS' id={`section_DAYS${dayIndex}`} 
+                          style={{height: `${rowHeight[dayIndex]}px`}}>
+                {row}
+              </TableCell>
+              {SECTIONS.map((section, sectionIndex) => {
+                  const styleClass = dayIndex==0 ? "section-title": "section"
+                  return(
                   <TableCell key={section.name} 
-                    className="section"
+                    className={styleClass}
                     align="center"
                     id={`section${(dayIndex-1)*13 + sectionIndex + 1}`}
                     value={(dayIndex-1)*13 + sectionIndex + 1}
                   >
                     {dayIndex==0 && 
                       <>
-                      <Typography variant="subtitle1">{section.name}</Typography>
-                      <Typography variant="body1">{section.clock}</Typography>
+                        <Typography variant="subtitle1">{section.name}</Typography>
+                        <Typography variant="body1">{section.clock}</Typography>
                       </>
                     }
                   </TableCell>
-                ))
+                )})
               }
             </TableRow>
           ))}

@@ -25,46 +25,52 @@ html, body {
 
 .UserCourse-container {
   max-width: 1350px;
+  max-height: 700px;
   box-sizing: border-box;
+  border-radius: $br_sm;
+  border: 2px solid $Grey__dark;
+
   margin: $sm auto;
-  // border-radius: 30px;
+  padding: 0 0;
   .table-root {
-    // border-top: 1px solid $Grey__dark;
     border: none;
     overflow: scroll;
-    
   }
-  // .table-body {
-  //   // border-top: 1px solid $Grey__dark;
-  //   border: none;
-    
-  // }
-  
   .table-row {
-    border-bottom: 1px solid $Grey__dark;
+    // border-bottom: 1px solid $Grey__dark;
     
   }
-  
+  .table-body {
+  }
   .section_DAYS {
     position: relative;
-    padding: 0px;
     box-sizing: border-box;
     border: none;
-
-    border-right: 1px solid $Grey__dark;
+    // padding: 0 0;
+    // background-color: #ededed;
+    border-bottom: 4px solid $Grey__light;
+    border-right: 4px solid $Grey__light;
     width: 60px !important;
     // height: 150px;
   }
-  
+  .section-title {
+    height: 60px !important;
+    // background-color: #ededed;
+    border-right: 4px solid $Grey__light;
+    border-bottom: 4px solid $Grey__light;
+    
+    // padding: $sm;
+  }
   .section {
     position: relative;
     padding: 0px;
     box-sizing: border-box;
     border: none;
-    border-right: 1px solid $Grey__lighter;
-    width: 100px !important;
-    // height: 100px;
+    border: 4px dashed $Grey__lighter;
+    // border-bottom: 1px dashed$Grey__lighter;
+    // border-style: dashed;
   }
+  
 
   .courseBar {
     position: absolute;
@@ -73,8 +79,6 @@ html, body {
     border-radius: $br_s;
     height: 50px;
     z-index: 100;
-    // overflow: hidden;
-    // overflow-x: scroll;
     padding: 2px $xs;
     margin: $xs $xs ;
     .title-name {
@@ -122,7 +126,9 @@ html, body {
 
 .Home {
   background-image: url("../resources/img/background.jpg");
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
   min-height: 100vh;
   background-position: center;
   .containerLeft {
@@ -133,6 +139,23 @@ html, body {
   .containerRight {
     background: 'none';
     width: 100%;
+    .login-root {
+      height: 100vh;
+      .login-container {
+        height: 300px;
+        width: 300px;
+        border-radius: $br_ml;
+        padding: $lg $lg;
+        margin: auto;
+        background-color: white;
+      }
+
+      .login-input {
+        width: 100%;
+        margin: $xs auto;
+        text-align: right;
+      }
+    }
   }
   .ntuLogo {
     position: absolute;
@@ -162,34 +185,37 @@ html, body {
     left: calc( 30vw );
     color: white;
   }
-  .login {
-    position: absolute;
-    border-radius: $br_ml;
-    padding: $lg $lg;
-    right: calc((25vw - 450px / 2));
-    top: calc((50vh - 450px / 2));
-    background-color: white;
-  }
+  
 }
+$courInform_titleHeight: 90px;
 
 .CouInform {
   .title {
-    height: 90px;
+    height: $courInform_titleHeight;
     box-sizing: border-box;
     padding: 10px 10px;
+    margin-bottom: 10px;
+    // box-shadow: 0 0 35px rgba(0, 0, 0, 0.25);
   }
   .tabs {
     position: absolute;
     right: 0px;
     top: 42px;
+    .tab {
+      width: 30px;
+    }
   }
   .basic {
+    // margin: 0 $s;
+    padding: 0 $xs;
+    border-right: 1px solid $Grey__light;
+    // background-color: white;
     min-width: 300px;
-    border: $border_test;
   }
   .syllabus {
     // padding-left: 16px;
-    border: $border_test;
+    padding-right: $ml;
+
     .grid {
       padding: 10px 0 10px 0;
       .cell1 {
@@ -206,7 +232,7 @@ html, body {
 
   .schedule {
     overflow: scroll;
-    height: calc(100vh - ($header_height) - 110px);
+    height: calc(100vh - #{$header_height} - #{$courInform_titleHeight} - 30px);
     .grid {
       padding: $xs 0 $xs 0;
       .cell1 {
@@ -314,13 +340,17 @@ html, body {
   display: inline;
   right: 10px;
 }
+
 .login {
-  input {
+  .input {
     margin: $xs;
   }
-  button {
+  .button {
     width: 80%;
     margin: auto;
+  }
+  .tags {
+    width: 100%;
   }
 
 }
