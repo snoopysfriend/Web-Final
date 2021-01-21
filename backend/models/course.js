@@ -66,10 +66,8 @@ const CourseSchema = new Schema({
 	CoSelect: {
 		type: Number
 	},
-	Tag: {
-		type: Array,
-		default:[]
-	},
+	tag: String,
+	Tags:Array,
 	Year: {
 		type: String,
 		default:''
