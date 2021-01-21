@@ -32,12 +32,13 @@ export default function SearchBar(props) {
       </div>
       <div className='input'>
         <TextField
-            placeholder = "This is a place holder"
+            fullWidth
+            placeholder = "輸入關鍵字"
             onChange={props.handleTextFieldChange}
           />
       </div>
-      <Button onClick={()=>props.clickToSearch(OPTIONS[0])} >全文搜尋</Button>
-      <Button onClick={()=>props.clickToSearch("篩選")} >篩選搜尋</Button>
+      <Button className = "button" onClick={()=>props.clickToSearch(OPTIONS[0])} >全文搜尋</Button>
+      <Button className = "button" onClick={()=>props.clickToSearch("篩選")} >篩選搜尋</Button>
 
       {/* <div className='timeTable'>
         <TimeTable items={items}/> 

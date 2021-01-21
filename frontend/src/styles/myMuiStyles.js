@@ -86,13 +86,13 @@ const overridesTheme = {
     root:{
       ...(shapeTheme.border_textField),
       width: '100%',
-      margin: '0 16px'
+      margin: '0 8px'
 
     },
     inputRoot: {
       padding: `1px ${originTheme.spacing(1)}px`,
       overflow:'scroll',
-      // width: '100%',
+      width: '100%',
 
     }
   },

@@ -42,7 +42,8 @@ function CourseInform(props) {
           const { CouName } = result.data.content[0];
           const fristEnChar = rules.exec(CouName).index;
           setCourseName([CouName.slice(0,fristEnChar), CouName.slice(fristEnChar,CouName.length)]);
-        });
+        })
+        .catch(err => {console.log(err)});
       setIsLoading(false);
     }
     fetchData();
@@ -71,7 +72,7 @@ function CourseInform(props) {
                   <Tab className='tab' label="Ｑ＆Ａ" />
                   <Tab className='tab' label="相似課程" />
                 </Tabs>
-              {value==0 && <CourseInform_Syllabus data={originData} />}
+              {value==0 && <CourseInform_Syllabus  data={originData} />}
               {value==1 && <CourseInform_Schedule data={originData} />}
               {value==2 && <CourseInform_QA data={props.match.params.courseId}/>}
               
