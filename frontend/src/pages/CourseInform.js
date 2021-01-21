@@ -9,6 +9,7 @@ import Breadcrumb from '../containers/Header/components/breadcrumbs'
 import CourseInform_Basic from '../containers/CourseInform/courseInform_Basic'
 import CourseInform_Syllabus from '../containers/CourseInform/courseInform_Syllabus'
 import CourseInform_Schedule from '../containers/CourseInform/courseInform_Schedule'
+import CourseInform_QA from '../containers/CourseInform/courseInform_QA'
 import { Typography } from '../components/self-defined/index'
 
 //
@@ -82,7 +83,7 @@ function CourseInform(props) {
               </div>
               {value==0 && <CourseInform_Syllabus data={originData} />}
               {value==1 && <CourseInform_Schedule data={originData} />}
-              
+              {value==2 && <CourseInform_QA data={props.match.params.courseId}/>}
               {/* <TabPanel value={value} index={0}>
                 <CourseInform_Syllabus data={originData} />
               </TabPanel> */}
