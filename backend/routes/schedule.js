@@ -7,8 +7,9 @@ const router = express.Router()
 
     router.get('/', function(req, res, next){
     const userId = req.session.loginUserId 
-        
-    if (req.session.loginUser === false) {
+    console.log(req) 
+    if (req.session.loginUser !== true) {
+        console.log('not found')
         res.status(400).send({message: "user login error"})
         return 
     }
@@ -16,6 +17,7 @@ const router = express.Router()
              .where('StudId').equals(userId)
              .limit(5)
              .exec((err, schedule) => {
+                 console.log(schedule)
                 res.status(200).send({message: "success", content: schedule.daytime})
                 /*
                 var sydata = []
@@ -35,9 +37,11 @@ const router = express.Router()
 router.post('/', function(req, res, next){
     const courseId = req.body.courseId; 
     const userId = req.session.loginUserId 
+    console.log(req) 
     console.log(`add new course ${courseId} to schedule`)
 
-    if (req.session.loginUser === false) {
+    if (req.session.loginUser !== true) {
+        console.log('not login')
         res.status(400).send({message: "user login error"})
         return 
     }
@@ -48,21 +52,24 @@ router.post('/', function(req, res, next){
                const time = syllabus.newDayTime
                const coursename = syllabus.CouCname
                const classroom = syllabus.ClsRom
+               const TeaName = syllabus.TeaCname
                //console.log('time', time)
                SelCourse.findOne()
                .limit(5)
                .where('StudId').equals(userId)
                .exec((err, schedule) => {
-                     //console.log(schedule)
+                     console.log(userId, schedule)
                      const found = schedule.CourseId.find(e => e === courseId)
                      if (found !== undefined) {
-                        res.status(400).send({message: "error course already exists"})
+                        res.status(200).send({message: "error course already exists"})
                      } else {
                         schedule.CourseId.push(courseId)
                         var course = { 
                             courseId: courseId,
                             time: [],
-                            place: classroom
+                            place: classroom,
+                            courseName: coursename,
+                            courseTech: TeaName
                         }
                         var coursetime = []
                         for(var i = 83; i >= 0; i--) {

@@ -19,7 +19,7 @@ const identityKey = 'skey';
 //var FileStore = require('session-file-store')(session)
 // init middleware
 const corsOptions = {
-    origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+    origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://127.0.0.1:3000/search', 'http://127.0.0.1:3000/user'],
     credentials: true,
 }
 app.use(cors(corsOptions))

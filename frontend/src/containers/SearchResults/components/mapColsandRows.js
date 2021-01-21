@@ -1,4 +1,5 @@
 import { Button, FormGroup, FormControlLabel, Checkbox, Link }from '@material-ui/core'
+import axios from 'axios'
 
 //Columns Data
 const tableHeaders = ["CourseId", "DptName", "CouCname", "Cred", "TeaCname","daytime", "ClsRom","CouCode","Class", "ForH","SelCode","CoSelect","Mark","MaxCap"];
@@ -11,6 +12,24 @@ function createColumns(field, headerName, width, hide, renderCell) {
 
 const getCourseInform = () => {
   console.log('getCourseInform')
+}
+
+const addSchedule = async (CourseId) => {
+    //axios.defauts.withCredentials = true
+    console.log(`courseId ${CourseId}`)
+    const data = {'courseId': CourseId}
+    await axios.post('http://localhost:4000/api/schedule', data, {'Content-Type': 'application/json'})
+    .then((response) => {
+        console.log(response);
+        if (response.data.message === 'error course already exists') {
+            alert('Course Already exists')
+        } else {
+            alert('Course Added Success!!!')
+        }
+    })
+    .catch((error) => {
+            alert('User must login!!!')
+    })
 }
 export const columns = [
   createColumns('id', 'ID', 30, false),
@@ -43,6 +62,7 @@ export const columns = [
         color="primary"
         size="small"
         style={{ margin: '0 auto' }}
+        onClick={() => addSchedule(params.row.CourseId)}
       >
         加入
       </Button>

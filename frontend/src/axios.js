@@ -3,7 +3,7 @@ axios.defaults.withCredentials=true;
 
 
 const instance = axios.create({ baseURL: 'http://127.0.0.1:4000' });
-
+axios.defaults.withCredentials=true
 export const getDefaultData = async () => { 
     const { data : msg } = await instance.get('/api/syllabus'); 
     console.log('axios', msg);
@@ -25,11 +25,14 @@ export const getCourseInform = async (courseId) => {
 export const getUserCourse = async (id) => { 
     // console.log("getUserCourse")
     // return await axios.get('http://127.0.0.1:4000/api/schedule')
-    const res = await axios.get('http://127.0.0.1:4000/api/schedule')
+
+    const res = await axios.get('http://localhost:4000/api/schedule/')
       .then((response) => {
         return response
       })
-      .catch(err => {console.log(err)})
+      .catch(err => {
+          console.log(err)
+      })
     
     
     return res.data.content;

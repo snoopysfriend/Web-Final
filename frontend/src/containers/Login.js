@@ -56,6 +56,17 @@ export default function Login(props) {
     setModule(newValue);
   };
 
+  const logout = async () => {
+    return await axios.post('http://localhost:4000/api/users/logout', {'Content-Type': 'application/json'})
+        .then((response) => {
+          /*dispatch({
+              type: "LOGIN",
+              payload: data
+          })*/
+        })
+        .catch((error) => false)
+
+  }
   const loginAuthorize = async (data) => {
     return await axios.post('http://localhost:4000/api/users/login', data, {'Content-Type': 'application/json'})
         .then((response) => {
@@ -64,9 +75,9 @@ export default function Login(props) {
               payload: data
           })
           
-          // history.push("/search")
+          history.push("/search")
         })
-        .catch((error) => false)
+        .catch((error) => history.push('/'))
   }
 
   const handleClick = async (event) => {
@@ -114,7 +125,7 @@ export default function Login(props) {
         </Grid>
         <Grid>
           <Button onClick={handleClick} sty={_login.button}>
-            {module=='login'? "登入":"註冊"}
+            {module==='login'? "登入":"註冊"}
           </Button> 
         </Grid>
         <Button onClick={test} sty={_login.button}>
