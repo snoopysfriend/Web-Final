@@ -8,7 +8,7 @@ import theme from '../../../styles/myMuiStyles'
 
 
 function MultiSelect(props) {
-  const handleDepUpate = props.handleDepUpate? props.handleDepUpate:null;
+  // const handleDepUpate = props.handleDepUpate? props.handleDepUpate:null;
 
   return (
     <div className='multiSelect rowFlex fullWidth' >
@@ -21,15 +21,18 @@ function MultiSelect(props) {
             multiple
             size='small'
             options={props.optionList}
+                  ariaValueText="ariaValueText"
+                  // value={props.name}
             renderInput={(params) => (
               <TextField
                   {...params}
                   noWrap
-                  InputProps={{...params.InputProps, disableUnderline: true}}
+                  ariaValueText="ariaValueText"
+                  InputProps={{...params.InputProps, disableUnderline: true, value: "j6m3wj6"}}
                   placeholder={props.name}
               />
             )}
-            onChange={handleDepUpate}
+            onChange={props.onChange}
           />
         </ThemeProvider>
       {/* </div> */}

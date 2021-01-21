@@ -11,8 +11,8 @@ function Filter(props) {
     intenseCour: false,
   });
   const handleUpate = props.handleUpate? props.handleUpate:null;
-  const optionsLabel = ["英語授課", "臺大系統校際課程", "密集課程"];
-  const options = ["engilshCour", "ntuSys", "intenseCour"];
+  const optionsLabel = ["英語授課"];
+  const options = ["engilshCour"];
 
   const handleChange = (event) => {
     console.log("check box!")

@@ -41,10 +41,37 @@ function Search(props) {
     setColState({ ...colState, [event.target.name]: event.target.checked });
   };
   const clickToShow = () => setShowCheckboxes(!showCheckboxes);
-
-  const fetchResource = async () => {
-    const res = await axios.get('http://127.0.0.1:4000/api/syllabus')
+  const sendQuery = async(data) =>{
+    console.log(data)
+    const res = await axios.post(
+      'http://localhost:4000/api/syllabus',
+      data, 
+      {'Content-Type': 'application/json'}
+    )
     setOriginData(res.data.content);
+    console.log(res.data.content)
+  }
+  const fullTextQuery = async(text)=>{
+    const res = await axios.get(
+      `http://localhost:4000/api/fullsearch?type=Course&text=${text}`,
+    )
+    var data = res.data.content;
+    var data_real = []
+    data.forEach((item, index)=>{
+      data_real.push(item._source)
+    })
+    setOriginData(data_real);
+    console.log(data_real)
+  }
+  const fetchResource = async () => {
+    const res = await axios.post(
+      'http://localhost:4000/api/syllabus',
+      {}, 
+      {'Content-Type': 'application/json'}
+    )
+
+    setOriginData(res.data.content);
+    console.log(res)
   }
 
   useEffect(() => { 
@@ -59,7 +86,9 @@ function Search(props) {
         <Query clickToShow={clickToShow} 
           colState={colState} 
           showCheckboxes={showCheckboxes}
-          handleChange={handleChange}/>
+          handleChange={handleChange}
+          sendQuery={sendQuery}
+          fullTextQuery={fullTextQuery}/>
         <SearchResults data={originData} colState={colState} />
       </div>
     </>

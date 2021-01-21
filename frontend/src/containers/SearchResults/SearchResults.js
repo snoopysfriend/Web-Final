@@ -29,7 +29,7 @@ export default function SearchResults(props) {
           item.hide = !props.colState[item.field];
           return item;
         })} 
-        pageSize={5} 
+        // pageSize={5} 
       /> 
     </div>
   );
