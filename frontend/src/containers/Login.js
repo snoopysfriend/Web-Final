@@ -109,22 +109,7 @@ export default function Login(props) {
             <StyledTab label="註冊" value='registeration' />
           </StyledTabs>
         </Grid>
-        <Grid id='login-account' sty={_login.input}>
-          <TextField
-            placeholder="輸入帳號"
-            label="帳號"
-            onChange={e => setAccount(e.target.value)}
-          />
-        </Grid>
-        <Grid id='login-password' sty={_login.input}>
-          <TextField
-            password
-            placeholder="輸入密碼"
-            label="密碼"
-            onChange={e => setPassword(e.target.value)}
-          />
-        <Typography variant="caption" align='right'>Forget password?</Typography>
-        </Grid>
+        
         <div >
         {module==='login' &&
           <>
