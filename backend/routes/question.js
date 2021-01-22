@@ -82,7 +82,7 @@ router.patch('/answers', function(req, res, next){
     Question.findOne()
             .where("_id").equals(questionId)
             .exec((err, question) => {
-                if (question == undefined) {
+                if (question === undefined) {
                     res.status(400).send({message: "error question not found"})
                 } else {
                     console.log(question.Answer)

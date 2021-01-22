@@ -153,7 +153,7 @@ export default function CourseSchedule() {
                     id={`section${(dayIndex-1)*13 + sectionIndex + 1}`}
                     value={(dayIndex-1)*13 + sectionIndex + 1}
                   >
-                    {dayIndex==0 && 
+                    {dayIndex===0 && 
                       <>
                         <Typography variant="subtitle1">{section.name}</Typography>
                         <Typography variant="body1">{section.clock}</Typography>

@@ -126,7 +126,7 @@ export default function Login(props) {
         <Typography variant="caption" align='right'>Forget password?</Typography>
         </Grid>
         <div >
-        {module=='login' &&
+        {module==='login' &&
           <>
               <TextField
                 className="login-input"
@@ -144,7 +144,7 @@ export default function Login(props) {
               <Typography variant="caption" align='right'>Forget password?</Typography>
           </>
         }
-        {module=='registeration' &&
+        {module==='registeration' &&
           <>
               <TextField
                 placeholder="請輸入預註冊的帳號"
@@ -172,7 +172,7 @@ export default function Login(props) {
         </div>
         <div>
           <Button onClick={handleClick} className="button">
-            {module=='login'? "登入":"註冊"}
+            {module==='login'? "登入":"註冊"}
           </Button> 
         </div>
         {/* <Button onClick={test}>

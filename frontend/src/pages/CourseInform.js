@@ -72,9 +72,9 @@ function CourseInform(props) {
                   <Tab className='tab' label="Ｑ＆Ａ" />
                   <Tab className='tab' label="相似課程" />
                 </Tabs>
-              {value==0 && <CourseInform_Syllabus  data={originData} />}
-              {value==1 && <CourseInform_Schedule data={originData} />}
-              {value==2 && <CourseInform_QA data={props.match.params.courseId}/>}
+              {value===0 && <CourseInform_Syllabus  data={originData} />}
+              {value===1 && <CourseInform_Schedule data={originData} />}
+              {value===2 && <CourseInform_QA data={props.match.params.courseId}/>}
               
               </LoadingPanel>
             </div>
