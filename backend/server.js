@@ -19,9 +19,14 @@ const identityKey = 'skey';
 //var FileStore = require('session-file-store')(session)
 // init middleware
 const corsOptions = {
-    origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://127.0.0.1:3000/search', 'http://127.0.0.1:3000/user'],
+    origin: ['*'],
     credentials: true,
 }
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 app.use(cors(corsOptions))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
