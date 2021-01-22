@@ -15,6 +15,7 @@ function Home(props) {
           <NtuLogo size='85px'/>
           <div className='slash'></div>
           <Typography variant="h4" className='title' >課程查詢系統</Typography>
+          <h1>account: abc<br/>password: 123</h1>
         </div>
         <div className='containerRight'>
           <Login className='login'/>
