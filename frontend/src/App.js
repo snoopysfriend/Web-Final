@@ -13,6 +13,7 @@ const initialState = {
   token: null,
 };
 
+window.localStorage.setItem("backendIP", "http://54.165.151.147:4000")
 const reducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":

@@ -26,7 +26,7 @@ export const getUserCourse = async (id) => {
     // console.log("getUserCourse")
     // return await axios.get('http://127.0.0.1:4000/api/schedule')
 
-    const res = await axios.get('http://localhost:4000/api/schedule/')
+    const res = await axios.get(`${window.localStorage.getItem('backendIP')}/api/schedule/`)
       .then((response) => {
         return response
       })

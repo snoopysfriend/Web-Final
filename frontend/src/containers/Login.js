@@ -13,8 +13,6 @@ import { _login } from '../styles/styledVariables'
 //axios
 import axios from 'axios' 
 axios.defaults.withCredentials=true;
-const instance = axios.create({ baseURL: 'http://127.0.0.1:4000' });
-
 
 const StyledTabs = withStyles({
   flexContainer: {
@@ -61,23 +59,19 @@ export default function Login(props) {
   };
 
   const logout = async () => {
-    return await axios.post('http://localhost:4000/api/users/logout', {'Content-Type': 'application/json'})
+    return await axios.post(`${window.localStorage.getItem('backendIP')}/api/users/logout`, {'Content-Type': 'application/json'})
         .then((response) => {
         })
         .catch((error) => false)
 
   }
   const loginAuthorize = async (data) => {
-    return await axios.post('http://localhost:4000/api/users/login', data, {'Content-Type': 'application/json'})
+    return await axios.post(`${window.localStorage.getItem('backendIP')}/api/users/login`, data, {'Content-Type': 'application/json'})
         .then((response) => {
           dispatch({
               type: "LOGIN",
               payload: data
           })
-<<<<<<< HEAD
-=======
-          
->>>>>>> 94daa0f (save Read.me)
           history.push("/search")
         })
         .catch((error) => history.push('/'))
