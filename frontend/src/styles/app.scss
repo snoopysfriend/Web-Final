@@ -282,12 +282,12 @@ $courInform_titleHeight: 90px;
     }
     .input {
       margin: $xs 0;
-      width: 300px;
+      min-width: 300px;
       padding: $xs;
     }
     .button {
       width: 80px;
-      margin: auto;
+      margin: auto $xs;
     }
     .timeTable {
       width: auto;
@@ -302,8 +302,7 @@ $courInform_titleHeight: 90px;
     }
 
   }
-  
-  
+
   .checkBoxes {
     align-items: center;
     .title {
@@ -332,6 +331,8 @@ $courInform_titleHeight: 90px;
 
 }
 
+
+
 .SearchResult {
   height: calc(100vh - #{$header_height} - #{$query_height} - 30px);
   box-sizing: border-box;
@@ -344,20 +345,3 @@ $courInform_titleHeight: 90px;
   display: inline;
   right: 10px;
 }
-
-// .login {
-//   .input {
-//     margin: $xs;
-//   }
-//   .button {
-//     width: 80%;
-//     margin: auto;
-//   }
-//   .tags {
-//     width: 100%;
-//   }
-
-// }
-
-
-

@@ -21,7 +21,6 @@ const Multi = (func, options, name) => {
       <div>
         <ThemeProvider theme={theme}>
         <Autocomplete
-              id={`Autocomplete${name}`}
             multiple
             size='small'
             options={options}
@@ -29,8 +28,7 @@ const Multi = (func, options, name) => {
               <TextField
                   {...params}
                   noWrap
-                  ariaValueText="ariaValueText"
-                  InputProps={{...params.InputProps, disableUnderline: true, value: "j6m3wj6"}}
+                  InputProps={{...params.InputProps, disableUnderline: true}}
                   placeholder={name}
               />
             )}
@@ -113,15 +111,15 @@ function Query(props) {
         handleTextFieldChange={handleTextFieldChange}
       />
       <div className='rowFlex'>
-        <div >
-          {Multi(handleDepUpate, depList, "學院")}
+        <div className="fullWidth">
+          {/* {Multi(handleDepUpate, depList, "學院")}
           {Multi(handleDepUpate, majorList, "系所")}
-          {Multi(handleDepUpate, libEd, "通識")}
-          {/* <Multiselect name="學院" onChange={handleDepUpate} optionList={depList} /> */}
-          {/* <Multiselect name="系所" onChange={handleDepUpate} optionList={majorList} /> */}
-          {/* <Multiselect name="通識"  optionList={libEd}/> */}
+          {Multi(handleDepUpate, libEd, "通識")} */}
+          <Multiselect name="學院" onChange={handleDepUpate} optionList={depList} />
+          <Multiselect name="系所" onChange={handleDepUpate} optionList={majorList} />
+          <Multiselect name="通識"  optionList={libEd}/>
         </div>
-        <div >
+        <div className="fullWidth">
           <Multiselect name="體育/軍訓" optionList={phyMil} /> 
           <Multiselect name="語文/基本能力"  optionList={genCour} />
           <Multiselect name="學程" optionList={acaProg} />
