@@ -16,7 +16,7 @@ import { Typography } from '../components/self-defined/index'
 // axios
 import axios from 'axios' 
 
-const instance = axios.create({ baseURL: 'http://localhost:4000/api/' });
+const instance = axios.create({ baseURL: `${window.localStorage.getItem('backendIP')}/api/` });
 
 function LoadingPanel(props) {
   const { isLoading, children, index, ...other } = props;

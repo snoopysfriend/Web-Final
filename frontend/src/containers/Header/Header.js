@@ -26,7 +26,7 @@ function Header() {
       console.log('login')
       axios.defaults.withCredentials = true
       let loginStatus = true;
-        await axios.post('http://localhost:4000/api/users/login', {'Content-Type': 'application/json'})
+        await axios.post(`${window.localStorage.getItem('backendIP')}/api/users/login`, {'Content-Type': 'application/json'})
         .then((response) => {
             
         })

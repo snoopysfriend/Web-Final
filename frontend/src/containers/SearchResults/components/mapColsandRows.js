@@ -18,7 +18,7 @@ const addSchedule = async (CourseId) => {
     //axios.defauts.withCredentials = true
     console.log(`courseId ${CourseId}`)
     const data = {'courseId': CourseId}
-    await axios.post('http://localhost:4000/api/schedule', data, {'Content-Type': 'application/json'})
+    await axios.post(`${window.localStorage.getItem('backendIP')}/api/schedule`, data, {'Content-Type': 'application/json'})
     .then((response) => {
         console.log(response);
         if (response.data.message === 'error course already exists') {

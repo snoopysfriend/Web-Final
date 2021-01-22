@@ -44,7 +44,7 @@ function Search(props) {
   const sendQuery = async(data) =>{
     console.log(data)
     const res = await axios.post(
-      'http://localhost:4000/api/syllabus',
+      `${window.localStorage.getItem('backendIP')}/api/syllabus`,
       data, 
       {'Content-Type': 'application/json'}
     )
@@ -53,7 +53,7 @@ function Search(props) {
   }
   const fullTextQuery = async(text)=>{
     const res = await axios.get(
-      `http://localhost:4000/api/fullsearch?type=Course&text=${text}`,
+      `${window.localStorage.getItem('backendIP')}/api/fullsearch?type=Course&text=${text}`,
     )
     var data = res.data.content;
     var data_real = []
@@ -65,7 +65,7 @@ function Search(props) {
   }
   const fetchResource = async () => {
     const res = await axios.post(
-      'http://localhost:4000/api/syllabus',
+      `${window.localStorage.getItem('backendIP')}/api/syllabus`,
       {}, 
       {'Content-Type': 'application/json'}
     )
