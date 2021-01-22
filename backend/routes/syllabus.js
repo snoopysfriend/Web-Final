@@ -17,7 +17,7 @@ router.post('/', function(req, res, next){
     var query =[]
 
     var queryDepts = []
-    if (colleges.length > 0){
+    if (colleges !== undefined){
         colleges.forEach((col, index)=>{
             let isAllDepts = true
             depts.forEach((dept, jndex)=>{
@@ -36,7 +36,7 @@ router.post('/', function(req, res, next){
         query.push(depCode[dept])
     })
 
-    if (liberals.length > 0){
+    if (liberals !== undefined){
         liberals.forEach((lib, index)=>{
             query.push(lib.split(":")[0])
         })
@@ -46,25 +46,32 @@ router.post('/', function(req, res, next){
         校隊班: "UniTeam",
         專項運動學群:"Prof_PE"
     }
-    PEs.forEach((pe, index)=>{
-        query.push(PEtable[pe])
-    })
+    if (PEs !== undefined){
+        PEs.forEach((pe, index)=>{
+            query.push(PEtable[pe])
+        })
+    }
 
     var Langstable = {
         國文: "CH",
         英文: "EN",
     }
-    langs.forEach((lang, index)=>{
-        query.push(Langstable[lang])
-    })
+    if (langs !== undefined){
+        langs.forEach((lang, index)=>{
+            query.push(Langstable[lang])
+        })
+    }
+    if (programs !== undefined){
+        programs.forEach((prog, index)=>{
+            query.push(prog.split(" ")[0])
+        })
+    }
 
-    programs.forEach((prog, index)=>{
-        query.push(prog.split(" ")[0])
-    })
-
-    var queryParams = { Tags: { $in: query } }
-    console.log(queryParams)
-
+    var queryParams = {};
+    if (query.length > 0){
+        queryParams = { Tags: { $in: query } }
+        console.log(queryParams)
+    }
     Syllabus.find(queryParams)
             .limit(200)
             .exec((err, ress) => {
