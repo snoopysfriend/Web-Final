@@ -37,10 +37,15 @@ export default function CourseInform_Basic(props) {
                 style={{maxWidth: "80px"}}
                 // secondary={secondary ? 'Secondary text' : null}
               />
+              {props.data.length > 0
+              ?
               <ListItemText
                 primary={props.data[CONTENT[index]]}
                 // secondary={secondary ? 'Secondary text' : null}
               />
+              :
+              <></>
+              }
             </ListItem>
         )})}
       </List>

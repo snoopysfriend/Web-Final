@@ -18,9 +18,16 @@ export default function CourseInform_Syllabus(props) {
         </Typography>
         <Divider orientation="vertical" flexItem />
         <Typography variant="body1" className='cell2'>
+          {props.data.length > 0 
+          ?
+          <>
           {props.data && (props.data[item].split("\n").map(item => (
               <> {item} <br></br> </>
           )))}
+          </>
+          :
+          <></>
+          }
         </Typography>   
       </div>
       <Divider light variant="middle"/>
