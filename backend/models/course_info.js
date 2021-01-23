@@ -7,7 +7,7 @@ const CourseInfoSchema = new Schema({
 		type: String,
 		default:''
 	},
-	CouName:{
+	CouCname:{
 		type: String,
 		default:''
 	},
@@ -15,7 +15,7 @@ const CourseInfoSchema = new Schema({
 		type: String,
 		default:''
 	},
-	DeptName:{
+	DptName:{
 		type: String,
 		default:''
 	},
