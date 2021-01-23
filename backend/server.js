@@ -19,9 +19,10 @@ const identityKey = 'skey';
 //var FileStore = require('session-file-store')(session)
 // init middleware
 const corsOptions = {
-    origin: ['*'],
+    origin: ['http://54.165.151.147:3000', 'http://54.165.151.147','http://localhost:3000','http://127.0.0.1:3000'],
     credentials: true,
 }
+//https://stackoverflow.com/questions/40025450/express-js-no-access-control-allow-origin-header-is-present-on-the-requested/40026625
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
