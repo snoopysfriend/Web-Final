@@ -26,7 +26,7 @@ export default function SearchBar(props) {
               input ={<InputBase />}
             >
               {OPTIONS.map((op, index) => (
-                <MenuItem value={index}>{op}</MenuItem>)
+                <MenuItem key={index} value={index}>{op}</MenuItem>)
               )}
             </Select>
       </div>

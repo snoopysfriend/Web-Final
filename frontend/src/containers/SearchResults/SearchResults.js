@@ -28,7 +28,8 @@ export default function SearchResults(props) {
         columns={columns.map(function(item){
           item.hide = !props.colState[item.field];
           return item;
-        })} 
+        })}
+        key = {columns.map( (item, index)=>index)} 
         // pageSize={5} 
       /> 
     </div>

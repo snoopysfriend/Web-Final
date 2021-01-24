@@ -26,7 +26,7 @@ export default function ColFilters(props) {
                 name={item} 
                 color="primary"/>
             }
-            label={ <Typography noWrap>{tableHeadersCN[index]}</Typography>}>
+            label={ <Typography >{tableHeadersCN[index]}</Typography>}>
           </FormControlLabel>
         )
       })}

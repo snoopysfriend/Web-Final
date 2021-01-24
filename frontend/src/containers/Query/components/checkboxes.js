@@ -28,6 +28,7 @@ function Filter(props) {
             return <FormControlLabel 
             control={<Checkbox onChange={handleChange} name={item} color="primary"/>}
             label={<Typography>{optionsLabel[index]}</Typography>}
+            key={index}
           />
           })}
         </FormGroup>

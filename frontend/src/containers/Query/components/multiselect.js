@@ -20,7 +20,7 @@ function MultiSelect(props) {
           renderInput={(params) => (
             <TextField
                 {...params}
-                noWrap
+                
                 InputProps={{...params.InputProps, disableUnderline: true}}
                 placeholder={props.name}
             />

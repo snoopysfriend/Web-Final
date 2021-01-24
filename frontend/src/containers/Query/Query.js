@@ -27,7 +27,7 @@ const Multi = (func, options, name) => {
             renderInput={(params) => (
               <TextField
                   {...params}
-                  noWrap
+                  
                   InputProps={{...params.InputProps, disableUnderline: true}}
                   placeholder={name}
               />
