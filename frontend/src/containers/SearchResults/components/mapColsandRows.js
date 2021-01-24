@@ -39,7 +39,7 @@ export const columns = [
     return (
     <Link
       style={{ margin: '0 auto' }}
-      href={`http://127.0.0.1:3000/course/${params.row.CourseId}`}
+      href={`${window.localStorage.getItem('backendIP')}/course/${params.row.CourseId}`}
       onClick={ getCourseInform }
     >
       {params.row.CouCname}
