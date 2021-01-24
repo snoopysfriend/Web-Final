@@ -20,10 +20,12 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
       window.localStorage.setItem("user", action.payload.studentId);
+      window.localStorage.setItem("isAuthenticated", true);
+      // https://stackoverflow.com/questions/62487168/loosing-component-data-on-page-refresh-in-react
       // localStorage.setItem("token", JSON.stringify(action.payload.token));
       return {
         ...state,
-        isAuthenticated: true,
+        // isAuthenticated: true,
         // user: action.payload.user,
         // token: action.payload.token
       };

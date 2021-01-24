@@ -48,11 +48,12 @@ export default function Login(props) {
   axios.defaults.withCredentials = true
   const history = useHistory();
   const {state, dispatch} = React.useContext(AuthContext);
-  console.log("Login", state, dispatch)
+  // console.log("Login", state, dispatch)
 
   const [module, setModule] = React.useState('login');
   const [account, setAccount] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [varifyPassword, setVarifyPassword] = React.useState('');
 
   const handleChange = (event, newValue) => {
     setModule(newValue);
@@ -74,7 +75,11 @@ export default function Login(props) {
         })
         history.push("/search")
         })
-        .catch((error) => history.push('/'))
+        .catch((error) => {
+          alert(error.response.data.error)
+          setAccount('')
+          setPassword('')
+        })
   }
   const registerAuthorize = async (data) => {
     data.studentMaj ="EE"
@@ -85,24 +90,24 @@ export default function Login(props) {
     data.studentEname  = "Nick"
     data.email = "B05502058@ntu.edu.tw"
     data.username = "Nick"
-    console.log(`${window.localStorage.getItem('backendIP')}/api/users/register`)
+    // console.log(`${window.localStorage.getItem('backendIP')}/api/users/register`)
     return await axios.post(`${window.localStorage.getItem('backendIP')}/api/users/register`, data, {'Content-Type': 'application/json'})
         .then((response) => {
-          // console.log(response)
-          history.push('/')
+          setModule('login')
         })
         .catch((error) => {
-          alert("username exists")
-          history.push('/')
+          alert(error.response.data.error)
+          setAccount('')
+          setPassword('')
+          setVarifyPassword('')
         })
   }
-  const handleClick = async (event) => {
+  const handleClick = async () => {
     var data = {
       studentId: account,
       password: password
     }
-    console.log('click')
-    console.log(module)
+    // console.log('click')
     if (module === 'login'){
       await loginAuthorize(data);
     }else if (module === 'registeration'){
@@ -141,13 +146,15 @@ export default function Login(props) {
           <>
               <TextField
                 className="login-input"
+                value={account}
                 placeholder="輸入帳號"
                 label="帳號"
                 onChange={e => setAccount(e.target.value)}
               />
               <TextField
                 className="login-input"
-                password
+                type="password"
+                value={password}
                 placeholder="輸入密碼"
                 label="密碼"
                 onChange={e => setPassword(e.target.value)}
@@ -158,26 +165,29 @@ export default function Login(props) {
         {module==='registeration' &&
           <>
               <TextField
+                value={account}
                 placeholder="請輸入預註冊的帳號"
                 label="帳號"
                 className="login-input"
                 onChange={e => setAccount(e.target.value)}
               />
               <TextField
-                password
+                type="password"
+                value={password}
                 placeholder="輸入密碼"
                 label="密碼"
                 className="login-input"
                 onChange={e => setPassword(e.target.value)}
               />
               <TextField
-                password
+                type="password"
+                value={varifyPassword}
                 placeholder="再次輸入密碼"
                 label="密碼"
                 className="login-input"
-                onChange={e => verifyPassword(e.target.value)}
+                onChange={e => setVarifyPassword(e.target.value)}
               />
-              <Typography variant="caption" fullWidth align='right'>密碼須大於6位字元</Typography>
+              <Typography variant="caption" align='right'>密碼須大於6位字元</Typography>
           </>
         }
         </div>

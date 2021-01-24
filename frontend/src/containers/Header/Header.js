@@ -23,23 +23,7 @@ function Header() {
   }
 
   const schedule = async() => {
-      console.log('login')
-      axios.defaults.withCredentials = true
-      let loginStatus = true;
-        await axios.post(`${window.localStorage.getItem('backendIP')}/api/users/login`, {'Content-Type': 'application/json'})
-        .then((response) => {
-            
-        })
-        .catch((error) => 
-            loginStatus = false)
-
-      if (loginStatus === false) {
-          alert('User not login!!')
-          history.push('/')
-      } else {
-          console.log(loginStatus)
-          history.push('/user')
-      }
+    history.push('/user')      
   }
 
   return (
@@ -49,9 +33,9 @@ function Header() {
         <Typography variant='h4'>課程查詢系統</Typography>
       </div>
       <div>
+      {window.localStorage.isAuthenticated? 
+        // <Button> 已登入 </Button>
         <Button onClick = {() => schedule()}> 我的課程 </Button>
-      {state.isAuthenticated? 
-        <Button> 已登入 </Button>
         :
         <Button onClick = {() => login()}> 登入 </Button>}
       </div>

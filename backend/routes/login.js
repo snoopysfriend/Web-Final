@@ -79,7 +79,7 @@ router.post('/register', (req, res) => {
                 res.status(200).send({message: "Success"})
 
             } else {
-                res.status(400).end("username exists")
+                res.status(400).end({error: "username exists"})
             }
         }
     })
