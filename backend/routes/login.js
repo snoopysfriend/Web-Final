@@ -1,8 +1,8 @@
 import express from 'express'
 import Account from '../models/account'
+import bcrypt from 'bcrypt'
 const Student =  require('../models/student')
 const router = express.Router()
-import bcrypt from 'bcrypt'
 // const bcrypt = require('bcrypt')
 
 const hash_time = 10
@@ -79,7 +79,7 @@ router.post('/register', (req, res) => {
                 res.status(200).send({message: "Success"})
 
             } else {
-                res.status(400).send({message: "username exists"})
+                res.status(400).end("username exists")
             }
         }
     })

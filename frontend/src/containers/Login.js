@@ -69,19 +69,45 @@ export default function Login(props) {
     return await axios.post(`${window.localStorage.getItem('backendIP')}/api/users/login`, data, {'Content-Type': 'application/json'})
         .then((response) => {
           dispatch({
-              type: "LOGIN",
-              payload: data
-          })
-          history.push("/search")
+            type: "LOGIN",
+            payload: data
+        })
+        history.push("/search")
         })
         .catch((error) => history.push('/'))
   }
+  const registerAuthorize = async (data) => {
+    data.studentMaj ="EE"
+    data.studentGrad ="4"
+    data.studentGender = "1"
+    data.studentDepartment = "EE"
+    data.studentCname =  "趙翊琳"
+    data.studentEname  = "Nick"
+    data.email = "B05502058@ntu.edu.tw"
+    data.username = "Nick"
+    console.log(`${window.localStorage.getItem('backendIP')}/api/users/register`)
+    return await axios.post(`${window.localStorage.getItem('backendIP')}/api/users/register`, data, {'Content-Type': 'application/json'})
+        .then((response) => {
+          // console.log(response)
+          history.push('/')
+        })
+        .catch((error) => {
+          alert("username exists")
+          history.push('/')
+        })
+  }
   const handleClick = async (event) => {
-    const data = {
+    var data = {
       studentId: account,
-      password: password,
+      password: password
     }
-    await loginAuthorize(data);
+    console.log('click')
+    console.log(module)
+    if (module === 'login'){
+      await loginAuthorize(data);
+    }else if (module === 'registeration'){
+      await registerAuthorize(data);
+    }
   };
   const testloginAuthorize = async (data) => {
     return await axios.post('http://127.0.0.1:4000/api/users/login', data, {'Content-Type': 'application/json'})
@@ -95,7 +121,7 @@ export default function Login(props) {
   };
   
   const verifyPassword = (val) => {
-    console.log(val, password)
+    // console.log(val, password)
   }
   
 
